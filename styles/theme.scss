@@ -1,0 +1,13 @@
+@use "./utils.scss" as *;
+
+html[data-theme="light"] {
+  --color-text: #{$color_black};
+  --color-background: #ffffff;
+  --color-card: #{$color_base};
+}
+
+html[data-theme="dark"] {
+  --color-text: #{$color_gray};
+  --color-background: #{$color_deepBlack};
+  --color-card: #{$color_black};
+}
