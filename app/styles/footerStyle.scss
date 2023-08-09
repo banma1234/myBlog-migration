@@ -1,0 +1,34 @@
+@import "styles/utils.scss";
+
+.footer {
+  width: 100%;
+  height: 10rem;
+  background-color: $color_black;
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 160px 1fr 8rem;
+  border-left: 2rem solid $color_green;
+  color: $color_gray;
+
+  ul {
+    max-width: 250px;
+    list-style: none;
+    li {
+      padding: 0.3rem;
+    }
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr 8rem;
+  }
+
+  &_profile {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+}
