@@ -1,9 +1,9 @@
 import "styles/globals.scss";
-import "./styles/main.scss";
+import styles from "./styles/page.module.scss";
 import Providers from "util/themeProvider";
 import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
-import { Footer, Header } from "./components";
+import { Footer, Header, NavBar } from "./components";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,11 +22,17 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning={true}>
         <body className={myFont.className}>
           <Providers>
             <Header />
-            <main>{children}</main>
+            <main className={styles.main}>
+              <nav className={styles.nav}>
+                <NavBar />
+              </nav>
+              {children}
+              <section />
+            </main>
             <Footer />
           </Providers>
         </body>
