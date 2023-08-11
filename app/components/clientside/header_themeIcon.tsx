@@ -6,11 +6,12 @@ import { useTheme } from "next-themes";
 
 export const ThemeIcon = () => {
   const { setTheme } = useTheme();
-  const [current, setCurrent] = useState(() => {
+  const [current, setCurrent] = useState("light");
+
+  useEffect(() => {
     const THEME = window.localStorage.getItem("THEME");
-    return THEME ? THEME : "light";
-  });
-  // const CURRENT_THEME = theme === "system" ? systemTheme : theme;
+    THEME ? setCurrent(THEME) : "light";
+  }, []);
 
   useEffect(() => {
     setTheme(current);
@@ -34,19 +35,5 @@ export const ThemeIcon = () => {
     <button className="header_themeIcon" onClick={handleIcon}>
       {current === "dark" ? useIcons("moon", "22") : useIcons("sun", "22")}
     </button>
-    // <div>
-    //   {current === "dark" ? (
-    //     <button
-    //       className="header_themeIcon"
-    //       onClick={() => handleIcon("light")}
-    //     >
-    //       {useIcons("moon", "22")}
-    //     </button>
-    //   ) : (
-    //     <button className="header_themeIcon" onClick={() => handleIcon("dark")}>
-    //       {useIcons("sun", "22")}
-    //     </button>
-    //   )}
-    // </div>
   );
 };
