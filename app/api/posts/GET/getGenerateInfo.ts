@@ -1,0 +1,27 @@
+import { NextResponse } from "next/server";
+import { connectToDatabase } from "util/mongodb";
+
+export default async function getGenerateInfo() {
+  try {
+    const { db } = await connectToDatabase();
+    const options = {
+      projection: {
+        _id: 0,
+        postId: 1,
+      },
+    };
+
+    const res = await db.collection("posts").find({}, options).toArray();
+
+    return NextResponse.json({
+      data: res,
+      success: true,
+    });
+  } catch (e: any) {
+    console.log(e);
+    return NextResponse.json({
+      data: e,
+      success: false,
+    });
+  }
+}

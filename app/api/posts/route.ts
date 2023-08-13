@@ -1,4 +1,4 @@
-import { viewIndex, viewAll } from "./GET";
+import { viewIndex, viewAll, viewPost, getGenerateInfo } from "./GET";
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -9,5 +9,9 @@ export async function GET(req: NextRequest) {
       return viewIndex();
     case "VIEW_ALL":
       return viewAll();
+    case "VIEW_POST":
+      return viewPost(req);
+    case "GET_STATIC_PARAMS":
+      return getGenerateInfo();
   }
 }
