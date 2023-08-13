@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 export const ThemeIcon = () => {
   const { setTheme } = useTheme();
   const [current, setCurrent] = useState("light");
+  let ICON = useIcons(current, "22");
 
   useEffect(() => {
     const THEME = window.localStorage.getItem("THEME");
@@ -33,7 +34,7 @@ export const ThemeIcon = () => {
 
   return (
     <button className="header_themeIcon" onClick={handleIcon}>
-      {current === "dark" ? useIcons("moon", "22") : useIcons("sun", "22")}
+      {ICON}
     </button>
   );
 };
