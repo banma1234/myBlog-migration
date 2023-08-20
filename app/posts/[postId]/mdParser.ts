@@ -1,45 +1,57 @@
 import { marked } from "marked";
-// import prism from "prismjs";
+// import { markedHighlight } from "marked-highlight";
+// import hljs from "highlight.js";
+// import Prism from "prismjs";
+// import loadLanguages from "prismjs/components/";
 // import "prismjs/themes/prism-tomorrow.css";
 import "./styles/mdParserStyle.scss";
 
 export default function mdParser(content: string) {
+  // loadLanguages(["js", "ts", "html", "jsx", "tsx", "python", "bash"]);
+  // const marked = new Marked(
+  //   markedHighlight({
+  //     langPrefix: "hljs language-",
+  //     highlight(code, lang) {
+  //       const language = hljs.getLanguage(lang) ? lang : "plaintext";
+  //       return hljs.highlight(code, { language }).value;
+  //     },
+  //   })
+  // );
+
   const renderer = new marked.Renderer();
   /*
     코드블럭 스타일 변경
   */
   renderer.code = (code: string, lang: string | undefined): string => {
-    if (lang && renderer?.options?.highlight) {
-      code = renderer.options.highlight(code, lang as string) as string;
-      const langClass = "language-" + lang;
-      return `
-            <div class="codeblock">
-                <div class="top">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <pre class="${langClass}">
-                    ${code}
-                </pre>
-            </div>
+    const langClass = lang ? lang : "plain-text";
+
+    const line = code
+      .split("\n")
+      .map(
+        (item: string, i: number) => `
+          <tr data-line=${i + 1}>
+            <td class="line-index" data-number="${i + 1}">${i + 1}</td>
+            <td class="line-code" data-number=${i + 1}>${item}</td>
+          </tr>
+        `
+      )
+      .join("\n")
+      .replace(/\t|\\n/, "");
+
+    return `
+        <div class="codeblock">
+          <div class="top">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <pre class="language-${langClass}">
+            <table>
+              <tbody>${line}</tbody>
+            </table>
+          </pre>
+        </div>
         `;
-    } else {
-      lang = "unknown";
-      const langClass = "language-" + lang;
-      return `
-            <div class="codeblock">
-                <div class="top">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <pre class="${langClass}">
-                    ${code}
-                </pre>
-            </div>
-        `;
-    }
   };
   /*
     h1, h2 등 제목 태그에 포커스 링크 삽입
@@ -58,14 +70,30 @@ export default function mdParser(content: string) {
   marked.use({
     gfm: true, // github의 md style 사용
     renderer: renderer,
-    // highlight: function (code: string, lang: string | undefined) {
-    //   if (lang) {
-    //     return prism.highlight(code, prism.languages[lang], lang);
-    //   } else {
-    //     return code;
-    //   }
+    // highlight: function (code: string) {
+    //   return hljs.highlightAuto(code).value;
+    // },
+    // highlight(code: string, lang: string | undefined) {
+    //   return lang ? hljs.highlight(lang, code).value : "plaintext";
     // },
   });
+
+  // marked.setOptions({
+  //   highlight: function (code: string) {
+  //     return hljs.highlightAuto(code).value;
+  //   },
+  // });
+
+  // marked.use(
+  //   markedHighlight({
+  //     async: true,
+  //     langPrefix: "hljs language-",
+  //     highlight(code, lang) {
+  //       const language = hljs.getLanguage(lang) ? lang : "plaintext";
+  //       return hljs.highlight(code, { language }).value;
+  //     },
+  //   })
+  // );
 
   const rawMd = marked.parse(content);
 

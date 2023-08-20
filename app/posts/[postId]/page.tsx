@@ -31,7 +31,10 @@ export default async function Posts({
     <article>
       <p>wow</p>
       <h2>{post.title}</h2>
-      <div dangerouslySetInnerHTML={mdParser(post.content)} />
+      <div
+        dangerouslySetInnerHTML={mdParser(post.content)}
+        className="md-viwer"
+      />
       <hr />
       {recent &&
         recent.map((item: any) => {
