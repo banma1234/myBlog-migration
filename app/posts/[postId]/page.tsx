@@ -1,5 +1,4 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { useMDXComponents } from "./mdxComponent";
+import mdParser from "./mdParser";
 
 async function getPost(postId: string) {
   const myHeaders = new Headers({
@@ -32,7 +31,7 @@ export default async function Posts({
     <article>
       <p>wow</p>
       <h2>{post.title}</h2>
-      <MDXRemote source={post.content} components={useMDXComponents} />
+      <div dangerouslySetInnerHTML={mdParser(post.content)} />
       <hr />
       {recent &&
         recent.map((item: any) => {
