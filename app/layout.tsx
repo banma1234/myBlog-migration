@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const myFont = Noto_Sans_KR({
-  weight: ["500"],
+  weight: ["400"],
   subsets: ["latin"],
 });
 
