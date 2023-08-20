@@ -1,6 +1,5 @@
 import "styles/globals.scss";
 import styles from "./styles/page.module.scss";
-import Providers from "util/themeProvider";
 import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
 import { Footer, Header, NavBar } from "./components";
@@ -24,17 +23,15 @@ export default function RootLayout({
     <>
       <html lang="en" suppressHydrationWarning={true}>
         <body className={myFont.className}>
-          <Providers>
-            <Header />
-            <main className={styles.main}>
-              <nav className={styles.nav}>
-                <NavBar />
-              </nav>
-              {children}
-              <section />
-            </main>
-            <Footer />
-          </Providers>
+          <Header />
+          <main className={styles.main}>
+            <nav className={styles.nav}>
+              <NavBar />
+            </nav>
+            {children}
+            <section />
+          </main>
+          <Footer />
         </body>
       </html>
     </>

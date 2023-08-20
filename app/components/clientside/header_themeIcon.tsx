@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useIcons } from "util/hooks";
-import { useTheme } from "next-themes";
 
 export const ThemeIcon = () => {
-  const { setTheme } = useTheme();
   const [current, setCurrent] = useState("light");
   let ICON = useIcons(current, "22");
 
@@ -15,7 +13,7 @@ export const ThemeIcon = () => {
   }, []);
 
   useEffect(() => {
-    setTheme(current);
+    document.documentElement.setAttribute("data-theme", current);
   }, [current]);
 
   const handleIcon = () => {
@@ -29,7 +27,6 @@ export const ThemeIcon = () => {
         setCurrent("dark");
         break;
     }
-    setTheme(current);
   };
 
   return (
