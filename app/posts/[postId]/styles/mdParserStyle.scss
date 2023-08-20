@@ -1,13 +1,11 @@
 @import "styles/utils.scss";
 
-$fd: 18px;
-$fm: 14px;
 pre[class*="language-"],
 code[class*="language-"] {
-  background-color: var(--color-text);
+  font-size: 1rem;
+  background-color: var(--color-card);
   padding: 3rem 1.5rem !important;
-  border-radius: 10px;
-  font-family: Hack, AppleSDGothicNeo, sans-serif;
+  border-radius: 0.6rem;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -20,15 +18,12 @@ code[class*="language-"] {
   overflow: auto;
 }
 code:not([class*="language-"]) {
-  font-family: Hack, AppleSDGothicNeo, sans-serif;
-  font-size: $fd - 4px;
+  background-color: var(--color-card);
+  font-size: 0.8rem;
   display: inline-block;
-  padding: 0px 4px;
-  margin: 0px 3px;
-  border-radius: 5px;
-  @media (max-width: 960px) {
-    font-size: $fm - 4px;
-  }
+  padding: 0.15rem 0.25rem;
+  margin: 0px 0.2rem;
+  border-radius: 0.3rem;
 }
 .codeblock {
   position: relative;
@@ -36,20 +31,18 @@ code:not([class*="language-"]) {
   .top {
     position: absolute;
     padding: 0.6rem 0 0.6rem 0;
-    top: 0px;
-    left: 0px;
     width: 100%;
-    background-color: black;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    background-color: var(--color-codeblock);
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     div {
-      width: 15px;
-      height: 15px;
+      width: 0.8rem;
+      height: 0.8rem;
       border-radius: 50%;
-      margin: 0px 5px;
+      margin: 0px 0.3rem;
       &:nth-child(1) {
         margin-left: 1.5rem;
         background-color: #fe5f57;
@@ -60,6 +53,34 @@ code:not([class*="language-"]) {
       &:nth-child(3) {
         background-color: #29c941;
       }
+    }
+  }
+  table {
+    border-collapse: collapse;
+    margin: -0.5rem;
+    & tr {
+      &:hover {
+        background-color: var(--color-codeblock);
+      }
+    }
+    & td {
+      line-height: 1rem;
+      @media (max-width: 960px) {
+        line-height: 0.8rem;
+      }
+    }
+    & td:nth-child(1) {
+      color: #5a70a0;
+      padding-right: 0.6rem;
+      border-right: 1px solid var(--color-codeblock);
+      text-align: right;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+    }
+    & td:nth-child(2) {
+      width: 100%;
+      padding: 0.2rem 1rem 0.2rem 2rem;
     }
   }
 }

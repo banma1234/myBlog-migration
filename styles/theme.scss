@@ -8,7 +8,7 @@
 }
 html[data-theme="dark"] {
   --color-text: #{$color_gray};
-  --color-background: #{$color-black};
-  --color-codeblock: #{$color_navy_bright};
-  --color-card: #{$color_navy};
+  --color-background: #{$color-black_high};
+  --color-codeblock: #{$color_black};
+  --color-card: #{$color_black_low};
 }
