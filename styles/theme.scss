@@ -1,13 +1,14 @@
 @use "./utils.scss" as *;
 
-html[data-theme="light"] {
+:root {
   --color-text: #{$color_black};
   --color-background: #ffffff;
-  --color-card: #{$color_base};
+  --color-codeblock: #{$color_base};
+  --color-card: #{$color_low};
 }
-
 html[data-theme="dark"] {
   --color-text: #{$color_gray};
-  --color-background: #{$color_deepBlack};
-  --color-card: #{$color_black};
+  --color-background: #{$color-black};
+  --color-codeblock: #{$color_navy_bright};
+  --color-card: #{$color_navy};
 }
