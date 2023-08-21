@@ -1,22 +1,30 @@
 import { marked } from "marked";
-// import { markedHighlight } from "marked-highlight";
-// import hljs from "highlight.js";
-// import Prism from "prismjs";
-// import loadLanguages from "prismjs/components/";
-// import "prismjs/themes/prism-tomorrow.css";
+import prism from "prismjs";
+
+import "./styles/prism_custom.scss";
 import "./styles/mdParserStyle.scss";
 
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-cshtml";
+import "prismjs/components/prism-python";
+
 export default function mdParser(content: string) {
-  // loadLanguages(["js", "ts", "html", "jsx", "tsx", "python", "bash"]);
-  // const marked = new Marked(
-  //   markedHighlight({
-  //     langPrefix: "hljs language-",
-  //     highlight(code, lang) {
-  //       const language = hljs.getLanguage(lang) ? lang : "plaintext";
-  //       return hljs.highlight(code, { language }).value;
-  //     },
-  //   })
-  // );
+  /*
+    코드 하이라이트 with prism
+  */
+  marked.setOptions({
+    highlight: (code: string, lang: string | undefined) => {
+      if (lang && prism.languages[lang]) {
+        return prism.highlight(code, prism.languages[lang], lang);
+      } else {
+        return code;
+      }
+    },
+  });
 
   const renderer = new marked.Renderer();
   /*
@@ -24,6 +32,10 @@ export default function mdParser(content: string) {
   */
   renderer.code = (code: string, lang: string | undefined): string => {
     const langClass = lang ? lang : "plain-text";
+
+    if (lang && renderer?.options?.highlight) {
+      code = renderer.options.highlight(code, lang as string) as string;
+    }
 
     const line = code
       .split("\n")
@@ -33,7 +45,7 @@ export default function mdParser(content: string) {
             <td class="line-index" data-number="${i + 1}">${i + 1}</td>
             <td class="line-code" data-number=${i + 1}>${item}</td>
           </tr>
-        `
+        `,
       )
       .join("\n")
       .replace(/\t|\\n/, "");
@@ -70,30 +82,7 @@ export default function mdParser(content: string) {
   marked.use({
     gfm: true, // github의 md style 사용
     renderer: renderer,
-    // highlight: function (code: string) {
-    //   return hljs.highlightAuto(code).value;
-    // },
-    // highlight(code: string, lang: string | undefined) {
-    //   return lang ? hljs.highlight(lang, code).value : "plaintext";
-    // },
   });
-
-  // marked.setOptions({
-  //   highlight: function (code: string) {
-  //     return hljs.highlightAuto(code).value;
-  //   },
-  // });
-
-  // marked.use(
-  //   markedHighlight({
-  //     async: true,
-  //     langPrefix: "hljs language-",
-  //     highlight(code, lang) {
-  //       const language = hljs.getLanguage(lang) ? lang : "plaintext";
-  //       return hljs.highlight(code, { language }).value;
-  //     },
-  //   })
-  // );
 
   const rawMd = marked.parse(content);
 

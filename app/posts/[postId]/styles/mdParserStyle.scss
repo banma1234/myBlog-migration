@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+$mac_color_list: (#fe5f57, #ffbd2e, #29c941);
 
 pre[class*="language-"],
 code[class*="language-"] {
@@ -43,15 +43,11 @@ code:not([class*="language-"]) {
       height: 0.8rem;
       border-radius: 50%;
       margin: 0px 0.3rem;
-      &:nth-child(1) {
-        margin-left: 1.5rem;
-        background-color: #fe5f57;
-      }
-      &:nth-child(2) {
-        background-color: #ffbd2e;
-      }
-      &:nth-child(3) {
-        background-color: #29c941;
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          margin-left: if($i < 2, 1.5rem, 0.3rem);
+          background-color: nth($mac_color_list, $i);
+        }
       }
     }
   }
