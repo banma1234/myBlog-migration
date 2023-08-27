@@ -17,7 +17,7 @@ export default async function getGenerateInfo() {
       data: res,
       success: true,
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
       data: e,

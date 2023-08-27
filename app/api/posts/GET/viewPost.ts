@@ -52,7 +52,7 @@ export default async function viewPost(req: NextRequest) {
       recent: recentPosts,
       success: true,
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
       data: e,

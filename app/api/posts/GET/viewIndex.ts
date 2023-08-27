@@ -24,7 +24,7 @@ export default async function viewIndex() {
       data: res,
       success: true,
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
       data: e,
