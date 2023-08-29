@@ -24,7 +24,7 @@ export default async function Posts({
         recent.map((item: any) => {
           return <p>{item.title}</p>;
         })}
-      <CommentBox postId={postId} comment={comment} />
+      <CommentBox postId={Number(postId)} comment={comment} />
     </article>
   );
 }

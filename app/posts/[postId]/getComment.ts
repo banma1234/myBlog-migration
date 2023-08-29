@@ -9,5 +9,7 @@ export default async function getComment(postId: string) {
   });
   const comments = await res.json();
 
-  return comments["message"];
+  return comments.success && comments["message"].length
+    ? comments["message"]
+    : undefined;
 }
