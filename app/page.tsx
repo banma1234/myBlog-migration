@@ -1,4 +1,5 @@
 import { use } from "react";
+import { Card, CardLayout } from "./components/card";
 
 async function getPost() {
   const myHeaders = new Headers({
@@ -18,13 +19,13 @@ async function getPost() {
 
 export default function Home() {
   const posts = use(getPost());
+  const headPost = posts.shift();
 
   return (
     <div>
       <h1>hello</h1>
-      {posts.map((item: any, i: number) => {
-        return <p key={i}>{item.title}</p>;
-      })}
+      <h2>{headPost.title}</h2>
+      <CardLayout posts={posts} />
     </div>
   );
 }

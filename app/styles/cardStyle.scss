@@ -1,0 +1,18 @@
+.card {
+  width: 23.75rem;
+  height: 22rem;
+  background-color: var(--color-card);
+
+  &_thumbnail {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+.card_layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+}
