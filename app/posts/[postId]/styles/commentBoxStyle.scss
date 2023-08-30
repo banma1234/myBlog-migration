@@ -17,7 +17,7 @@
     grid-template-columns: 90px 1fr 70px;
     border-top: 2px solid var(--color-text);
     text-align: left;
-    padding-top: 1.5rem;
+    padding: 1.5rem 0 1.5rem 0;
   }
 }
 
@@ -48,6 +48,12 @@
   &_menu {
     min-width: 20px;
     justify-content: right;
+    color: $color_green;
     cursor: pointer;
   }
+}
+
+.profile_wrapper {
+  width: 100%;
+  height: auto;
 }
