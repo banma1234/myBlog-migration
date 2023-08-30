@@ -1,7 +1,7 @@
 import mdParser from "./mdParser";
 import getPost from "./getPost";
-import getComment from "./getComment";
 import CommentBox from "./components/clientside/commentBox";
+import commentHandler from "./commentHandler";
 
 export default async function Posts({
   params: { postId },
@@ -9,7 +9,7 @@ export default async function Posts({
   params: { postId: string };
 }) {
   const { post, recent } = await getPost(postId);
-  const comment = await getComment(postId);
+  const comment = await commentHandler(postId, "GET");
 
   return (
     <article>

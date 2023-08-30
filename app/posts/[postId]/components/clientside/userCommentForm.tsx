@@ -7,13 +7,14 @@ import {
   UserCommentType,
   TreeHandlerType,
 } from "../componentType";
+import commentHandler from "../../commentHandler";
+import "../../styles/userCommentStyle.scss";
 
 const treeHandler: TreeHandlerType = {
   REF(data, type) {
     if (data) {
       switch (type) {
         case "DEFAULT":
-          // 이거 맨 마지막꺼 잘라오는걸로 고쳐야함
           return data.REF + 1;
         case "REPLY":
           return data.REF;
@@ -55,16 +56,21 @@ export default function UserCommentForm(props: UserCommentFormType) {
   const [password, setPassword] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
 
-  const initData = () => {
+  const initData = async () => {
+    const newComment = await commentHandler(props.postId.toString(), "GET");
+    props.setComments(newComment);
+
     setUserComment("");
     setPassword("");
     setUserName("");
-    alert("success");
   };
 
   const submitComment = async (e: any) => {
     e.preventDefault();
-    if (!userComment) alert("댓글을 입력해주세요");
+    if (!userComment) {
+      alert("please write your comment");
+      return;
+    }
 
     const myHeaders = new Headers({});
     myHeaders.append("commenttype", props.type);
@@ -91,30 +97,36 @@ export default function UserCommentForm(props: UserCommentFormType) {
   };
 
   return (
-    <>
-      <input
-        value={userName}
-        placeholder="닉네임"
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setUserName(e.target.value)
-        }
-      />
-      <input
-        value={password}
-        placeholder="비밀번호"
-        type="password"
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setPassword(e.target.value)
-        }
-      />
+    <div className="comment_form">
+      <div className="comment_form_input">
+        <input
+          className="input_small"
+          value={userName}
+          placeholder="nickname"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setUserName(e.target.value)
+          }
+        />
+        <input
+          className="input_small"
+          value={password}
+          placeholder="password"
+          type="password"
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
+        />
+      </div>
       <textarea
         value={userComment}
-        placeholder="댓글 입력"
+        placeholder="add comment here"
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setUserComment(e.target.value)
         }
       />
-      <button onClick={submitComment}>확인</button>
-    </>
+      <div className="comment_form_button">
+        <button onClick={submitComment}>Submit</button>
+      </div>
+    </div>
   );
 }

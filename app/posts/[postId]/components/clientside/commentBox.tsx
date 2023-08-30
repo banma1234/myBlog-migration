@@ -6,7 +6,6 @@ import { useIcons } from "util/hooks";
 import { CommentBoxType, CommentType } from "../componentType";
 import UserCommentForm from "./userCommentForm";
 import Image from "next/image";
-// import getComment from "../../getComment";
 
 export default function CommentBox(props: CommentBoxType) {
   const [replyClick, setReplyClick] = useState(false);
@@ -27,13 +26,20 @@ export default function CommentBox(props: CommentBoxType) {
                 style={{ width: `${100 - item.RE_LEVEL * 6}%` }}
                 key={i}
               >
-                <div>힝</div>
+                <div className="profile_wrapper">
+                  <Image
+                    src="/default_profile.png"
+                    alt="profile"
+                    width={70}
+                    height={70}
+                  />
+                </div>
                 <div className="content">
                   <div className="content_info">
                     <span className="content_info_writter">{item.writter}</span>
                     <span className="content_info_date">{item.date}</span>
                   </div>
-                  <p>{item.content}</p>
+                  {item.content}
                 </div>
                 <div
                   onClick={() => {
@@ -50,16 +56,26 @@ export default function CommentBox(props: CommentBoxType) {
                     setReplyClick(!replyClick);
                   }}
                 >
-                  <p>
-                    {replyClick && commentId === item._id ? "취소" : "답글달기"}
-                  </p>
+                  <div>
+                    {replyClick && commentId === item._id
+                      ? "cancel"
+                      : "...reply"}
+                  </div>
                 </div>
+                {replyClick && commentId === item._id && (
+                  <UserCommentForm
+                    data={item}
+                    postId={props.postId}
+                    type="REPLY"
+                    setComments={setComments}
+                  />
+                )}
               </div>
             </div>
           );
         })}
       <UserCommentForm
-        data={comments ? comments[0] : undefined}
+        data={comments ? comments.slice(-1)[0] : undefined}
         postId={props.postId}
         type="DEFAULT"
         setComments={setComments}
