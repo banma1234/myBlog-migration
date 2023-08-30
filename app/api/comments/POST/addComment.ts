@@ -13,7 +13,6 @@ export default async function addComment(req: NextRequest) {
       success: true,
     });
   } catch (e: unknown) {
-    // return an error
     return NextResponse.json({
       message: e,
       success: false,
