@@ -3,7 +3,7 @@
     cancel, sun, moon, copy, check
  } */
 
-export default function useIcons(type: string, size: string) {
+export default function iconHandler(type: string, size: string) {
   switch (type) {
     case "mail":
       return (
