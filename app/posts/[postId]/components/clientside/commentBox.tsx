@@ -2,7 +2,7 @@
 
 import "../../styles/commentBoxStyle.scss";
 import { useState } from "react";
-import { useIcons } from "util/hooks";
+import iconHandler from "util/iconHandler";
 import { CommentBoxType, CommentType } from "../componentType";
 import UserCommentForm from "./userCommentForm";
 import Image from "next/image";
@@ -12,7 +12,7 @@ export default function CommentBox(props: CommentBoxType) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    props.comment,
+    props.comment
   );
 
   return (
@@ -47,7 +47,7 @@ export default function CommentBox(props: CommentBoxType) {
                     setMenuClick(!menuClick);
                   }}
                 >
-                  {useIcons("cancel", "18")}
+                  {iconHandler("cancel", "18")}
                 </div>
                 <div
                   className="content_menu"

@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useIcons } from "util/hooks";
+import iconHandler from "util/iconHandler";
 
 export const ThemeIcon = () => {
   const [current, setCurrent] = useState("light");
-  let ICON = useIcons(current, "22");
 
   useEffect(() => {
     const THEME = window.localStorage.getItem("THEME");
@@ -31,7 +30,7 @@ export const ThemeIcon = () => {
 
   return (
     <button className="header_themeIcon" onClick={handleIcon}>
-      {ICON}
+      {iconHandler(current, "22")}
     </button>
   );
 };

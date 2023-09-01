@@ -8,7 +8,7 @@ export function CardLayout(props: any) {
       {posts &&
         posts.map((item: any, i: number) => {
           return (
-            <div className="card">
+            <div className="card" key={i}>
               {/* <div className="card_thumbnail">
                 <Image
                   src={item.thumbnail}
