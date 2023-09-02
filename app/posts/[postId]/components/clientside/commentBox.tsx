@@ -3,7 +3,7 @@
 import "../../styles/commentStyle/commentBoxStyle.scss";
 import { useState } from "react";
 import iconHandler from "util/iconHandler";
-import { CommentBoxType, CommentType, TargetType } from "../componentType";
+import { CommentBoxType, CommentType } from "../componentType";
 import UserCommentForm from "./userCommentForm";
 import CommentMenu from "./commentMenu";
 import Image from "next/image";
@@ -13,7 +13,7 @@ export default function CommentBox(props: CommentBoxType) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    props.comment,
+    props.comment
   );
 
   const setTarget = (id: string, type: string) => {
@@ -42,7 +42,7 @@ export default function CommentBox(props: CommentBoxType) {
               >
                 <div className="profile_wrapper">
                   <Image
-                    src="/default_profile.png"
+                    src="/default_profile.jpg"
                     alt="profile"
                     width={70}
                     height={70}
