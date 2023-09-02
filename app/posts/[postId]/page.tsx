@@ -2,7 +2,7 @@ import mdParser from "./mdParser";
 import getPost from "./getPost";
 import CommentBox from "./components/clientside/commentBox";
 import commentHandler from "./commentHandler";
-import PostNavigate from "./components/postNaviate";
+import PostNavigate from "./components/postNavigate";
 import styles from "./styles/page.module.scss";
 
 export default async function Posts({
