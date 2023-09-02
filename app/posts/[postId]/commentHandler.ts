@@ -1,11 +1,11 @@
-export default function commentHandler(
-  postId: string,
-  type: string,
-  data?: any,
-) {
+import { UserCommentType, TargetType } from "./components/componentType";
+
+export default function commentHandler(data: any, type: string) {
   switch (type) {
     case "GET":
-      return getComment(postId);
+      return getComment(data);
+    case "POST":
+      return addComment(data);
     case "DELETE":
       return deleteComment(data);
   }
@@ -29,10 +29,29 @@ async function getComment(postId: string) {
     : undefined;
 }
 
-async function deleteComment(data: any) {
+async function addComment(data: {
+  comment: UserCommentType;
+  commentType: string;
+}) {
+  const { comment, commentType } = data;
+
+  const myHeaders = new Headers({});
+  myHeaders.append("commenttype", commentType);
+
+  const res = await fetch("/api/comments", {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(comment),
+  });
+  const resData = await res.json();
+
+  return resData;
+}
+
+async function deleteComment(target: TargetType) {
   const res = await fetch("/api/comments", {
     method: "DELETE",
-    body: JSON.stringify(data),
+    body: JSON.stringify(target),
   });
   const resData = await res.json();
 

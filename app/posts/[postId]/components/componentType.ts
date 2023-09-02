@@ -47,3 +47,13 @@ export interface TreeHandlerType {
     type: UserCommentFormType["type"],
   ) => number;
 }
+
+export interface DropdownType {
+  data: CommentType;
+  setComments: UserCommentFormType["setComments"];
+  postId: number;
+}
+
+export interface TargetType extends CommentType {
+  password: string;
+}

@@ -15,5 +15,6 @@ export default async function getPost(postId: string) {
   return {
     post: post["data"][0],
     recent: post["recent"],
+    max: post["max"],
   };
 }
