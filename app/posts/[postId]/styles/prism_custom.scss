@@ -12,6 +12,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
+  display: block;
   color: var(--prism-text, #999);
 }
 

@@ -2,6 +2,7 @@ $mac_color_list: (#fe5f57, #ffbd2e, #29c941);
 
 pre[class*="language-"],
 code[class*="language-"] {
+  max-width: 720px;
   font-size: 1rem;
   background-color: var(--color-card);
   padding: 3rem 1.5rem !important;
