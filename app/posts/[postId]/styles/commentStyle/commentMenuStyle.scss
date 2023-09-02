@@ -1,7 +1,6 @@
 @import "styles/utils.scss";
 
 .dropdown {
-  right: 5%;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -10,7 +9,11 @@
   height: 2.5rem;
   padding: 0.5rem;
   font-size: 14px;
-  background-color: var(--color-card);
+  background-color: var(--color-low);
+
+  @media all and (max-width: $tablet) {
+    right: 5%;
+  }
 
   &_button {
     width: 6rem;

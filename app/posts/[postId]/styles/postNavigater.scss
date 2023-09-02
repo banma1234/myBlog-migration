@@ -1,7 +1,57 @@
-.navigate_button {
-  display: flex;
-  flex-direction: row;
-  background-color: var(--color-card);
-  padding: 0.1rem 2rem 0.1rem 2rem;
-  cursor: pointer;
+@import "styles/utils.scss";
+
+.navigate_left {
+  width: 15rem;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  background-color: var(--color-low);
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  align-items: center;
+
+  ul {
+    margin: 0 0 0 1rem;
+    padding: 0;
+    list-style: none;
+
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: keep-all; // 문단으로 끊어져서 줄바꿈 됨
+    li {
+      text-align: left;
+    }
+  }
+}
+
+.navigate_right {
+  width: 15rem;
+  display: grid;
+  grid-template-columns: 1fr 2rem;
+  background-color: var(--color-low);
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  align-items: center;
+
+  ul {
+    margin: 0 1rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: keep-all; // 문단으로 끊어져서 줄바꿈 됨
+    li {
+      text-align: right;
+    }
+  }
+}
+
+.small {
+  font-size: 0.8rem;
 }
