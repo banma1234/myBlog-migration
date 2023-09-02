@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import iconHandler from "util/iconHandler";
 
 export const ThemeIcon = () => {
-  const [current, setCurrent] = useState("light");
+  const [current, setCurrent] = useState("dark");
 
   useEffect(() => {
     const THEME = window.localStorage.getItem("THEME");
-    THEME ? setCurrent(THEME) : "light";
+    THEME ? setCurrent(THEME) : "dark";
   }, []);
 
   useEffect(() => {
