@@ -47,9 +47,12 @@ export default async function viewPost(req: NextRequest) {
       console.log("no recent posts");
     }
 
+    const max = await db.collection("posts").count();
+
     return NextResponse.json({
       data: posts,
       recent: recentPosts,
+      max: max,
       success: true,
     });
   } catch (e: unknown) {
