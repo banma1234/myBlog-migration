@@ -2,30 +2,39 @@ import mdParser from "./mdParser";
 import getPost from "./getPost";
 import CommentBox from "./components/clientside/commentBox";
 import commentHandler from "./commentHandler";
+import PostNavigate from "./components/postNaviate";
+import styles from "./styles/page.module.scss";
 
 export default async function Posts({
   params: { postId },
 }: {
   params: { postId: string };
 }) {
-  const { post, recent } = await getPost(postId);
+  const { post, recent, max } = await getPost(postId);
   const comment = await commentHandler(postId, "GET");
 
   return (
-    <article>
-      <p>wow</p>
-      <h2>{post.title}</h2>
+    <>
+      <header>
+        <h1>{post.title}</h1>
+      </header>
       <div
+        className={styles.post}
         dangerouslySetInnerHTML={mdParser(post.content)}
-        className="md-viwer"
       />
-      <hr />
-      {recent &&
-        recent.map((item: any, i: number) => {
-          return <p key={i}>{item.title}</p>;
-        })}
-      <CommentBox postId={Number(postId)} comment={comment} />
-    </article>
+      <nav className={styles.navigate}>
+        <PostNavigate postId={Number(postId)} max={max} />
+      </nav>
+      <article className={styles.comment}>
+        <CommentBox postId={Number(postId)} comment={comment} />
+      </article>
+      <section className={styles.recent}>
+        {recent &&
+          recent.map((item: any, i: number) => {
+            return <p key={i}>{item.title}</p>;
+          })}
+      </section>
+    </>
   );
 }
 

@@ -1,0 +1,28 @@
+@import "styles/utils.scss";
+
+.dropdown {
+  right: 5%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  row-gap: 2rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: 14px;
+  background-color: var(--color-card);
+
+  &_button {
+    width: 6rem;
+    border-radius: 0px;
+    height: 100%;
+  }
+
+  &_input_small {
+    height: 100%;
+    padding-left: 1rem;
+    width: 10rem;
+    border-radius: 0px;
+    background-color: var(--color-background);
+  }
+}

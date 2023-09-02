@@ -8,7 +8,7 @@ import {
   TreeHandlerType,
 } from "../componentType";
 import commentHandler from "../../commentHandler";
-import "../../styles/userCommentStyle.scss";
+import "../../styles/commentStyle/userCommentStyle.scss";
 
 const treeHandler: TreeHandlerType = {
   REF(data, type) {
@@ -72,9 +72,6 @@ export default function UserCommentForm(props: UserCommentFormType) {
       return;
     }
 
-    const myHeaders = new Headers({});
-    myHeaders.append("commenttype", props.type);
-
     const comment: UserCommentType = {
       REF: treeHandler.REF(props.data, props.type),
       RE_STEP: treeHandler.RE_STEP(props.data, props.type),
@@ -85,13 +82,10 @@ export default function UserCommentForm(props: UserCommentFormType) {
       password: password,
       content: userComment,
     };
-
-    const res = await fetch("/api/comments", {
-      method: "POST",
-      headers: myHeaders,
-      body: JSON.stringify(comment),
-    });
-    const resData = await res.json();
+    const resData = await commentHandler(
+      { comment, commentType: props.type },
+      "POST",
+    );
 
     resData.success ? initData() : alert(resData.message);
   };

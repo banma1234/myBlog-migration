@@ -1,10 +1,11 @@
 "use client";
 
-import "../../styles/commentBoxStyle.scss";
+import "../../styles/commentStyle/commentBoxStyle.scss";
 import { useState } from "react";
 import iconHandler from "util/iconHandler";
-import { CommentBoxType, CommentType } from "../componentType";
+import { CommentBoxType, CommentType, TargetType } from "../componentType";
 import UserCommentForm from "./userCommentForm";
+import CommentMenu from "./commentMenu";
 import Image from "next/image";
 
 export default function CommentBox(props: CommentBoxType) {
@@ -12,11 +13,24 @@ export default function CommentBox(props: CommentBoxType) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    props.comment
+    props.comment,
   );
 
+  const setTarget = (id: string, type: string) => {
+    switch (type) {
+      case "MENU":
+        setMenuClick(!menuClick);
+        setCommentId(id);
+        break;
+      case "REPLY":
+        setReplyClick(!replyClick);
+        setCommentId(id);
+        break;
+    }
+  };
+
   return (
-    <div className="container">
+    <>
       {comments &&
         comments.map((item: CommentType, i: number) => {
           return (
@@ -41,25 +55,31 @@ export default function CommentBox(props: CommentBoxType) {
                   </div>
                   {item.content}
                 </div>
-                <div
-                  onClick={() => {
-                    setCommentId(item._id);
-                    setMenuClick(!menuClick);
-                  }}
-                >
-                  {iconHandler("cancel", "18")}
+                <div>
+                  <div
+                    className="content_icon"
+                    onClick={() => {
+                      setTarget(item._id, "MENU");
+                    }}
+                  >
+                    {iconHandler("cancel", "18")}
+                  </div>
+                  {menuClick && commentId === item._id && (
+                    <CommentMenu
+                      data={item}
+                      postId={props.postId}
+                      setComments={setComments}
+                    />
+                  )}
                 </div>
                 <div
                   className="content_menu"
                   onClick={() => {
-                    setCommentId(item._id);
-                    setReplyClick(!replyClick);
+                    setTarget(item._id, "REPLY");
                   }}
                 >
                   <div>
-                    {replyClick && commentId === item._id
-                      ? "cancel"
-                      : "...reply"}
+                    {replyClick && commentId === item._id ? "cancel" : "reply"}
                   </div>
                 </div>
                 {replyClick && commentId === item._id && (
@@ -80,6 +100,6 @@ export default function CommentBox(props: CommentBoxType) {
         type="DEFAULT"
         setComments={setComments}
       />
-    </div>
+    </>
   );
 }
