@@ -11,13 +11,14 @@ export default async function viewIndex() {
         title: 1,
         uploadDate: 1,
         thumbnail: 1,
+        postId: 1,
       },
     };
 
     const res = await db
       .collection("posts")
       .find({}, options)
-      .limit(6)
+      .limit(4)
       .toArray();
 
     return NextResponse.json({

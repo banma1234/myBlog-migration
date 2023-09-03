@@ -25,6 +25,14 @@ export default async function viewPost(req: NextRequest) {
         series: 1,
       },
     };
+    const options3 = {
+      sort: { postId: -1 },
+      projection: {
+        _id: 0,
+        title: 1,
+        postId: 1,
+      },
+    };
 
     const posts = await db
       .collection("posts")
@@ -37,7 +45,7 @@ export default async function viewPost(req: NextRequest) {
         .collection("posts")
         .find(
           { series: posts[0].series, postId: { $ne: Number(postId) } },
-          options2,
+          options2
         )
         .limit(3)
         .toArray();
@@ -47,12 +55,26 @@ export default async function viewPost(req: NextRequest) {
       console.log("no recent posts");
     }
 
-    const max = await db.collection("posts").count();
+    let both = await db
+      .collection("posts")
+      .find(
+        { postId: { $in: [Number(postId) + 1, Number(postId) - 1] } },
+        options3
+      )
+      .toArray();
+
+    if (both.length !== 2) {
+      if (postId === "1") {
+        both = [null, ...both];
+      } else {
+        both = [...both, null];
+      }
+    }
 
     return NextResponse.json({
       data: posts,
       recent: recentPosts,
-      max: max,
+      bothSidePosts: both,
       success: true,
     });
   } catch (e: unknown) {
@@ -60,6 +82,7 @@ export default async function viewPost(req: NextRequest) {
     return NextResponse.json({
       data: e,
       recent: undefined,
+      bothSidePosts: undefined,
       success: false,
     });
   }

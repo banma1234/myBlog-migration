@@ -11,7 +11,7 @@ export default async function getGenerateInfo() {
       },
     };
 
-    const res = await db.collection("posts").find({}, options).toArray();
+    const res = await db.collection("posts").count();
 
     return NextResponse.json({
       data: res,
