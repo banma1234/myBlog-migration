@@ -1,5 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 
+/*
+ * comment 표준 type
+ */
 export interface CommentType {
   _id: string;
   REF: number;
@@ -8,11 +11,6 @@ export interface CommentType {
   date: string;
   writter: string;
   content: string;
-}
-
-export interface CommentBoxType {
-  postId: number;
-  comment: Array<CommentType> | undefined;
 }
 
 export interface UserCommentFormType {
@@ -36,15 +34,15 @@ export interface UserCommentType {
 export interface TreeHandlerType {
   REF: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"],
+    type: UserCommentFormType["type"]
   ) => number;
   RE_STEP: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"],
+    type: UserCommentFormType["type"]
   ) => number;
   RE_LEVEL: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"],
+    type: UserCommentFormType["type"]
   ) => number;
 }
 

@@ -1,20 +1,30 @@
 "use client";
 
-import "../../styles/commentStyle/commentBoxStyle.scss";
-import { useState } from "react";
 import iconHandler from "util/iconHandler";
-import { CommentBoxType, CommentType } from "../componentType";
 import UserCommentForm from "./userCommentForm";
 import CommentMenu from "./commentMenu";
 import Image from "next/image";
+import "../../styles/commentStyle/commentBoxStyle.scss";
+import { commentHandler } from "../../utils";
+import { useState, useEffect } from "react";
+import { CommentType } from "../componentType";
 
-export default function CommentBox(props: CommentBoxType) {
+export default function CommentBox(props: { postId: number }) {
   const [replyClick, setReplyClick] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    props.comment
+    new Array<CommentType>()
   );
+
+  useEffect(() => {
+    const getComment = async () => {
+      const res = await commentHandler(props.postId, "GET");
+      setComments(res);
+    };
+
+    getComment();
+  }, [props.postId]);
 
   const setTarget = (id: string, type: string) => {
     switch (type) {

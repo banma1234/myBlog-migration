@@ -3,7 +3,7 @@
 import "../../styles/commentStyle/commentMenuStyle.scss";
 import { useState, ChangeEvent } from "react";
 import { DropdownType, TargetType } from "../componentType";
-import commentHandler from "../../commentHandler";
+import { commentHandler } from "../../utils";
 
 export default function CommentMenu(props: DropdownType) {
   const [password, setPassword] = useState<string>("");

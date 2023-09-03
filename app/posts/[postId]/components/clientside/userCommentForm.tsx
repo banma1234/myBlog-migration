@@ -1,14 +1,14 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
 import parseDate from "util/parseDate";
+import "../../styles/commentStyle/userCommentStyle.scss";
+import { ChangeEvent, useState } from "react";
+import { commentHandler } from "../../utils";
 import {
   UserCommentFormType,
   UserCommentType,
   TreeHandlerType,
 } from "../componentType";
-import commentHandler from "../../commentHandler";
-import "../../styles/commentStyle/userCommentStyle.scss";
 
 const treeHandler: TreeHandlerType = {
   REF(data, type) {
@@ -84,7 +84,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
     };
     const resData = await commentHandler(
       { comment, commentType: props.type },
-      "POST",
+      "POST"
     );
 
     resData.success ? initData() : alert(resData.message);
