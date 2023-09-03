@@ -41,3 +41,35 @@ $desktop: 1024px;
     @content;
   }
 }
+
+/*
+* eyframe animation 처리 함수
+*/
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  animation: #{$str};
+}
+
+/*
+* 카드 위로 뜨는 애니메이션
+*/
+@include keyframes(cardUp) {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: -0.5rem;
+  }
+  100% {
+    top: 0;
+  }
+}
