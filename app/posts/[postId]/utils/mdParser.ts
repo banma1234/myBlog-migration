@@ -1,8 +1,8 @@
 import { marked } from "marked";
 import prism from "prismjs";
 
-import "./styles/prism_custom.scss";
-import "./styles/mdParserStyle.scss";
+import "../styles/prism_custom.scss";
+import "../styles/mdParserStyle.scss";
 
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-css";
@@ -45,7 +45,7 @@ export default function mdParser(content: string) {
             <td class="line-index" data-number="${i + 1}">${i + 1}</td>
             <td class="line-code" data-number=${i + 1}>${item}</td>
           </tr>
-        `,
+        `
       )
       .join("\n")
       .replace(/\t|\\n/, "");

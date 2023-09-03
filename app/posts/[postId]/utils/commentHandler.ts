@@ -1,4 +1,4 @@
-import { UserCommentType, TargetType } from "./components/componentType";
+import { UserCommentType, TargetType } from "../components/componentType";
 
 export default function commentHandler(data: any, type: string) {
   switch (type) {

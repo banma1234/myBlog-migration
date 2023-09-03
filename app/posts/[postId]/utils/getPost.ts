@@ -10,11 +10,11 @@ export default async function getPost(postId: string) {
     headers: myHeaders,
     cache: "force-cache",
   });
-  const post = await res.json();
+  const { data, recent, bothSidePosts } = await res.json();
 
   return {
-    post: post["data"][0],
-    recent: post["recent"],
-    max: post["max"],
+    post: data[0],
+    recent: recent,
+    bothSidePosts: bothSidePosts,
   };
 }
