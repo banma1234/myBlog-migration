@@ -1,38 +1,34 @@
-import mdParser from "./mdParser";
-import getPost from "./getPost";
 import CommentBox from "./components/clientside/commentBox";
-import commentHandler from "./commentHandler";
 import PostNavigate from "./components/postNavigate";
 import styles from "./styles/page.module.scss";
+import { getPost, mdParser } from "./utils";
+import { CardLayout } from "app/components/card";
 
 export default async function Posts({
   params: { postId },
 }: {
   params: { postId: string };
 }) {
-  const { post, recent, max } = await getPost(postId);
-  const comment = await commentHandler(postId, "GET");
+  const { post, recent, bothSidePosts } = await getPost(postId);
 
   return (
     <>
       <header>
-        <h1>{post.title}</h1>
+        <h1 className={styles.title}>{post.title}</h1>
       </header>
       <div
         className={styles.post}
         dangerouslySetInnerHTML={mdParser(post.content)}
       />
       <nav className={styles.navigate}>
-        <PostNavigate postId={Number(postId)} max={max} />
+        <PostNavigate both={bothSidePosts} />
       </nav>
       <article className={styles.comment}>
-        <CommentBox postId={Number(postId)} comment={comment} />
+        <CommentBox postId={Number(postId)} />
       </article>
       <section className={styles.recent}>
-        {recent &&
-          recent.map((item: any, i: number) => {
-            return <p key={i}>{item.title}</p>;
-          })}
+        <h2>recent posts</h2>
+        <CardLayout posts={recent} />
       </section>
     </>
   );
@@ -46,11 +42,13 @@ export async function generateStaticParams() {
     method: "GET",
     headers: myHeaders,
   });
-  const postsArray = await res.json();
+  const resData: { data: number; success: boolean } = await res.json();
+  const staticData: Array<{ postId: string }> = new Array();
 
-  return postsArray.success
-    ? postsArray.data.map((item: any) => ({
-        postId: item.postId.toString(),
-      }))
-    : undefined;
+  for (let i = 0; i < resData.data; i++) {
+    let target = { postId: i.toString() };
+    staticData.push(target);
+  }
+
+  return staticData;
 }
