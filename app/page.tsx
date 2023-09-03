@@ -1,31 +1,14 @@
-import { use } from "react";
-import { Card, CardLayout } from "./components/card";
+import { CardHead, CardLayout } from "./components/card";
+import getIndexBoard from "./getIndexBoard";
 
-async function getPost() {
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("viewType", "VIEW_INDEX");
-
-  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-    next: { revalidate: 10 },
-  });
-  const data = await res.json();
-
-  return data.data;
-}
-
-export default function Home() {
-  const posts = use(getPost());
-  const headPost = posts.shift();
+export default async function Home() {
+  const { head, posts } = await getIndexBoard();
 
   return (
-    <div>
-      <h1>hello</h1>
-      <h2>{headPost.title}</h2>
+    <section>
+      <h1>Chocoham{"'"}s blog</h1>
+      <CardHead post={head} />
       <CardLayout posts={posts} />
-    </div>
+    </section>
   );
 }
