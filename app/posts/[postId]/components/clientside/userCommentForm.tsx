@@ -2,6 +2,8 @@
 
 import parseDate from "util/parseDate";
 import "../../styles/commentStyle/userCommentStyle.scss";
+import ToastMessage from "app/components/clientside/toastMessage";
+("../../../../components/clientside/toastMessage");
 import { ChangeEvent, useState } from "react";
 import { commentHandler } from "../../utils";
 import {
@@ -9,6 +11,8 @@ import {
   UserCommentType,
   TreeHandlerType,
 } from "../componentType";
+
+const message = `💡 로그인 하지 않아도 댓글을 등록할 수 있습니다!`;
 
 const treeHandler: TreeHandlerType = {
   REF(data, type) {
@@ -84,7 +88,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
     };
     const resData = await commentHandler(
       { comment, commentType: props.type },
-      "POST"
+      "POST",
     );
 
     resData.success ? initData() : alert(resData.message);
@@ -92,6 +96,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
 
   return (
     <div className="comment_form">
+      <ToastMessage children={message} />
       <div className="comment_form_input">
         <input
           className="input_small"
