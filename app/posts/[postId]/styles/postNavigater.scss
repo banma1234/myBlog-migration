@@ -1,7 +1,8 @@
 @import "styles/utils.scss";
 
 .navigate_left {
-  width: 15rem;
+  width: 16rem;
+  min-width: 16rem;
   display: grid;
   grid-template-columns: 2rem 1fr;
   background-color: var(--color-low);
