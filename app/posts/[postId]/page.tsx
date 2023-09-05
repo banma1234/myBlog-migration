@@ -4,6 +4,8 @@ import styles from "./styles/page.module.scss";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 
+const message = `💡 로그인 하지 않아도 댓글을 등록할 수 있습니다!`;
+
 export default async function Posts({
   params: { postId },
 }: {
