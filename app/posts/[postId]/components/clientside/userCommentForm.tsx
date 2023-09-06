@@ -3,7 +3,6 @@
 import parseDate from "util/parseDate";
 import "../../styles/commentStyle/userCommentStyle.scss";
 import ToastMessage from "app/components/clientside/toastMessage";
-("../../../../components/clientside/toastMessage");
 import { ChangeEvent, useState } from "react";
 import { commentHandler } from "../../utils";
 import {

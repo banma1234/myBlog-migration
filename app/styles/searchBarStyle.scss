@@ -1,0 +1,10 @@
+.searchBar {
+  display: grid;
+  grid-template-rows: 18px, 1fr;
+
+  &_input_small {
+    transition: 0.3s;
+    height: 100%;
+    padding-left: 1rem;
+  }
+}
