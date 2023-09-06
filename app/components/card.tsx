@@ -1,21 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CardType } from "./componentType";
 import "../styles/cardStyle.scss";
 
-export function CardLayout(props: any) {
+export function CardLayout(props: { posts: Array<CardType> }) {
   const posts = props.posts;
+
   return (
     <div className="card_layout">
       {posts &&
-        posts.map((item: any, i: number) => {
+        posts.map((item: CardType, i: number) => {
           const url = `/posts/${item.postId}`;
+          const imgUrl = item.thumbnail || "/profile.jpg";
 
           return (
             <Link href={url} key={i}>
               <div className="card">
                 <div className="card_thumbnail">
                   <Image
-                    src={item.thumbnail}
+                    src={imgUrl}
                     alt="card Img"
                     width={380}
                     height={250}
