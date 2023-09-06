@@ -87,7 +87,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
     };
     const resData = await commentHandler(
       { comment, commentType: props.type },
-      "POST",
+      "POST"
     );
 
     resData.success ? initData() : alert(resData.message);
@@ -100,7 +100,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
         <input
           className="input_small"
           value={userName}
-          placeholder="nickname"
+          placeholder="닉네임"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setUserName(e.target.value)
           }
@@ -108,7 +108,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
         <input
           className="input_small"
           value={password}
-          placeholder="password"
+          placeholder="비밀번호"
           type="password"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
@@ -117,7 +117,6 @@ export default function UserCommentForm(props: UserCommentFormType) {
       </div>
       <textarea
         value={userComment}
-        placeholder="add comment here"
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setUserComment(e.target.value)
         }
