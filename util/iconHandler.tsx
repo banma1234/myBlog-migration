@@ -1,10 +1,10 @@
 /*
- * icon list = { mail, github, enter, like, menu, arrow, cancel, sun, moon, copy, check }
+ * icon list = { mail, github, enter, like, menu, arrow, cancel, sun, moon, copy, check, search }
  */
 export default function iconHandler(
   type: string,
   size: string,
-  color?: string
+  color?: string,
 ) {
   switch (type) {
     case "mail":
@@ -172,6 +172,19 @@ export default function iconHandler(
           viewBox="0 0 16 16"
         >
           <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+        </svg>
+      );
+    case "search":
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          fill="currentColor"
+          className="bi bi-search"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg>
       );
   }
