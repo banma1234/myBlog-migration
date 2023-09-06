@@ -73,3 +73,12 @@ $desktop: 1024px;
     top: 0;
   }
 }
+
+@include keyframes(input) {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 12rem;
+  }
+}

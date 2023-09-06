@@ -10,5 +10,5 @@ export default async function getSearchInfo() {
   });
   const { data } = await res.json();
 
-  return data;
+  return { data: data };
 }

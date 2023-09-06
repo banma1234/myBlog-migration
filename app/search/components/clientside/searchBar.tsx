@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useState, ChangeEvent } from "react";
 import iconHandler from "util/iconHandler";
+import "../../styles/searchBarStyle.scss";
 
-export default function SearchBar(props: {
-  filter: Dispatch<SetStateAction<string>>;
-}) {
+export default function SearchBar(props: { filter: (input: string) => void }) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [inputData, setInputData] = useState<string>("");
+  const inputName = `searchBar_${isClick}`;
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputData(e.target.value);
@@ -16,15 +16,15 @@ export default function SearchBar(props: {
 
   return (
     <div className="searchBar">
-      {/* 영역 외 클릭시 isClick = false로 할거임 */}
-      <div onClick={() => setIsClick(true)}>{iconHandler("search", "18")}</div>
-      {isClick && (
-        <input
-          className="input_small"
-          value={inputData}
-          onChange={handleInputChange}
-        />
-      )}
+      <input
+        className={inputName}
+        value={inputData}
+        placeholder="검색"
+        onChange={handleInputChange}
+      />
+      <div className="searchBar_icon" onClick={() => setIsClick(!isClick)}>
+        {iconHandler("search", "28")}
+      </div>
     </div>
   );
 }

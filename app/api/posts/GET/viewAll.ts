@@ -15,8 +15,7 @@ export default async function viewAll() {
       },
     };
 
-    const posts = await db.collection("posts").find({}, options).toArray();
-    const res = posts.json();
+    const res = await db.collection("posts").find({}, options).toArray();
 
     return NextResponse.json({
       data: res,

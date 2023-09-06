@@ -1,0 +1,20 @@
+@import "styles/utils.scss";
+
+.searchBar {
+  display: flex;
+  flex-direction: row-reverse;
+
+  &_icon {
+    cursor: pointer;
+  }
+
+  &_true {
+    margin-left: 1rem;
+    padding-left: 0.8rem;
+    @include animation("input 0.4s");
+  }
+
+  &_false {
+    display: none;
+  }
+}

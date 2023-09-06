@@ -1,11 +1,13 @@
 import getSearchInfo from "./getSearchInfo";
+import SearchBoard from "./components/clientside/searchBoard";
+import styles from "./styles/page.module.scss";
 
 export default async function Search() {
-  const data = getSearchInfo();
+  const { data } = await getSearchInfo();
 
   return (
-    <>
-      <h1>hi</h1>
-    </>
+    <section className={styles.search}>
+      <SearchBoard data={data} />
+    </section>
   );
 }
