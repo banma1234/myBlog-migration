@@ -11,7 +11,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputData(e.target.value);
-    props.filter(inputData);
+    props.filter(e.target.value);
   };
 
   return (
