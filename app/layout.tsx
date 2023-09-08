@@ -1,5 +1,6 @@
 import "styles/globals.scss";
 import styles from "./styles/page.module.scss";
+import { NavIcon } from "./components/clientside/navIcon";
 import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
 import { Footer, Header } from "./components";
@@ -28,6 +29,7 @@ export default function RootLayout({
           <main className={styles.main}>
             <aside />
             {children}
+            <NavIcon />
             <aside />
           </main>
           <Footer />

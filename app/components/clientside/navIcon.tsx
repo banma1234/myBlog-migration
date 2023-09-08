@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import iconHandler from "util/iconHandler";
+import "app/styles/navButton.scss";
 
-export const ThemeIcon = () => {
+export const NavIcon = () => {
   const [current, setCurrent] = useState("dark");
 
   useEffect(() => {
@@ -28,9 +29,21 @@ export const ThemeIcon = () => {
     }
   };
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <button className="header_themeIcon" onClick={handleIcon}>
-      {iconHandler(current, "22")}
-    </button>
+    <div className="nav">
+      <button className="nav_theme" onClick={handleIcon}>
+        {iconHandler(current, "26")}
+      </button>
+      <button className="nav_up" onClick={scrollUp}>
+        {iconHandler("arrowUp", "26")}
+      </button>
+    </div>
   );
 };

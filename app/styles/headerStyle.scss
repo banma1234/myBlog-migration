@@ -9,7 +9,7 @@
   background-color: $color_black;
   z-index: 9999;
   font-size: 18px;
-  font-weight: 600;
+  box-shadow: 0 8px 12px rgb(0 0 0 / 30%);
 
   ul {
     display: flex;
@@ -18,11 +18,11 @@
     column-gap: 2.5rem;
     margin-right: 1.5rem;
     list-style: none;
-    color: $color_base;
+    color: $color_gray;
     li {
       &:hover {
         transition: all 0.3s;
-        color: $color_green;
+        color: $color_pink;
       }
     }
   }
@@ -41,21 +41,20 @@
     display: flex;
     height: 100%;
     margin-left: 1.5rem;
-    color: $color_high;
+    color: $color_pink;
     align-items: center;
     &:hover {
       transition: all 0.3s;
-      color: $color_green;
+      color: $color_gray;
     }
   }
 
-  &_themeIcon {
-    display: flex;
-    width: 2.5rem;
-    height: 2.5rem;
-    align-items: center;
-    border: none;
-    background-color: $color_black;
-    border-radius: 100%;
+  &_icon {
+    margin-top: 0.25rem;
+    color: $color_pink;
+    &:hover {
+      transition: all 0.3s;
+      color: $color_gray;
+    }
   }
 }

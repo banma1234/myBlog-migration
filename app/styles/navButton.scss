@@ -1,0 +1,28 @@
+.nav {
+  top: 90%;
+  left: 88%;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  width: 12rem;
+  height: 3rem;
+  z-index: 9999;
+
+  &_theme {
+    width: 7rem;
+    height: 3rem;
+    background-color: var(--color-text);
+    cursor: pointer;
+    box-shadow: 0 8px 12px rgb(0 0 0 / 10%);
+  }
+
+  &_up {
+    background-color: var(--color-low);
+    margin-left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    font-weight: 900;
+    color: var(--color-text);
+    box-shadow: 0 8px 12px rgb(0 0 0 / 30%);
+  }
+}
