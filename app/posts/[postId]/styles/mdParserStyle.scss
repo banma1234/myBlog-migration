@@ -4,7 +4,8 @@ pre[class*="language-"],
 code[class*="language-"] {
   font-size: 1rem;
   background-color: var(--color-low);
-  padding: 3rem 1.5rem !important;
+  padding: 3rem 1.5rem 0 1.5rem !important;
+  margin-bottom: 2rem;
   border-radius: 0.6rem;
   text-align: left;
   white-space: pre;
@@ -18,7 +19,7 @@ code[class*="language-"] {
   overflow: auto;
 }
 code:not([class*="language-"]) {
-  background-color: var(--color-card);
+  background-color: var(--color-low);
   font-size: 0.8rem;
   display: inline-block;
   padding: 0.15rem 0.25rem;
