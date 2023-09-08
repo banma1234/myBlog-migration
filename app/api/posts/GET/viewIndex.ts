@@ -18,7 +18,7 @@ export default async function viewIndex() {
     const res = await db
       .collection("posts")
       .find({}, options)
-      .limit(4)
+      .limit(7)
       .toArray();
 
     return NextResponse.json({
