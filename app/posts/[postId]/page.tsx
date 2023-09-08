@@ -1,5 +1,6 @@
 import CommentBox from "./components/clientside/commentBox";
 import PostNavigate from "./components/postNavigate";
+import HashTag from "./components/hashTag";
 import styles from "./styles/page.module.scss";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
@@ -22,6 +23,7 @@ export default async function Posts({
         className={styles.post}
         dangerouslySetInnerHTML={mdParser(post.content)}
       />
+      <HashTag hashTag={post.hashtag} />
       <nav className={styles.navigate}>
         <PostNavigate both={bothSidePosts} />
       </nav>
@@ -29,7 +31,7 @@ export default async function Posts({
         <CommentBox postId={Number(postId)} />
       </article>
       <section className={styles.recent}>
-        <h2>recent posts</h2>
+        <h2>👁️‍🗨️ recent posts</h2>
         <CardLayout posts={recent} />
       </section>
     </>
