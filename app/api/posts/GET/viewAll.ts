@@ -7,7 +7,7 @@ export default async function viewAll() {
     const options = {
       sort: { uploadDate: -1 },
       projection: {
-        _id: 0,
+        _id: 1,
         title: 1,
         uploadDate: 1,
         thumbnail: 1,
