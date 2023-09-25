@@ -3,7 +3,6 @@ import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
 import styles from "./styles/page.module.scss";
 import { getPost, mdParser } from "./utils";
-import { CardLayout } from "app/components/card";
 
 const message = `💡 로그인 하지 않아도 댓글을 등록할 수 있습니다!`;
 
@@ -30,10 +29,10 @@ export default async function Posts({
       <article className={styles.comment}>
         <CommentBox postId={Number(postId)} />
       </article>
-      <section className={styles.recent}>
+      {/* <section className={styles.recent}>
         <h2>👁️‍🗨️ recent posts</h2>
         <CardLayout posts={recent} />
-      </section>
+      </section> */}
     </>
   );
 }

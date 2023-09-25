@@ -74,11 +74,20 @@ $desktop: 1024px;
   }
 }
 
-@include keyframes(input) {
+@include keyframes(input_true) {
   0% {
     width: 0;
   }
   100% {
     width: 12rem;
+  }
+}
+
+@include keyframes(input_false) {
+  0% {
+    width: 12rem;
+  }
+  100% {
+    width: 0;
   }
 }

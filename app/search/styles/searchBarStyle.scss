@@ -11,10 +11,11 @@
   &_true {
     margin-left: 1rem;
     padding-left: 0.8rem;
-    @include animation("input 0.4s");
+    @include animation("input_true 0.4s");
   }
 
   &_false {
     display: none;
+    @include animation("input_false 0.4s");
   }
 }

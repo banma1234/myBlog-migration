@@ -14,15 +14,11 @@ export default async function viewPost(req: NextRequest) {
       },
     };
     const options2 = {
-      sort: { uploadDate: -1 },
+      sort: { uploadDate: 1 },
       projection: {
         _id: 0,
         postId: 1,
         title: 1,
-        uploadDate: 1,
-        thumbnail: 1,
-        isThumbnail: 1,
-        series: 1,
       },
     };
     const options3 = {
@@ -45,9 +41,8 @@ export default async function viewPost(req: NextRequest) {
         .collection("posts")
         .find(
           { series: posts[0].series, postId: { $ne: Number(postId) } },
-          options2
+          options2,
         )
-        .limit(3)
         .toArray();
 
       if (temp) recentPosts = temp;
@@ -59,7 +54,7 @@ export default async function viewPost(req: NextRequest) {
       .collection("posts")
       .find(
         { postId: { $in: [Number(postId) + 1, Number(postId) - 1] } },
-        options3
+        options3,
       )
       .toArray();
 

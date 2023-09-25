@@ -44,7 +44,8 @@ export default async function viewSeries() {
           i
         ].thumbnail = `${process.env.NAVER_CDN_URL}/thumbnail/${thumbnail.imageTitle}`;
       } catch (e: unknown) {
-        console.log(e);
+        result[i].thumbnail = undefined;
+        console.log(result[i].series, "thumbnail's undefined");
       }
     }
 
