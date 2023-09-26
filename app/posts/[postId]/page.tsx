@@ -1,6 +1,7 @@
 import CommentBox from "./components/clientside/commentBox";
 import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
+import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import { getPost, mdParser } from "./utils";
 
@@ -15,6 +16,7 @@ export default async function Posts({
 
   return (
     <>
+      <SeriesBoard data={recent} />
       <header>
         <h1 className={styles.title}>{post.title}</h1>
       </header>

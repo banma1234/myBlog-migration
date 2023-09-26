@@ -8,7 +8,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
   const [inputData, setInputData] = useState<string>("");
-  const inputName = `searchBar_${show}`;
+  const inputName = `searchBar_${isClick}`;
 
   useEffect(() => {
     if (isClick) {
@@ -16,7 +16,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
     } else {
       setTimeout(() => {
         setShow(false);
-      }, 400);
+      }, 380);
     }
   }, [isClick]);
 
@@ -27,12 +27,14 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
 
   return (
     <div className="searchBar">
-      <input
-        className={inputName}
-        value={inputData}
-        placeholder="검색"
-        onChange={handleInputChange}
-      />
+      {show && (
+        <input
+          className={inputName}
+          value={inputData}
+          placeholder="검색"
+          onChange={handleInputChange}
+        />
+      )}
       <div className="searchBar_icon" onClick={() => setIsClick(!isClick)}>
         {iconHandler("search", "28")}
       </div>

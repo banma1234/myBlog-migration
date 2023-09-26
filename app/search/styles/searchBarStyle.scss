@@ -15,7 +15,15 @@
   }
 
   &_false {
-    display: none;
     @include animation("input_false 0.4s");
   }
+}
+
+.options_button {
+  cursor: pointer;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 99999px;
+  box-shadow: 0 6px 8px rgb(0 0 0 / 30%);
+  color: $color_gray;
+  background-color: $color_high;
 }

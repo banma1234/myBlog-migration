@@ -3,6 +3,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { CardType } from "app/components/componentType";
 import { CardLayout } from "app/components/card";
+import iconHandler from "util/iconHandler";
 import "../../styles/paginationStyle.scss";
 import SearchBar from "./searchBar";
 
@@ -11,7 +12,7 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [max, setMax] = useState<number>(Math.ceil(props.data.length / 9));
   const [slicedData, setSlicedData] = useState<Array<CardType>>([]);
-  const [sortOption, setSortOption] = useState<string>("ascend");
+  const [sortOption, setSortOption] = useState<boolean>(true);
 
   useEffect(() => {
     pagination();
@@ -33,12 +34,12 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
     setFilteredData(target);
   };
 
-  const sortData = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSortOption(e.target.value);
+  const sortData = () => {
+    setSortOption(!sortOption);
   };
 
   const pagination = () => {
-    sortOption === "ascend"
+    sortOption
       ? filteredData.sort((a, b) => b.postId - a.postId)
       : filteredData.sort((a, b) => a.postId - b.postId);
 
@@ -53,10 +54,9 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
   return (
     <article>
       <label className="options">
-        <select className="options_sort" onChange={sortData}>
-          <option value="ascend">오름차순</option>
-          <option value="descend">내림차순</option>
-        </select>
+        <div className="options_button" onClick={sortData}>
+          정렬 : {sortOption ? "오름차순" : "내림차순"}
+        </div>
         <SearchBar filter={searchFilter} />
       </label>
       <CardLayout posts={slicedData} />

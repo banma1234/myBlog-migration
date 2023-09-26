@@ -41,7 +41,7 @@ export default async function viewPost(req: NextRequest) {
         .collection("posts")
         .find(
           { series: posts[0].series, postId: { $ne: Number(postId) } },
-          options2,
+          options2
         )
         .toArray();
 
@@ -54,7 +54,7 @@ export default async function viewPost(req: NextRequest) {
       .collection("posts")
       .find(
         { postId: { $in: [Number(postId) + 1, Number(postId) - 1] } },
-        options3,
+        options3
       )
       .toArray();
 
