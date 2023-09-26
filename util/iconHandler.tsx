@@ -124,7 +124,7 @@ export default function iconHandler(
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
-          fill="#ffccbc"
+          fill="#77a6f7"
           className="bi bi-moon"
           viewBox="0 0 16 16"
         >
@@ -137,7 +137,7 @@ export default function iconHandler(
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
-          fill="#ffb7a9"
+          fill="#77a6f7"
           className="bi bi-brightness-high-fill"
           viewBox="0 0 16 16"
         >
