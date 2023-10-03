@@ -47,3 +47,17 @@ input {
     padding: 0.8rem;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-text);
+  border-radius: 0.8rem;
+}
+::-webkit-scrollbar-track {
+  background: none;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
