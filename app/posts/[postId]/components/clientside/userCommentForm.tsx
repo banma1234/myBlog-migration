@@ -87,7 +87,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
     };
     const resData = await commentHandler(
       { comment, commentType: props.type },
-      "POST"
+      "POST",
     );
 
     resData.success ? initData() : alert(resData.message);
