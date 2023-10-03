@@ -4,6 +4,7 @@ import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import { getPost, mdParser } from "./utils";
+import { CardLayout } from "app/components/card";
 
 const message = `💡 로그인 하지 않아도 댓글을 등록할 수 있습니다!`;
 
@@ -13,13 +14,16 @@ export default async function Posts({
   params: { postId: string };
 }) {
   const { post, recent, bothSidePosts } = await getPost(postId);
+  const recentPosts = recent
+    .filter((post: any) => post.postId != postId)
+    .slice(-3);
 
   return (
     <>
-      <SeriesBoard data={recent} />
       <header>
         <h1 className={styles.title}>{post.title}</h1>
       </header>
+      <SeriesBoard data={recent} postId={Number(postId)} />
       <div
         className={styles.post}
         dangerouslySetInnerHTML={mdParser(post.content)}
@@ -31,10 +35,10 @@ export default async function Posts({
       <article className={styles.comment}>
         <CommentBox postId={Number(postId)} />
       </article>
-      {/* <section className={styles.recent}>
+      <section className={styles.recent}>
         <h2>👁️‍🗨️ recent posts</h2>
-        <CardLayout posts={recent} />
-      </section> */}
+        <CardLayout posts={recentPosts} />
+      </section>
     </>
   );
 }
