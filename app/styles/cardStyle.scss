@@ -36,6 +36,14 @@
     -webkit-box-orient: vertical;
     word-break: break-all;
   }
+
+  &_date {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 14px;
+    color: $color_middle;
+  }
 }
 
 .card_layout {
@@ -45,7 +53,17 @@
   column-gap: 2rem;
   row-gap: 3rem;
   padding-top: 2rem;
-  margin: 1rem 0 12rem 0;
+  margin: 0 auto;
+
+  @media all and (max-width: $tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media all and (max-width: $mobile) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .card_head {

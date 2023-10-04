@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import iconHandler from "util/iconHandler";
 import { CardType } from "./componentType";
 import "../styles/cardStyle.scss";
 
@@ -30,7 +31,9 @@ export function CardLayout(props: { posts: Array<CardType> }) {
                 </div>
                 <div className="card_info">
                   <h3 className="card_title">{item.title}</h3>
-                  <p>{item.uploadDate}</p>
+                  <p className="card_date">
+                    {iconHandler("calendar", "12")} &nbsp; {item.uploadDate}
+                  </p>
                 </div>
               </div>
             </Link>
