@@ -34,8 +34,11 @@ export default function SeriesBoard(props: {
             📋 {"[ "}
             {props.data[0].series}
             {" ]"} 시리즈 몰아보기
+            {" ("}
+            {props.data.length}
+            {")"}
           </h2>
-          {iconHandler(isClick ? "arrowUp" : "arrowDown", "32")}
+          {iconHandler(isClick ? "arrowUp" : "arrowDown", "32")}{" "}
         </div>
 
         {show && (

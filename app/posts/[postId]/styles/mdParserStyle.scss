@@ -1,3 +1,4 @@
+@import "styles/utils.scss";
 $mac_color_list: (#fe5f57, #ffbd2e, #29c941);
 
 pre[class*="language-"],
@@ -67,7 +68,7 @@ code:not([class*="language-"]) {
       }
     }
     & td:nth-child(1) {
-      color: #5a70a0;
+      color: $color_middle;
       padding-right: 0.6rem;
       border-right: 1px solid var(--color-codeblock);
       text-align: right;

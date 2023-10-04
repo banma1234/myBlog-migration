@@ -7,6 +7,7 @@ export default async function Home() {
   return (
     <section>
       <h1>Chocoham{"'"}s blog</h1>
+      <h1>최신 포스트</h1>
       <CardLayout posts={posts} />
     </section>
   );
