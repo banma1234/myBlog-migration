@@ -1,4 +1,5 @@
 import styles from "./styles/page.module.scss";
+import { TOC } from "./components/clientside";
 
 export default function ArticleLayout({
   children,
@@ -6,8 +7,11 @@ export default function ArticleLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <article className={styles.article}>{children}</article>
-    </>
+    <div className={styles.article}>
+      <aside className={styles.TOC}>
+        <TOC />
+      </aside>
+      <article className="postArticle">{children}</article>
+    </div>
   );
 }

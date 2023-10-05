@@ -1,0 +1,20 @@
+@import "styles/utils.scss";
+
+.TOC {
+  background-color: var(--color-card);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  min-width: 10rem;
+  max-width: 14rem;
+
+  li {
+    cursor: pointer;
+    margin: 0.6rem 0 0.6rem 0;
+    list-style: none;
+
+    &:hover {
+      color: $color_high;
+      transition: 0.3s all;
+    }
+  }
+}
