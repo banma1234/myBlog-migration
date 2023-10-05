@@ -1,13 +1,12 @@
 "use client";
 
 import iconHandler from "util/iconHandler";
-import UserCommentForm from "./userCommentForm";
-import CommentMenu from "./commentMenu";
 import Image from "next/image";
 import "../../styles/commentStyle/commentBoxStyle.scss";
+import { CommentMenu, UserCommentForm } from ".";
 import { commentHandler } from "../../utils";
-import { useState, useEffect } from "react";
 import { CommentType } from "../componentType";
+import { useState, useEffect } from "react";
 
 export default function CommentBox(props: { postId: number }) {
   const [replyClick, setReplyClick] = useState(false);

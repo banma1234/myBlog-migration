@@ -11,6 +11,7 @@ export default function SeriesBoard(props: {
 }) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
+  const TITLE = `📋 [ ${props.data[0].series} ] 시리즈 몰아보기 (${props.data.length})`;
   const dropDownName = `container_${isClick}`;
 
   useEffect(() => {
@@ -30,14 +31,7 @@ export default function SeriesBoard(props: {
           className="seriesBoard_dropDown"
           onClick={() => setIsClick(!isClick)}
         >
-          <h2>
-            📋 {"[ "}
-            {props.data[0].series}
-            {" ]"} 시리즈 몰아보기
-            {" ("}
-            {props.data.length}
-            {")"}
-          </h2>
+          <h2>{TITLE}</h2>
           {iconHandler(isClick ? "arrowUp" : "arrowDown", "32")}{" "}
         </div>
 
@@ -48,11 +42,10 @@ export default function SeriesBoard(props: {
                 const url = `/posts/${item.postId}`;
                 const postName =
                   props.postId === item.postId ? "current" : "others";
+
                 return (
-                  <Link href={url}>
-                    <li className={postName} key={i}>
-                      {item.title}
-                    </li>
+                  <Link href={url} key={i}>
+                    <li className={postName}>{item.title}</li>
                   </Link>
                 );
               })}

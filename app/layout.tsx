@@ -22,19 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <html lang="en" suppressHydrationWarning={true}>
-        <body className={myFont.className}>
-          <Header />
-          <main className={styles.main}>
-            <aside />
-            {children}
-            <NavIcon />
-            <aside />
-          </main>
-          <Footer />
-        </body>
-      </html>
-    </>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={myFont.className}>
+        <Header />
+        <main className={styles.main}>
+          <aside />
+          {children}
+          <NavIcon />
+          <aside />
+        </main>
+        <Footer />
+      </body>
+    </html>
   );
 }

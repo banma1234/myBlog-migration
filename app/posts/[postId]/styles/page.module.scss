@@ -32,3 +32,13 @@
 .recent {
   margin-bottom: 6rem;
 }
+
+.TOC {
+  position: fixed;
+  left: 1.2rem;
+  top: 12rem;
+
+  @media all and (max-width: $tablet) {
+    display: none;
+  }
+}

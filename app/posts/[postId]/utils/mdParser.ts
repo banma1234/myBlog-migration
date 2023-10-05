@@ -45,7 +45,7 @@ export default function mdParser(content: string) {
             <td class="line-index" data-number="${i + 1}">${i + 1}</td>
             <td class="line-code" data-number=${i + 1}>${item}</td>
           </tr>
-        `
+        `,
       )
       .join("\n")
       .replace(/\t|\\n/, "");
@@ -71,10 +71,7 @@ export default function mdParser(content: string) {
   renderer.heading = (text: string, level: number) => {
     const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
     return `
-            <h${level}>
-              <a name="${escapedText}" class="anchor" href="#${escapedText}">
-                <span class="header-link"></span>
-              </a>
+            <h${level} class="md_inner_header">
               ${text}
             </h${level}>`;
   };
