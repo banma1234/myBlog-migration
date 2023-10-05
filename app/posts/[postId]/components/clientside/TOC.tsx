@@ -10,13 +10,10 @@ export default function TOC() {
 
   useEffect(() => {
     const observer = getIntersectionObserver(setCurrentId);
-    const currentHeaders = Array.from(
-      document.querySelectorAll(".md_inner_header"),
-    );
-
+    const currentHeaders = Array.from(document.querySelectorAll(".md_header"));
     setHeaderItems(currentHeaders);
 
-    currentHeaders.map(header => {
+    currentHeaders.map((header) => {
       observer.observe(header);
     });
   }, []);
@@ -28,10 +25,12 @@ export default function TOC() {
   return (
     <div className="TOC">
       {headerItems.map((item: any, i: number) => {
-        const listItem = ``;
+        let listItem = item.nodeName[1] === "3" ? "target__" : "";
+        listItem += currentId === item.id ? "current" : "none";
+
         return (
-          <Link href="" key={i}>
-            <li>{item.innerText}</li>
+          <Link href={item.id} key={i}>
+            <li className={listItem}>{item.innerText}</li>
           </Link>
         );
       })}
@@ -40,14 +39,14 @@ export default function TOC() {
 }
 
 const getIntersectionObserver = (
-  setState: Dispatch<SetStateAction<string>>,
+  setState: Dispatch<SetStateAction<string>>
 ) => {
   let direction = "";
   let prevYposition = 0;
   const options = {
     root: null,
-    threshold: 1,
-    rootMargin: "0px 0px -40% 0px",
+    threshold: 1.0,
+    rootMargin: "-30% 0px 0px 0px",
   };
 
   // scroll 방향 check function
@@ -60,8 +59,8 @@ const getIntersectionObserver = (
   };
 
   // observer
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       checkScrollDirection(prevYposition);
 
       if (

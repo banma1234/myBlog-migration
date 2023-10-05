@@ -1,20 +1,30 @@
 @import "styles/utils.scss";
 
 .TOC {
-  background-color: var(--color-card);
-  padding: 0.5rem 1rem 0.5rem 1rem;
-  border-radius: 1rem;
-  min-width: 10rem;
+  top: 12rem;
+  position: fixed;
+  margin-left: 1rem;
+  max-height: 18rem;
   max-width: 14rem;
+  border-left: 1px solid $color_middle;
+  overflow: auto;
 
   li {
+    color: $color_middle;
     cursor: pointer;
-    margin: 0.6rem 0 0.6rem 0;
     list-style: none;
+    padding: 0 0 0 1rem;
 
     &:hover {
-      color: $color_high;
-      transition: 0.3s all;
+      text-decoration: underline;
     }
+  }
+
+  li[class$="current"] {
+    color: $color_high;
+  }
+
+  li[class^="target__"] {
+    margin-left: 1.2rem;
   }
 }

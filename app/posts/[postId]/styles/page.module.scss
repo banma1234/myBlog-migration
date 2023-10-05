@@ -4,6 +4,15 @@
   margin-top: 6rem;
 }
 
+.TOC {
+  display: flex;
+  justify-content: flex-start;
+
+  @media all and (max-width: 1350px) {
+    display: none;
+  }
+}
+
 .title {
   font-size: 2.4rem;
 }
@@ -31,14 +40,4 @@
 
 .recent {
   margin-bottom: 6rem;
-}
-
-.TOC {
-  position: fixed;
-  left: 1.2rem;
-  top: 12rem;
-
-  @media all and (max-width: $tablet) {
-    display: none;
-  }
 }

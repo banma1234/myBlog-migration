@@ -7,11 +7,13 @@ export default function ArticleLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={styles.article}>
+    <>
+      <article className={styles.article}>
+        <section className={styles.article}>{children}</section>
+      </article>
       <aside className={styles.TOC}>
         <TOC />
       </aside>
-      <article className="postArticle">{children}</article>
-    </div>
+    </>
   );
 }

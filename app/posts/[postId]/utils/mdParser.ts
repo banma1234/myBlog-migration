@@ -45,7 +45,7 @@ export default function mdParser(content: string) {
             <td class="line-index" data-number="${i + 1}">${i + 1}</td>
             <td class="line-code" data-number=${i + 1}>${item}</td>
           </tr>
-        `,
+        `
       )
       .join("\n")
       .replace(/\t|\\n/, "");
@@ -69,9 +69,12 @@ export default function mdParser(content: string) {
     h1, h2 등 제목 태그에 포커스 링크 삽입
   */
   renderer.heading = (text: string, level: number) => {
-    const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
+    const escapedText = text
+      .toLowerCase()
+      .replace(/[^\W]+/g, "")
+      .trim();
     return `
-            <h${level} class="md_inner_header">
+            <h${level} class="md_header" id="#${escapedText}">
               ${text}
             </h${level}>`;
   };
