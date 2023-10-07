@@ -1,4 +1,4 @@
-export default async function getSearchInfo() {
+export default async function getAllPosts() {
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });
