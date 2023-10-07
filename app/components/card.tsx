@@ -42,31 +42,3 @@ export function CardLayout(props: { posts: Array<CardType> }) {
     </div>
   );
 }
-
-export function CardHead(props: any) {
-  const post = props.post;
-  const url = `/posts/${post.postId}`;
-
-  return (
-    <Link href={url}>
-      <div className="card_head">
-        <div className="card_thumbnail">
-          <Image
-            src={post.thumbnail}
-            alt="card Img"
-            width={1200}
-            height={789}
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-            }}
-          />
-        </div>
-        <div className="card_head_info">
-          <h1 className="card_head_title">{post.title}</h1>
-          <p>{post.uploadDate}</p>
-        </div>
-      </div>
-    </Link>
-  );
-}
