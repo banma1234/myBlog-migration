@@ -13,14 +13,10 @@ export default function TOC() {
     const currentHeaders = Array.from(document.querySelectorAll(".md_header"));
     setHeaderItems(currentHeaders);
 
-    currentHeaders.map((header) => {
+    currentHeaders.map(header => {
       observer.observe(header);
     });
   }, []);
-
-  useEffect(() => {
-    console.log(currentId);
-  }, [currentId]);
 
   return (
     <div className="TOC">
@@ -39,7 +35,7 @@ export default function TOC() {
 }
 
 const getIntersectionObserver = (
-  setState: Dispatch<SetStateAction<string>>
+  setState: Dispatch<SetStateAction<string>>,
 ) => {
   let direction = "";
   let prevYposition = 0;
@@ -49,18 +45,22 @@ const getIntersectionObserver = (
     rootMargin: "-30% 0px 0px 0px",
   };
 
-  // scroll 방향 check function
-  const checkScrollDirection = (prevY: number) => {
-    if (window.scrollY === 0 && prevY === 0) return;
-    else if (window.scrollY > prevY) direction = "down";
+  /*
+   * 스크롤 방향을 감지하는 함수
+   */
+  const checkScrollDirection = (prev: number) => {
+    if (window.scrollY === 0 && prev === 0) return;
+    else if (window.scrollY > prev) direction = "down";
     else direction = "up";
 
     prevYposition = window.scrollY;
   };
 
-  // observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+  /*
+   * 화면상의 헤더들을 감지
+   */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
       checkScrollDirection(prevYposition);
 
       if (
