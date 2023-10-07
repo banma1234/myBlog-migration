@@ -95,9 +95,10 @@ export default function UserCommentForm(props: UserCommentFormType) {
 
   return (
     <div className="comment_form">
-      <ToastMessage children={message} />
+      <ToastMessage>{message}</ToastMessage>
       <div className="comment_form_input">
         <input
+          id="input_nickname"
           className="input_small"
           value={userName}
           placeholder="닉네임"
@@ -106,6 +107,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
           }
         />
         <input
+          id="input_password"
           className="input_small"
           value={password}
           placeholder="비밀번호"
@@ -116,6 +118,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
         />
       </div>
       <textarea
+        id="textarea_comment"
         value={userComment}
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setUserComment(e.target.value)

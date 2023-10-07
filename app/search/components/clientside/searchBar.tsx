@@ -29,6 +29,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
     <div className="searchBar">
       {show && (
         <input
+          id="input_searchBar"
           className={inputName}
           value={inputData}
           placeholder="검색"
