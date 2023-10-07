@@ -14,30 +14,6 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
   const [slicedData, setSlicedData] = useState<Array<CardType>>([]);
   const [sortOption, setSortOption] = useState<boolean>(true);
 
-  useEffect(() => {
-    pagination();
-  }, [currentPage]);
-
-  useEffect(() => {
-    pagination();
-  }, [filteredData]);
-
-  useEffect(() => {
-    pagination();
-  }, [sortOption]);
-
-  const searchFilter = (input: string) => {
-    let target = props.data.filter((item: CardType) =>
-      item.title.includes(input)
-    );
-
-    setFilteredData(target);
-  };
-
-  const sortData = () => {
-    setSortOption(!sortOption);
-  };
-
   const pagination = () => {
     sortOption
       ? filteredData.sort((a, b) => b.postId - a.postId)
@@ -49,6 +25,30 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
     const res = filteredData.slice(start, end);
     setSlicedData(res);
     setMax(Math.ceil(filteredData.length / 9));
+  };
+
+  useEffect(() => {
+    pagination();
+  }, [currentPage, pagination]);
+
+  useEffect(() => {
+    pagination();
+  }, [filteredData, pagination]);
+
+  useEffect(() => {
+    pagination();
+  }, [sortOption, pagination]);
+
+  const searchFilter = (input: string) => {
+    let target = props.data.filter((item: CardType) =>
+      item.title.includes(input),
+    );
+
+    setFilteredData(target);
+  };
+
+  const sortData = () => {
+    setSortOption(!sortOption);
   };
 
   return (
