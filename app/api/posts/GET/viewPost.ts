@@ -11,6 +11,7 @@ export default async function viewPost(req: NextRequest) {
         images: 0,
         thumbnail: 0,
         isThumbnail: 0,
+        description: 0,
       },
     };
     const options2 = {
@@ -54,7 +55,7 @@ export default async function viewPost(req: NextRequest) {
       .collection("posts")
       .find(
         { postId: { $in: [Number(postId) + 1, Number(postId) - 1] } },
-        options3
+        options3,
       )
       .toArray();
 

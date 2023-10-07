@@ -6,8 +6,18 @@ import type { Metadata } from "next";
 import { Footer, Header } from "./components";
 
 export const metadata: Metadata = {
-  title: "초코햄의 개발 블로그",
-  description: "디발자, 개자이너의 개발 블로그",
+  creator: "초코햄(banma1234)",
+  applicationName: "ChocoHam 블로그",
+  title: {
+    template: "%s | ChocoHam",
+    default: "Choco Ham(@banma1234)의 개발 & 디자인 블로그",
+  },
+  formatDetection: {
+    email: true,
+    address: false,
+    telephone: false,
+  },
+  manifest: "https://chocoham.dev/manifest.json",
 };
 
 const myFont = Noto_Sans_KR({

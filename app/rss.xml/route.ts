@@ -1,16 +1,17 @@
 import Rss from "rss";
-import getSearchInfo from "app/search/getSearchInfo";
+import getAllPosts from "app/search/getAllPosts";
 import { CardType } from "app/components/componentType";
 
 const URL = process.env.DEV_URL;
+const DEFAULT_DESCRIPTION =
+  "프론트앤드 개발자 Choco Ham(banma1234)의 개발 & 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.";
 
 export async function GET() {
-  const { data } = await getSearchInfo();
+  const { data } = await getAllPosts();
 
   const feed = new Rss({
-    title: "Choco Ham(banma1234)의 개발 블로그",
-    description:
-      "프론트앤드 개발자 Choco Ham(banma1234)의 개발 & 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.",
+    title: "Choco Ham(@banma1234)의 개발 블로그",
+    description: DEFAULT_DESCRIPTION,
     feed_url: `${URL}/rss.xml`,
     site_url: `${URL}`,
     language: "ko",
@@ -18,8 +19,8 @@ export async function GET() {
 
   data.forEach((post: CardType) => {
     feed.item({
-      title: `${post.title} | `,
-      description: post.description || "doTest",
+      title: `${post.title} | ChocoHam`,
+      description: post.description || DEFAULT_DESCRIPTION,
       url: `${URL}/posts/${post.postId}`,
       guid: `${URL}/blog/${post._id}`,
       date: new Date(post.uploadDate),

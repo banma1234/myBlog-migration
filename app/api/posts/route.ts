@@ -4,6 +4,7 @@ import {
   viewPost,
   viewSeries,
   getGenerateInfo,
+  getMetaData,
 } from "./GET";
 import { NextRequest } from "next/server";
 
@@ -21,5 +22,7 @@ export async function GET(req: NextRequest) {
       return viewSeries();
     case "GET_STATIC_PARAMS":
       return getGenerateInfo();
+    case "GET_META_DATA":
+      return getMetaData(req);
   }
 }
