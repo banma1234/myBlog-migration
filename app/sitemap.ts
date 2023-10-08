@@ -3,13 +3,13 @@ export default async function sitemap() {
   return [
     {
       url: `${process.env.DEV_URL}`,
-      author: "Choco ham(@banma1234)",
+      author: "ChocoHam(@banma1234)",
       lastModified: new Date(),
       priority: 1,
     },
     ...staticData.map((postId: number, i: number) => ({
       url: `${process.env.DEV_URL}/posts/${postId}`,
-      author: "Choco ham(@banma1234)",
+      author: "ChocoHam(@banma1234)",
       lastModified: date[i],
       priority: 0.8,
     })),

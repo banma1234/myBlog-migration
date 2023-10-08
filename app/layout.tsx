@@ -6,11 +6,11 @@ import type { Metadata } from "next";
 import { Footer, Header } from "./components";
 
 export const metadata: Metadata = {
-  creator: "초코햄(banma1234)",
-  applicationName: "ChocoHam 블로그",
+  creator: "ChocoHam(@banma1234)",
+  applicationName: "ChocoHam 개발 블로그",
   title: {
     template: "%s | ChocoHam",
-    default: "Choco Ham(@banma1234)의 개발 & 디자인 블로그",
+    default: "ChocoHam 개발 블로그",
   },
   formatDetection: {
     email: true,
