@@ -1,11 +1,26 @@
 @import "styles/utils.scss";
 @import "styles/animations.scss";
 
+.tooltip {
+  position: relative;
+  display: flex;
+  font-size: 0.8rem;
+  align-items: flex-end;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  bottom: 1rem;
+  border-radius: 5rem;
+  height: 1rem;
+  background-color: var(--color-card);
+  color: $color_middle;
+}
+
 .searchBar {
   display: flex;
   flex-direction: row-reverse;
 
   &_icon {
+    display: flex;
+    flex-direction: row;
     cursor: pointer;
   }
 

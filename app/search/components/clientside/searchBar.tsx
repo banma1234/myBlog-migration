@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, useRef, ChangeEvent } from "react";
 import iconHandler from "util/iconHandler";
 import "../../styles/searchBarStyle.scss";
 
@@ -9,6 +9,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
   const [show, setShow] = useState<boolean>(false);
   const [inputData, setInputData] = useState<string>("");
   const inputName = `searchBar_${isClick}`;
+  const focusPoint = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isClick) {
@@ -18,7 +19,11 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
         setShow(false);
       }, 380);
     }
-  }, [isClick]);
+  }, [isClick, focusPoint]);
+
+  useEffect(() => {
+    show && focusPoint.current && focusPoint.current.focus();
+  }, [show, focusPoint]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputData(e.target.value);
@@ -34,9 +39,11 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
           value={inputData}
           placeholder="검색"
           onChange={handleInputChange}
+          ref={focusPoint}
         />
       )}
       <div className="searchBar_icon" onClick={() => setIsClick(!isClick)}>
+        <div className="tooltip">click here! </div>
         {iconHandler("search", "28")}
       </div>
     </div>
