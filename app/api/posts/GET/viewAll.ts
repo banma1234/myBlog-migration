@@ -12,6 +12,7 @@ export default async function viewAll() {
         uploadDate: 1,
         thumbnail: 1,
         postId: 1,
+        description: 1,
       },
     };
 
