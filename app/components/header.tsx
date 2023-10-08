@@ -11,7 +11,9 @@ const Header: React.FC = () => {
         </div>
         <ul>
           <div className="header_icon">
-            <Link href="/search">{iconHandler("search", "20")}</Link>
+            <Link href="/search" title="포스트 검색">
+              {iconHandler("search", "20")}
+            </Link>
           </div>
           <li>
             <Link href="https://github.com/banma1234">About</Link>
