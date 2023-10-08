@@ -19,6 +19,7 @@
     margin-right: 1.5rem;
     list-style: none;
     color: $color_gray;
+
     li {
       &:hover {
         transition: all 0.3s;
@@ -40,18 +41,30 @@
   &_logo {
     display: flex;
     height: 100%;
+    flex-direction: row;
+    column-gap: 1rem;
     margin-left: 1.5rem;
-    color: $color_base;
     align-items: center;
+    justify-content: center;
+    color: $color_gray;
+    align-items: center;
+
     &:hover {
       transition: all 0.3s;
-      color: $color_gray;
+      color: $color_base;
+    }
+
+    &_img {
+      position: relative;
+      top: 2px;
+      align-items: center;
     }
   }
 
   &_icon {
     margin-top: 0.25rem;
     color: $color_base;
+
     &:hover {
       transition: all 0.3s;
       color: $color_gray;

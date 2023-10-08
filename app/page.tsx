@@ -1,4 +1,4 @@
-import { CardLayout } from "./components/card";
+import { CardLayout, Banner } from "./components/card";
 import getIndexBoard from "./getIndexBoard";
 
 export default async function Home() {
@@ -6,8 +6,8 @@ export default async function Home() {
 
   return (
     <section>
-      <h1>Chocoham{"'"}s blog</h1>
-      <h1>최신 포스트</h1>
+      <Banner />
+      <h2>🆕 최신 포스트</h2>
       <CardLayout posts={posts} />
     </section>
   );

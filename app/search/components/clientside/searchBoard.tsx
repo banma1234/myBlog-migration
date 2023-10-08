@@ -27,7 +27,7 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
 
   const searchEngine = (input: string) => {
     let target = props.data.filter((item: CardType) =>
-      item.title.includes(input),
+      item.title.includes(input)
     );
     setPrevData(target);
   };
@@ -64,10 +64,8 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
             const targetName = i + 1 === currentPage ? "pagination_target" : "";
 
             return (
-              <div className={targetName}>
-                <li key={i} onClick={() => currentPageHandler(i + 1)}>
-                  {i + 1}
-                </li>
+              <div key={i} className={targetName}>
+                <li onClick={() => currentPageHandler(i + 1)}>{i + 1}</li>
               </div>
             );
           })}

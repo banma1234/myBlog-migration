@@ -35,7 +35,7 @@ export default async function Posts({
         <CommentBox postId={Number(postId)} />
       </article>
       <section className={styles.recent}>
-        <h2>👁️‍🗨️ recent posts</h2>
+        <h2>👨‍💻 관련 포스트</h2>
         <CardLayout posts={recentPosts} />
       </section>
     </>
