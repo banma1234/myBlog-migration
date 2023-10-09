@@ -80,13 +80,10 @@ export async function generateStaticParams() {
     method: "GET",
     headers: myHeaders,
   });
-  const resData: { data: number; success: boolean } = await res.json();
-  const staticData: Array<{ postId: string }> = new Array();
+  const { data } = await res.json();
+  const params = new Array(data).fill(1).map((id, i) => {
+    return { postId: (id + i).toString() };
+  });
 
-  for (let i = 0; i < resData.data; i++) {
-    let target = { postId: i.toString() };
-    staticData.push(target);
-  }
-
-  return staticData;
+  return params;
 }

@@ -10,7 +10,7 @@ export default async function sitemap() {
     ...staticData.map((postId: number, i: number) => ({
       url: `${process.env.DEV_URL}/posts/${postId}`,
       author: "ChocoHam(@banma1234)",
-      lastModified: date[i],
+      lastModified: date[i].uploadDate,
       priority: 0.8,
     })),
   ];
