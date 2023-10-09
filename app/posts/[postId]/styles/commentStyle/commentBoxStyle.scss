@@ -12,6 +12,11 @@
     text-align: left;
     padding: 1.5rem 0 1.5rem 0;
   }
+
+  &_profile {
+    position: relative;
+    border-radius: 100%;
+  }
 }
 
 .content {
@@ -20,6 +25,7 @@
   flex-direction: column;
   justify-content: flex-start;
   column-gap: 4rem;
+  font-size: 0.9rem;
 
   &_info {
     flex-direction: row;
@@ -33,7 +39,7 @@
     }
 
     &_date {
-      font-size: 13px;
+      font-size: 0.75rem;
       color: $color-base;
     }
   }
@@ -49,9 +55,4 @@
   &_icon {
     cursor: pointer;
   }
-}
-
-.profile_wrapper {
-  width: 100%;
-  height: auto;
 }

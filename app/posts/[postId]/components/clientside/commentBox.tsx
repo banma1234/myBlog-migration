@@ -13,7 +13,7 @@ export default function CommentBox(props: { postId: number }) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    new Array<CommentType>(),
+    new Array<CommentType>()
   );
 
   useEffect(() => {
@@ -49,14 +49,13 @@ export default function CommentBox(props: { postId: number }) {
                 style={{ width: `${100 - item.RE_LEVEL * 6}%` }}
                 key={i}
               >
-                <div className="profile_wrapper">
-                  <Image
-                    src="/default_profile.jpg"
-                    alt="profile"
-                    width={70}
-                    height={70}
-                  />
-                </div>
+                <Image
+                  className="comment_profile"
+                  src="/profile.jpg"
+                  alt="profile"
+                  width={70}
+                  height={70}
+                />
                 <div className="content">
                   <div className="content_info">
                     <span className="content_info_writter">{item.writter}</span>

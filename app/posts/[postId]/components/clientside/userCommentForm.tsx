@@ -71,7 +71,11 @@ export default function UserCommentForm(props: UserCommentFormType) {
   const submitComment = async (e: any) => {
     e.preventDefault();
     if (!userComment) {
-      alert("please write your comment");
+      alert("댓글을 입력해주세요.");
+      return;
+    }
+    if (userName === "초코햄" || "ChocoHam") {
+      alert("해당 닉네임은 사용할 수 없습니다.");
       return;
     }
 
@@ -87,7 +91,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
     };
     const resData = await commentHandler(
       { comment, commentType: props.type },
-      "POST",
+      "POST"
     );
 
     resData.success ? initData() : alert(resData.message);
