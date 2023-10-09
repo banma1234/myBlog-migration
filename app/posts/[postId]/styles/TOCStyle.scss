@@ -1,0 +1,30 @@
+@import "styles/utils.scss";
+
+.TOC {
+  top: 12rem;
+  position: fixed;
+  margin-left: 1rem;
+  max-height: 18rem;
+  max-width: 14rem;
+  border-left: 1px solid $color_middle;
+  overflow: auto;
+
+  li {
+    color: $color_middle;
+    cursor: pointer;
+    list-style: none;
+    padding: 0 0 0 1rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  li[class$="current"] {
+    color: $color_high;
+  }
+
+  li[class^="target__"] {
+    margin-left: 1.2rem;
+  }
+}

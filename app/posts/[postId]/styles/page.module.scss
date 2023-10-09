@@ -1,0 +1,43 @@
+@import "styles/utils.scss";
+
+.article {
+  margin-top: 6rem;
+}
+
+.TOC {
+  display: flex;
+  justify-content: flex-start;
+
+  @media all and (max-width: 1350px) {
+    display: none;
+  }
+}
+
+.title {
+  font-size: 2.4rem;
+}
+
+.post {
+  a {
+    text-decoration: underline;
+    color: $color_high;
+  }
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+}
+
+.navigate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10rem;
+}
+
+.recent {
+  margin-bottom: 6rem;
+}

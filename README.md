@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+초코햄의 블로그 프로젝트
 
-## Getting Started
+> # https://chocoham.dev
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 프로젝트 미리보기
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 대댓글
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![대댓글](https://user-images.githubusercontent.com/77619465/228568957-0ed090ae-edbc-4bf3-81b7-66a01e129776.gif)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 포스트
 
-## Learn More
+![포스트](https://user-images.githubusercontent.com/77619465/228569324-17e10cad-f904-4cfe-87a7-11fe8d6624fa.gif)
 
-To learn more about Next.js, take a look at the following resources:
+- 작성
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![작성](https://user-images.githubusercontent.com/77619465/228571054-31a10ff2-76a8-4973-ae03-d047b3cb215e.gif)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### build by...
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![next.js](https://img.shields.io/badge/next.js-444444?style=for-the-badge&logo=next.js)
+![react](https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react)
+![typescript](https://img.shields.io/badge/typescript-444444?style=for-the-badge&logo=typescript)
+![node.js](https://img.shields.io/badge/node.js-444444?style=for-the-badge&logo=node.js)
+![mongoDB](https://img.shields.io/badge/mongoDB-444444?style=for-the-badge&logo=mongoDB)
+![webpack](https://img.shields.io/badge/webpack-444444?style=for-the-badge&logo=webpack)
+![babel](https://img.shields.io/badge/babel-444444?style=for-the-badge&logo=babel)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+### deploy by...
+
+![github](https://img.shields.io/badge/github-444444?style=for-the-badge&logo=github)
+![vercel](https://img.shields.io/badge/vercel-444444?style=for-the-badge&logo=vercel)
+![figma](https://img.shields.io/badge/figma-444444?style=for-the-badge&logo=figma)
+![dev.to](https://img.shields.io/badge/dev.to-444444?style=for-the-badge&logo=dev.to)
+
+---
+
+### used library
+
+![prettier](https://img.shields.io/badge/prettier-444444?style=for-the-badge&logo=prettier)
+![eslint](https://img.shields.io/badge/eslint-444444?style=for-the-badge&logo=eslint)
+![styled-components](https://img.shields.io/badge/styled_components-444444?style=for-the-badge&logo=styled-components)
+
+with `next-seo`, `next-sitemap`
+
+---
+
+- serverSideProps를 사용하여 클라이언트 부하를 줄이고 SEO 최적화하였습니다.
+- 댓글과 대댓글을 직접 구현하여 서비스합니다.
+- meta tag 입력, sitemap 작성 등을 통해 SEO 최적화를 진행하였습니다.
+- 마크다운 파일의 작성 및 출력을 지원합니다.
