@@ -22,9 +22,6 @@ const Header: React.FC = () => {
           <li>
             <Link href="https://github.com/banma1234">About</Link>
           </li>
-          <li>
-            <Link href="/">Login</Link>
-          </li>
         </ul>
       </div>
     </header>
