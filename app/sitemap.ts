@@ -1,4 +1,9 @@
+import { headers } from "next/headers";
+
 export default async function sitemap() {
+  const header = headers();
+  console.log(header.get("host"));
+
   const { staticData, date } = await getPostData();
   return [
     {
@@ -23,6 +28,7 @@ async function getPostData() {
   const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
+    cache: "no-store",
   });
   const { data, date } = await res.json();
   const staticData: Array<number> = new Array(data).fill(1).map((id, i) => {

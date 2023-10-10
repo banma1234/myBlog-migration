@@ -3,7 +3,7 @@ import SearchBoard from "./components/clientside/searchBoard";
 import styles from "./styles/page.module.scss";
 
 export default async function Search() {
-  const { data } = await getAllPosts();
+  const data = await getAllPosts();
 
   return (
     <section className={styles.search}>

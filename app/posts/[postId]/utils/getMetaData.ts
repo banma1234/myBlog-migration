@@ -8,6 +8,7 @@ export default async function getMetaData(postId: string) {
   const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
+    cache: "no-store",
   });
   const { data } = await res.json();
 
