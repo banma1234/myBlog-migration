@@ -3,20 +3,17 @@ import { MongoClient } from "mongodb";
 const MONGODB_URL = process.env.MONGODB_URL || "";
 const MONGODB_DB = process.env.DB_NAME || "";
 
-// check the MongoDB URL
-if (!MONGODB_URL) {
-  throw new Error("Define the MONGODB_URL environmental variable");
-}
-
-// check the MongoDB DB
-if (!MONGODB_DB) {
-  throw new Error("Define the DB_NAME environmental variable");
-}
-
 let cachedClient: any = null;
 let cachedDb: any = null;
 
 export async function connectToDatabase() {
+  if (!MONGODB_URL) {
+    throw new Error("Define the MONGODB_URL environmental variable");
+  }
+  if (!MONGODB_DB) {
+    throw new Error("Define the DB_NAME environmental variable");
+  }
+
   // check the cached.
   if (cachedClient && cachedDb) {
     // load from cache
