@@ -66,6 +66,10 @@ export default function UserCommentForm(props: UserCommentFormType) {
     setUserComment("");
     setPassword("");
     setUserName("");
+
+    if (props.type === "REPLY" && props.setClose) {
+      props.setClose(false);
+    }
   };
 
   const submitComment = async (e: any) => {
@@ -74,7 +78,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
       alert("댓글을 입력해주세요.");
       return;
     }
-    if (userName === "초코햄" || "ChocoHam") {
+    if (userName === "ChocoHam") {
       alert("해당 닉네임은 사용할 수 없습니다.");
       return;
     }
@@ -89,17 +93,17 @@ export default function UserCommentForm(props: UserCommentFormType) {
       password: password,
       content: userComment,
     };
-    const resData = await commentHandler(
+    const res = await commentHandler(
       { comment, commentType: props.type },
-      "POST"
+      "POST",
     );
 
-    resData.success ? initData() : alert(resData.message);
+    res.success ? initData() : alert(res.message);
   };
 
   return (
     <div className="comment_form">
-      <ToastMessage>{message}</ToastMessage>
+      {props.type === "DEFAULT" && <ToastMessage>{message}</ToastMessage>}
       <div className="comment_form_input">
         <input
           id="input_nickname"

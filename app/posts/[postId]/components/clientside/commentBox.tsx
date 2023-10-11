@@ -13,7 +13,7 @@ export default function CommentBox(props: { postId: number }) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    new Array<CommentType>()
+    new Array<CommentType>(),
   );
 
   useEffect(() => {
@@ -96,6 +96,7 @@ export default function CommentBox(props: { postId: number }) {
                     postId={props.postId}
                     type="REPLY"
                     setComments={setComments}
+                    setClose={setReplyClick}
                   />
                 )}
               </div>

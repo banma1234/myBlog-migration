@@ -18,6 +18,7 @@ export interface UserCommentFormType {
   postId: number;
   type: "DEFAULT" | "REPLY";
   setComments: Dispatch<SetStateAction<CommentType[] | undefined>>;
+  setClose?: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface UserCommentType {
@@ -34,15 +35,15 @@ export interface UserCommentType {
 export interface TreeHandlerType {
   REF: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => number;
   RE_STEP: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => number;
   RE_LEVEL: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => number;
 }
 

@@ -11,13 +11,14 @@ export default function commentHandler(data: any, type: string) {
   }
 }
 
+const URL = process.env.DEV_URL || "";
+
 async function getComment(postId: string) {
-  const ENV_URL = process.env.DEV_URL;
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });
   myHeaders.append("postid", postId);
-  const res = await fetch(`${ENV_URL ? ENV_URL : ""}/api/comments`, {
+  const res = await fetch(`${URL}/api/comments`, {
     method: "GET",
     headers: myHeaders,
     cache: "no-store",
