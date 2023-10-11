@@ -50,7 +50,7 @@ async function getPost(postId: string) {
   myHeaders.append("viewType", "VIEW_POST");
   myHeaders.append("postid", postId);
 
-  const res = await fetch(`https://chocoham.dev/api/posts`, {
+  const res = await fetch("https://chocoham.dev/api/posts", {
     method: "GET",
     headers: myHeaders,
   });
@@ -67,7 +67,7 @@ export async function generateStaticParams() {
   // const URL = process.env.DEV_URL || "https://chocoham.dev";
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-  const res = await fetch(`https://chocoham.dev/api/posts`, {
+  const res = await fetch("https://chocoham.dev/api/posts", {
     method: "GET",
     headers: myHeaders,
   });
