@@ -8,7 +8,6 @@ export default async function getPost(postId: string) {
   const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
-    cache: "force-cache",
   });
   const { data, recent, bothSidePosts } = await res.json();
 

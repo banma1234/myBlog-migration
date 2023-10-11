@@ -8,7 +8,12 @@ export default async function getAllPosts() {
     method: "GET",
     headers: myHeaders,
   });
-  const { data } = await res.json();
+  const { data, success } = await res.json();
 
-  return { data: data };
+  if (!success) {
+    console.log(data);
+    return;
+  }
+
+  return data;
 }

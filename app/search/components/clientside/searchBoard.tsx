@@ -7,9 +7,10 @@ import "../../styles/paginationStyle.scss";
 import SearchBar from "./searchBar";
 
 export default function SearchBoard(props: { data: Array<CardType> }) {
-  const [prevData, setPrevData] = useState<Array<CardType>>(props.data);
+  const data = props.data || [];
+  const [prevData, setPrevData] = useState<Array<CardType>>(data);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [max, setMax] = useState<number>(Math.ceil(props.data.length / 9));
+  const [max, setMax] = useState<number>(Math.ceil(data.length / 9));
   const [currentData, setCurrentData] = useState<Array<CardType>>([]);
   const [sortOption, setSortOption] = useState<boolean>(true);
 
@@ -26,9 +27,7 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
   }, [currentPage, prevData, sortOption]);
 
   const searchEngine = (input: string) => {
-    let target = props.data.filter((item: CardType) =>
-      item.title.includes(input)
-    );
+    let target = data.filter((item: CardType) => item.title.includes(input));
     setPrevData(target);
   };
 

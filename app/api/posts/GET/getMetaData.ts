@@ -7,11 +7,13 @@ export default async function getMetaData(req: NextRequest) {
     let { db } = await connectToDatabase();
 
     const options = {
-      _id: 0,
-      title: 1,
-      hashtag: 1,
-      description: 1,
-      thumbnail: 1,
+      projection: {
+        _id: 0,
+        title: 1,
+        hashtag: 1,
+        description: 1,
+        thumbnail: 1,
+      },
     };
 
     const metaData = await db
