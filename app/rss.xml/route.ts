@@ -1,5 +1,5 @@
 import Rss from "rss";
-import getAllPosts from "app/search/getAllPosts";
+import { getAllPosts } from "app/search/page";
 import { headers } from "next/headers";
 import { CardType } from "app/components/componentType";
 

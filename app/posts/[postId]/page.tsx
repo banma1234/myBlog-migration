@@ -4,23 +4,8 @@ import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import type { Metadata, ResolvingMetadata } from "next";
 import { CommentBox } from "./components/clientside";
-import { getPost, mdParser, getMetaData } from "./utils";
+import { mdParser, getMetaData } from "./utils";
 import { CardLayout } from "app/components/card";
-
-// export async function generateStaticParams() {
-//   const myHeaders = new Headers();
-//   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-
-//   const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
-//     method: "GET",
-//     headers: myHeaders,
-//   });
-//   const { data } = await res.json();
-
-//   return new Array(data).fill(1).map((id, i) => {
-//     return { postId: (id + i).toString() };
-//   });
-// }
 
 export default async function Posts({
   params,
@@ -58,6 +43,62 @@ export default async function Posts({
   );
 }
 
+export async function getPost(postId: string) {
+  const myHeaders = new Headers({
+    "Content-Type": "text/html; charset=utf-8",
+  });
+  myHeaders.append("viewType", "VIEW_POST");
+  myHeaders.append("postid", postId);
+
+  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const { data, recent, bothSidePosts } = await res.json();
+
+  return {
+    post: data[0],
+    recent: recent,
+    bothSidePosts: bothSidePosts,
+  };
+}
+
+export async function generateStaticParams() {
+  const myHeaders = new Headers();
+  myHeaders.append("viewtype", "GET_STATIC_PARAMS");
+  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const resData: { data: number; success: boolean } = await res.json();
+  const staticData: Array<{ postId: string }> = new Array();
+  for (let i = 1; i < resData.data + 1; i++) {
+    let target = { postId: i.toString() };
+    staticData.push(target);
+  }
+
+  return staticData;
+}
+
+// export async function getMetaData(postId: string) {
+//   const myHeaders = new Headers({
+//     "Content-Type": "text/html; charset=utf-8",
+//   });
+//   myHeaders.append("viewType", "GET_META_DATA");
+//   myHeaders.append("postid", postId);
+
+//   const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
+//     method: "GET",
+//     headers: myHeaders,
+//     cache: "no-store",
+//   });
+//   const { data } = await res.json();
+
+//   return {
+//     data: data[0],
+//   };
+// }
+
 // export async function generateMetadata({
 //   params,
 // }: {
@@ -88,20 +129,3 @@ export default async function Posts({
 //     },
 //   };
 // }
-
-export async function generateStaticParams() {
-  const myHeaders = new Headers();
-  myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-  });
-  const resData: { data: number; success: boolean } = await res.json();
-  const staticData: Array<{ postId: string }> = new Array();
-  for (let i = 1; i < resData.data + 1; i++) {
-    let target = { postId: i.toString() };
-    staticData.push(target);
-  }
-
-  return staticData;
-}
