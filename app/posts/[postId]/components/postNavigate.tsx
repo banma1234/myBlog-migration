@@ -1,5 +1,5 @@
 import Link from "next/link";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import "../styles/postNavigater.scss";
 
 export default function PostNavigate(props: { both: any }) {

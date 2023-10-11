@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from "util/mongodb";
+import { connectToDatabase } from "app/util/mongodb";
 
 export default async function viewPost(req: NextRequest) {
   try {
@@ -56,7 +56,7 @@ export default async function viewPost(req: NextRequest) {
       .collection("posts")
       .find(
         { postId: { $in: [Number(postId) + 1, Number(postId) - 1] } },
-        options3
+        options3,
       )
       .toArray();
 

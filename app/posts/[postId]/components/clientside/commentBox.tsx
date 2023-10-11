@@ -1,6 +1,6 @@
 "use client";
 
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import Image from "next/image";
 import "../../styles/commentStyle/commentBoxStyle.scss";
 import { CommentMenu, UserCommentForm } from ".";

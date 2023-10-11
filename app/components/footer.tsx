@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import imgUrl from "public/profile_2.png";
 import "../styles/footerStyle.scss";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 
 const Footer: React.FC = () => {
   return (

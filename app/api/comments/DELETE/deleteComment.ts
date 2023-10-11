@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectToDatabase } from "util/mongodb";
+import { connectToDatabase } from "app/util/mongodb";
 const ObjectId = require("mongodb").ObjectId;
 
 export default async function deleteComment(req: NextRequest) {

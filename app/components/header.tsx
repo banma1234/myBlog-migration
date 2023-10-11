@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import "../styles/headerStyle.scss";
 
 const Header: React.FC = () => {

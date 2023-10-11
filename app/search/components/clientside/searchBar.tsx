@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, ChangeEvent } from "react";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import "../../styles/searchBarStyle.scss";
 
 export default function SearchBar(props: { filter: (input: string) => void }) {

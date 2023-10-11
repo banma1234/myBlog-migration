@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import HashTag from "app/posts/[postId]/components/hashTag";
 import { Black_Han_Sans } from "next/font/google";
 import { CardType } from "./componentType";

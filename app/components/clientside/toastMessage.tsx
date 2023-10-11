@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import "../../styles/toastMessageStyle.scss";
 
 export default function ToastMessage(props: { children: string }) {

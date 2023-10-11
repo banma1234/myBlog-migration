@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import "app/styles/navButton.scss";
 
 export const NavIcon = () => {

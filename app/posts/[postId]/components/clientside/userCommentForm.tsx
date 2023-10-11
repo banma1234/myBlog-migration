@@ -1,6 +1,6 @@
 "use client";
 
-import parseDate from "util/parseDate";
+import parseDate from "app/util/parseDate";
 import "../../styles/commentStyle/userCommentStyle.scss";
 import ToastMessage from "app/components/clientside/toastMessage";
 import { ChangeEvent, useState } from "react";

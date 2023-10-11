@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { connectToDatabase } from "util/mongodb";
+import { connectToDatabase } from "app/util/mongodb";
 
 export default async function viewIndex() {
   try {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import iconHandler from "util/iconHandler";
+import iconHandler from "app/util/iconHandler";
 import Link from "next/link";
 import "../../styles/seriesBoardStyle.scss";
 
