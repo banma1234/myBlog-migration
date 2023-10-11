@@ -2,25 +2,10 @@ import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
-import type { Metadata, ResolvingMetadata } from "next";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser, getMetaData } from "./utils";
 import { CardLayout } from "app/components/card";
-
-// export async function generateStaticParams() {
-//   const myHeaders = new Headers();
-//   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-
-//   const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
-//     method: "GET",
-//     headers: myHeaders,
-//   });
-//   const { data } = await res.json();
-
-//   return new Array(data).fill(1).map((id, i) => {
-//     return { postId: (id + i).toString() };
-//   });
-// }
+// import type { Metadata, ResolvingMetadata } from "next";
 
 export default async function Posts({
   params,
@@ -58,6 +43,23 @@ export default async function Posts({
   );
 }
 
+export async function generateStaticParams() {
+  const myHeaders = new Headers();
+  myHeaders.append("viewtype", "GET_STATIC_PARAMS");
+  const res = await fetch("https://chocoham.dev/api/posts", {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const resData: { data: number; success: boolean } = await res.json();
+  const staticData: Array<{ postId: string }> = new Array();
+  for (let i = 1; i < resData.data + 1; i++) {
+    let target = { postId: i.toString() };
+    staticData.push(target);
+  }
+
+  return staticData;
+}
+
 // export async function generateMetadata({
 //   params,
 // }: {
@@ -88,20 +90,3 @@ export default async function Posts({
 //     },
 //   };
 // }
-
-export async function generateStaticParams() {
-  const myHeaders = new Headers();
-  myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-  });
-  const resData: { data: number; success: boolean } = await res.json();
-  const staticData: Array<{ postId: string }> = new Array();
-  for (let i = 1; i < resData.data + 1; i++) {
-    let target = { postId: i.toString() };
-    staticData.push(target);
-  }
-
-  return staticData;
-}
