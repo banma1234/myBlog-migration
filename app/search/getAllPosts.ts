@@ -4,7 +4,7 @@ export default async function getAllPosts() {
   });
   myHeaders.append("viewType", "VIEW_ALL");
 
-  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
+  const res = await fetch("https://chocoham.dev/api/posts", {
     method: "GET",
     headers: myHeaders,
   });

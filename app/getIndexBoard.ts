@@ -4,7 +4,7 @@ export default async function getIndexBoard() {
   });
   myHeaders.append("viewType", "VIEW_INDEX");
 
-  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
+  const res = await fetch("https://chocoham.dev/api/posts", {
     method: "GET",
     headers: myHeaders,
   });
