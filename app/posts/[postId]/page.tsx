@@ -43,7 +43,7 @@ export default async function Posts({
 }
 
 async function getPost(postId: string) {
-  const URL = process.env.DEV_URL || "";
+  const URL = process.env.DEV_URL || "https://chocoham.dev";
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });
@@ -64,7 +64,7 @@ async function getPost(postId: string) {
 }
 
 export async function generateStaticParams() {
-  const URL = process.env.DEV_URL || "";
+  const URL = process.env.DEV_URL || "https://chocoham.dev";
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
   const res = await fetch(`${URL}/api/posts`, {
