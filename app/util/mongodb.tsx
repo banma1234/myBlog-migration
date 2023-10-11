@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
-const MONGODB_URL = process.env.MONGODB_URL;
-const MONGODB_DB = process.env.DB_NAME;
+const MONGODB_URL = process.env.MONGODB_URL || "";
+const MONGODB_DB = process.env.DB_NAME || "";
 
 // check the MongoDB URL
 if (!MONGODB_URL) {
@@ -10,7 +10,7 @@ if (!MONGODB_URL) {
 
 // check the MongoDB DB
 if (!MONGODB_DB) {
-  throw new Error("Define the MONGODB_DB environmental variable");
+  throw new Error("Define the DB_NAME environmental variable");
 }
 
 let cachedClient: any = null;
@@ -33,7 +33,7 @@ export async function connectToDatabase() {
   };
 
   // Connect to cluster
-  let client = new MongoClient(MONGODB_URL!, opts);
+  let client = new MongoClient(MONGODB_URL, opts);
   await client.connect();
   let db = client.db(MONGODB_DB);
 
