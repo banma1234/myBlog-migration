@@ -12,7 +12,7 @@ export default async function Home() {
   );
 }
 
-export async function getIndexBoard() {
+async function getIndexBoard() {
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });

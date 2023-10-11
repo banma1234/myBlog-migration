@@ -1,5 +1,4 @@
 import Rss from "rss";
-import { getAllPosts } from "app/search/page";
 import { headers } from "next/headers";
 import { CardType } from "app/components/componentType";
 
@@ -36,4 +35,24 @@ export async function GET() {
       "Content-Type": "application/xml",
     },
   });
+}
+
+async function getAllPosts() {
+  const myHeaders = new Headers({
+    "Content-Type": "text/html; charset=utf-8",
+  });
+  myHeaders.append("viewType", "VIEW_ALL");
+
+  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const { data, success } = await res.json();
+
+  if (!success) {
+    console.log(data);
+    return;
+  }
+
+  return data;
 }

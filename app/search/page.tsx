@@ -11,7 +11,7 @@ export default async function Search() {
   );
 }
 
-export async function getAllPosts() {
+async function getAllPosts() {
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });

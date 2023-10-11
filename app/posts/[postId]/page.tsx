@@ -2,9 +2,8 @@ import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
-import type { Metadata, ResolvingMetadata } from "next";
 import { CommentBox } from "./components/clientside";
-import { mdParser, getMetaData } from "./utils";
+import { mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 
 export default async function Posts({
@@ -43,7 +42,7 @@ export default async function Posts({
   );
 }
 
-export async function getPost(postId: string) {
+async function getPost(postId: string) {
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });
@@ -80,7 +79,7 @@ export async function generateStaticParams() {
   return staticData;
 }
 
-// export async function getMetaData(postId: string) {
+// async function getMetaData(postId: string) {
 //   const myHeaders = new Headers({
 //     "Content-Type": "text/html; charset=utf-8",
 //   });
