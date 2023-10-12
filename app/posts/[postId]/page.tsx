@@ -7,6 +7,8 @@ import { getPost, mdParser, getMetaData } from "./utils";
 import { CardLayout } from "app/components/card";
 import type { Metadata, ResolvingMetadata } from "next";
 
+const URL = process.env.DEV_URL;
+
 export default async function Posts({
   params,
 }: {
@@ -46,7 +48,7 @@ export default async function Posts({
 export async function generateStaticParams() {
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-  const res = await fetch("https://chocoham.dev/api/posts", {
+  const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
   });
@@ -72,7 +74,7 @@ export async function generateMetadata({
   myHeaders.append("viewType", "GET_META_DATA");
   myHeaders.append("postid", postId);
 
-  const res = await fetch("https://chocoham.dev/api/posts", {
+  const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
   });
@@ -82,11 +84,11 @@ export async function generateMetadata({
     title: data.title,
     description: data.description,
     keywords: data.hashtag,
-    bookmarks: [`https://chocoham.dev/posts/${postId}`],
+    bookmarks: [`${URL}/posts/${postId}`],
     openGraph: {
       title: data.title,
       description: data.description,
-      url: `https://chocoham.dev/posts/${postId}`,
+      url: `${URL}/posts/${postId}`,
       siteName: "디발자(개자이너) 초코햄의 블로그",
       images: [{ url: data.thumbnail, width: 380, height: 250 }],
       type: "website",
