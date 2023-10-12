@@ -30,6 +30,11 @@ code:not([class*="language-"]) {
 .codeblock {
   position: relative;
   margin-top: 2rem;
+
+  @media all and (max-width: $mobile) {
+    width: 100%;
+  }
+
   .top {
     position: absolute;
     padding: 0.6rem 0 0.6rem 0;
@@ -40,6 +45,7 @@ code:not([class*="language-"]) {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     div {
       width: 0.8rem;
       height: 0.8rem;
@@ -53,20 +59,24 @@ code:not([class*="language-"]) {
       }
     }
   }
+
   table {
     border-collapse: collapse;
     margin: -0.5rem;
+
     & tr {
       &:hover {
         background-color: var(--color-card);
       }
     }
+
     & td {
       line-height: 1rem;
       @media (max-width: 960px) {
         line-height: 0.8rem;
       }
     }
+
     & td:nth-child(1) {
       color: $color_middle;
       padding-right: 0.6rem;
@@ -76,6 +86,7 @@ code:not([class*="language-"]) {
       -moz-user-select: none;
       -webkit-user-select: none;
     }
+
     & td:nth-child(2) {
       width: 100%;
       padding: 0.2rem 1rem 0.2rem 2rem;
