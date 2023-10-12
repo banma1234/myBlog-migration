@@ -6,7 +6,7 @@ const URL = "https://chocoham.dev";
 const DEFAULT_DESCRIPTION =
   "프론트앤드 개발자 ChocoHam(banma1234)의 개발 & 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.";
 
-export async function GET() {
+export default async function GET() {
   const header = headers();
   console.log(header.get("host"));
 
@@ -51,8 +51,7 @@ async function getAllPosts() {
   const { data, success } = await res.json();
 
   if (!success) {
-    console.log(data);
-    return;
+    throw new Error(data);
   }
 
   return data;
