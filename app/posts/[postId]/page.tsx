@@ -5,7 +5,7 @@ import styles from "./styles/page.module.scss";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser, getMetaData } from "./utils";
 import { CardLayout } from "app/components/card";
-// import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
 export default async function Posts({
   params,
@@ -60,33 +60,43 @@ export async function generateStaticParams() {
   return staticData;
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { postId: string };
-// }): Promise<Metadata> {
-//   const { postId } = params;
-//   const data: any = await getMetaData(postId);
+export async function generateMetadata({
+  params,
+}: {
+  params: { postId: string };
+}): Promise<Metadata> {
+  const { postId } = params;
+  const myHeaders = new Headers({
+    "Content-Type": "text/html; charset=utf-8",
+  });
+  myHeaders.append("viewType", "GET_META_DATA");
+  myHeaders.append("postid", postId);
 
-//   return {
-//     title: data.title,
-//     description: data.description,
-//     keywords: data.hashtag,
-//     bookmarks: [`https://chocoham.dev/posts/${postId}`],
-//     openGraph: {
-//       title: data.title,
-//       description: data.description,
-//       url: `https://chocoham.dev/posts/${postId}`,
-//       siteName: "디발자(개자이너) 초코햄의 블로그",
-//       images: [{ url: data.thumbnail, width: 380, height: 250 }],
-//       type: "website",
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: data.title,
-//       description: data.description,
-//       creator: "초코햄",
-//       images: [data.thumbnail],
-//     },
-//   };
-// }
+  const res = await fetch("https://chocoham.dev/api/posts", {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const { data } = await res.json();
+
+  return {
+    title: data.title,
+    description: data.description,
+    keywords: data.hashtag,
+    bookmarks: [`https://chocoham.dev/posts/${postId}`],
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      url: `https://chocoham.dev/posts/${postId}`,
+      siteName: "디발자(개자이너) 초코햄의 블로그",
+      images: [{ url: data.thumbnail, width: 380, height: 250 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+      creator: "초코햄",
+      images: [data.thumbnail],
+    },
+  };
+}
