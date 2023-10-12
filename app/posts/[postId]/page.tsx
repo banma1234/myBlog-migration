@@ -7,7 +7,7 @@ import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 import type { Metadata, ResolvingMetadata } from "next";
 
-const URL = process.env.DEV_URL;
+const URL = process.env.DEV_URL || "https://chocoham.dev";
 
 export default async function Posts({
   params,
