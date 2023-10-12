@@ -3,7 +3,7 @@ import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import { CommentBox } from "./components/clientside";
-import { getPost, mdParser, getMetaData } from "./utils";
+import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 import type { Metadata, ResolvingMetadata } from "next";
 
