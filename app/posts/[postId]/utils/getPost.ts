@@ -9,11 +9,15 @@ export default async function getPost(postId: string) {
     method: "GET",
     headers: myHeaders,
   });
-  const { data, recent, bothSidePosts } = await res.json();
+  const resData = await res.json();
+
+  if (!resData.success) {
+    throw new Error(resData.data);
+  }
 
   return {
-    post: data[0],
-    recent: recent,
-    bothSidePosts: bothSidePosts,
+    post: resData.data[0],
+    recent: resData.recent,
+    bothSidePosts: resData.bothSidePosts,
   };
 }

@@ -77,9 +77,7 @@ export default async function viewPost(req: NextRequest) {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: e,
-      recent: undefined,
-      bothSidePosts: undefined,
+      data: "failed to GET post",
       success: false,
     });
   }

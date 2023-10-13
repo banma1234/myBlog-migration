@@ -22,7 +22,11 @@ async function getAllPosts() {
     method: "GET",
     headers: myHeaders,
   });
-  const { data } = await res.json();
+  const { data, success } = await res.json();
+
+  if (!success) {
+    throw new Error(data);
+  }
 
   return data;
 }

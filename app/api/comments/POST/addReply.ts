@@ -33,7 +33,7 @@ export default async function addReply(req: NextRequest) {
       },
       {
         $inc: { RE_STEP: 1 },
-      },
+      }
     );
 
     await db.collection("comments").insertOne(newBody);
@@ -44,7 +44,7 @@ export default async function addReply(req: NextRequest) {
     });
   } catch (e: unknown) {
     return NextResponse.json({
-      message: e,
+      message: "failed to POST comment",
       success: false,
     });
   }

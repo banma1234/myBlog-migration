@@ -28,7 +28,7 @@ export default async function getMetaData(req: NextRequest) {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: e,
+      data: "failed to GET metaData",
       success: false,
     });
   }

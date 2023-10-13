@@ -10,7 +10,11 @@ export async function GET() {
   const header = headers();
   console.log(header.get("host"));
 
-  const { data } = await getAllPosts();
+  const { data, success } = await getAllPosts();
+
+  if (!success) {
+    throw new Error(data);
+  }
 
   const feed = new Rss({
     title: "ChocoHam 개발 블로그",

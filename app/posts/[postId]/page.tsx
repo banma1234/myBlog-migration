@@ -52,7 +52,12 @@ export async function generateStaticParams() {
     method: "GET",
     headers: myHeaders,
   });
-  const resData: { data: number; success: boolean } = await res.json();
+  const resData = await res.json();
+
+  if (!resData.success) {
+    throw new Error(resData.data);
+  }
+
   const staticData: Array<{ postId: string }> = new Array();
   for (let i = 1; i < resData.data + 1; i++) {
     let target = { postId: i.toString() };
@@ -78,7 +83,11 @@ export async function generateMetadata({
     method: "GET",
     headers: myHeaders,
   });
-  const { data } = await res.json();
+  const { data, success } = await res.json();
+
+  if (!success) {
+    throw new Error(data);
+  }
 
   return {
     title: data.title,
