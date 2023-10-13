@@ -44,7 +44,7 @@ export default async function addReply(req: NextRequest) {
     });
   } catch (e: unknown) {
     return NextResponse.json({
-      message: "failed to POST comment",
+      message: "failed to POST comment : 500",
       success: false,
     });
   }
