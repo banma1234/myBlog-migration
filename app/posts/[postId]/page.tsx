@@ -89,7 +89,7 @@ export async function generateMetadata({
       title: data.title,
       description: data.description,
       url: `${URL}/posts/${postId}`,
-      siteName: "디발자(개자이너) 초코햄의 블로그",
+      siteName: "ChocoHam 개발 블로그",
       images: [{ url: data.thumbnail, width: 380, height: 250 }],
       type: "website",
     },
