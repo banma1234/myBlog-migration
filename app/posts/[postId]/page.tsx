@@ -7,8 +7,6 @@ import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 import type { Metadata, ResolvingMetadata } from "next";
 
-const URL = process.env.DEV_URL || "https://chocoham.dev";
-
 export default async function Posts({
   params,
 }: {
@@ -46,6 +44,12 @@ export default async function Posts({
 }
 
 export async function generateStaticParams() {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
   const res = await fetch(`${URL}/api/posts`, {
@@ -72,6 +76,12 @@ export async function generateMetadata({
 }: {
   params: { postId: string };
 }): Promise<Metadata> {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const { postId } = params;
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
