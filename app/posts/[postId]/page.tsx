@@ -7,8 +7,6 @@ import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 import type { Metadata, ResolvingMetadata } from "next";
 
-const URL = process.env.DEV_URL || "https://chocoham.dev";
-
 export default async function Posts({
   params,
 }: {
@@ -46,13 +44,24 @@ export default async function Posts({
 }
 
 export async function generateStaticParams() {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
   const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
   });
-  const resData: { data: number; success: boolean } = await res.json();
+  const resData = await res.json();
+
+  if (!resData.success) {
+    throw new Error(resData.data);
+  }
+
   const staticData: Array<{ postId: string }> = new Array();
   for (let i = 1; i < resData.data + 1; i++) {
     let target = { postId: i.toString() };
@@ -67,6 +76,12 @@ export async function generateMetadata({
 }: {
   params: { postId: string };
 }): Promise<Metadata> {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const { postId } = params;
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
@@ -78,7 +93,11 @@ export async function generateMetadata({
     method: "GET",
     headers: myHeaders,
   });
-  const { data } = await res.json();
+  const { data, success } = await res.json();
+
+  if (!success) {
+    throw new Error(data);
+  }
 
   return {
     title: data.title,
@@ -89,7 +108,7 @@ export async function generateMetadata({
       title: data.title,
       description: data.description,
       url: `${URL}/posts/${postId}`,
-      siteName: "디발자(개자이너) 초코햄의 블로그",
+      siteName: "ChocoHam 개발 블로그",
       images: [{ url: data.thumbnail, width: 380, height: 250 }],
       type: "website",
     },

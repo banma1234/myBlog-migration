@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import getComment from "./GET/getComment";
 import deleteComment from "./DELETE/deleteComment";
@@ -16,6 +16,11 @@ export async function POST(req: NextRequest) {
       return addComment(req);
     case "REPLY":
       return addReply(req);
+    default:
+      return NextResponse.json({
+        message: "failed to POST comment : 400",
+        success: false,
+      });
   }
 }
 

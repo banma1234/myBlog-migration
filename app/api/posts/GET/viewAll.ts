@@ -25,7 +25,7 @@ export default async function viewAll() {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: e,
+      data: "failed to GET allData",
       success: false,
     });
   }

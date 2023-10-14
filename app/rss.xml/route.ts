@@ -2,7 +2,6 @@ import Rss from "rss";
 import { headers } from "next/headers";
 import { CardType } from "app/components/componentType";
 
-const URL = process.env.DEV_URL;
 const DEFAULT_DESCRIPTION =
   "프론트앤드 개발자 ChocoHam(banma1234)의 개발 & 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.";
 
@@ -10,7 +9,11 @@ export async function GET() {
   const header = headers();
   console.log(header.get("host"));
 
-  const { data } = await getAllPosts();
+  const { data, success } = await getAllPosts();
+
+  if (!success) {
+    throw new Error(data);
+  }
 
   const feed = new Rss({
     title: "ChocoHam 개발 블로그",
@@ -38,6 +41,12 @@ export async function GET() {
 }
 
 async function getAllPosts() {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });
