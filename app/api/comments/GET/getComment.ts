@@ -29,7 +29,7 @@ export default async function getComment(req: NextRequest) {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      message: e,
+      message: "failed to GET comment",
       success: false,
     });
   }

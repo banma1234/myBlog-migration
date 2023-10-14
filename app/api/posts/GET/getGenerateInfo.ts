@@ -22,8 +22,7 @@ export default async function getGenerateInfo() {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: e,
-      date: undefined,
+      data: "failed to GET staticparams",
       success: false,
     });
   }

@@ -21,7 +21,7 @@ export default async function deleteComment(req: NextRequest) {
           _id: new ObjectId(newBody._id),
           password: newBody.password,
         },
-        option,
+        option
       )
       .toArray();
 
@@ -35,7 +35,7 @@ export default async function deleteComment(req: NextRequest) {
         },
         {
           $inc: { RE_STEP: -1 },
-        },
+        }
       );
       await db.collection("comments").deleteOne({ _id: targetComment[0]._id });
 
@@ -52,7 +52,7 @@ export default async function deleteComment(req: NextRequest) {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      message: e,
+      message: "failed to DELETE comment",
       success: false,
     });
   }

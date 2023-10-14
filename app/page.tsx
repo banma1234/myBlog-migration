@@ -13,12 +13,18 @@ export default async function Home() {
 }
 
 async function getIndexBoard() {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",
   });
   myHeaders.append("viewType", "VIEW_INDEX");
 
-  const res = await fetch("https://chocoham.dev/api/posts", {
+  const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
   });
