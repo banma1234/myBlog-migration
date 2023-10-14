@@ -5,7 +5,7 @@ import styles from "./styles/page.module.scss";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 export default async function Posts({
   params,
@@ -83,41 +83,35 @@ export async function generateMetadata({
   }
 
   const { postId } = params;
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("viewType", "GET_META_DATA");
-  myHeaders.append("postid", postId);
-
-  const res = await fetch(`${URL}/api/posts`, {
+  const res = await fetch(`${URL}/api/metadata/${postId}`, {
     method: "GET",
-    headers: myHeaders,
   });
   const { data, success } = await res.json();
 
   if (!success) {
     throw new Error(data);
   }
+  const metaData = data[0];
 
   return {
-    title: data.title,
-    description: data.description,
-    keywords: data.hashtag,
+    title: metaData.title,
+    description: metaData.description,
+    keywords: metaData.hashtag,
     bookmarks: [`${URL}/posts/${postId}`],
     openGraph: {
-      title: data.title,
-      description: data.description,
+      title: metaData.title,
+      description: metaData.description,
       url: `${URL}/posts/${postId}`,
       siteName: "ChocoHam 개발 블로그",
-      images: [{ url: data.thumbnail, width: 380, height: 250 }],
+      images: [{ url: metaData.thumbnail, width: 380, height: 250 }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: data.title,
-      description: data.description,
+      title: metaData.title,
+      description: metaData.description,
       creator: "초코햄",
-      images: [data.thumbnail],
+      images: [metaData.thumbnail],
     },
   };
 }
