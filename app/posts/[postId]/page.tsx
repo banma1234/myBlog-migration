@@ -89,6 +89,7 @@ export async function generateMetadata({
   const res = await fetch(`${URL}/api/metadata`, {
     method: "GET",
     headers: myHeaders,
+    cache: "no-store",
   });
   const { data, success } = await res.json();
 
