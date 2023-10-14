@@ -6,7 +6,7 @@ import {
   getGenerateInfo,
   getMetaData,
 } from "./GET";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   const viewType = req.headers.get("viewtype");
@@ -24,5 +24,10 @@ export async function GET(req: NextRequest) {
       return getGenerateInfo();
     case "GET_META_DATA":
       return getMetaData(req);
+    default:
+      return NextResponse.json({
+        data: "failed to GET postsData : 400",
+        success: false,
+      });
   }
 }

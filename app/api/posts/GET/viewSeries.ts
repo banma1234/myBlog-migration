@@ -57,7 +57,7 @@ export default async function viewSeries() {
   } catch (e: unknown) {
     // return the error
     return NextResponse.json({
-      data: e,
+      data: "failed to GET series",
       success: false,
     });
   }

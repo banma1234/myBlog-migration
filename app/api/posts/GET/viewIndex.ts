@@ -29,7 +29,7 @@ export default async function viewIndex() {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: e,
+      data: "failed to GET indexBoard",
       success: false,
     });
   }

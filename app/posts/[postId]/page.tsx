@@ -3,9 +3,9 @@ import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import { CommentBox } from "./components/clientside";
-import { getPost, mdParser, getMetaData } from "./utils";
+import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
-// import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
 export default async function Posts({
   params,
@@ -44,13 +44,24 @@ export default async function Posts({
 }
 
 export async function generateStaticParams() {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-  const res = await fetch("https://chocoham.dev/api/posts", {
+  const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
   });
-  const resData: { data: number; success: boolean } = await res.json();
+  const resData = await res.json();
+
+  if (!resData.success) {
+    throw new Error(resData.data);
+  }
+
   const staticData: Array<{ postId: string }> = new Array();
   for (let i = 1; i < resData.data + 1; i++) {
     let target = { postId: i.toString() };
@@ -60,33 +71,53 @@ export async function generateStaticParams() {
   return staticData;
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { postId: string };
-// }): Promise<Metadata> {
-//   const { postId } = params;
-//   const data: any = await getMetaData(postId);
+export async function generateMetadata({
+  params,
+}: {
+  params: { postId: string };
+}): Promise<Metadata> {
+  let URL = process.env.DEV_URL;
 
-//   return {
-//     title: data.title,
-//     description: data.description,
-//     keywords: data.hashtag,
-//     bookmarks: [`https://chocoham.dev/posts/${postId}`],
-//     openGraph: {
-//       title: data.title,
-//       description: data.description,
-//       url: `https://chocoham.dev/posts/${postId}`,
-//       siteName: "디발자(개자이너) 초코햄의 블로그",
-//       images: [{ url: data.thumbnail, width: 380, height: 250 }],
-//       type: "website",
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: data.title,
-//       description: data.description,
-//       creator: "초코햄",
-//       images: [data.thumbnail],
-//     },
-//   };
-// }
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
+  const { postId } = params;
+  const myHeaders = new Headers({
+    "Content-Type": "text/html; charset=utf-8",
+  });
+  myHeaders.append("viewType", "GET_META_DATA");
+  myHeaders.append("postid", postId);
+
+  const res = await fetch(`${URL}/api/posts`, {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const { data, success } = await res.json();
+
+  if (!success) {
+    throw new Error(data);
+  }
+
+  return {
+    title: data.title,
+    description: data.description,
+    keywords: data.hashtag,
+    bookmarks: [`${URL}/posts/${postId}`],
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      url: `${URL}/posts/${postId}`,
+      siteName: "ChocoHam 개발 블로그",
+      images: [{ url: data.thumbnail, width: 380, height: 250 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+      creator: "초코햄",
+      images: [data.thumbnail],
+    },
+  };
+}

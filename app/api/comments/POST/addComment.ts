@@ -14,7 +14,7 @@ export default async function addComment(req: NextRequest) {
     });
   } catch (e: unknown) {
     return NextResponse.json({
-      message: e,
+      message: "failed to POST comment : 500",
       success: false,
     });
   }

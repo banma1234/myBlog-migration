@@ -7,13 +7,13 @@ export default async function sitemap() {
   const { staticData, date } = await getPostData();
   return [
     {
-      url: `${process.env.DEV_URL}`,
+      url: `${URL}`,
       author: "ChocoHam(@banma1234)",
       lastModified: new Date(),
       priority: 1,
     },
     ...staticData.map((postId: number, i: number) => ({
-      url: `${process.env.DEV_URL}/posts/${postId}`,
+      url: `${URL}/posts/${postId}`,
       author: "ChocoHam(@banma1234)",
       lastModified: date[i].uploadDate,
       priority: 0.8,
@@ -22,21 +22,34 @@ export default async function sitemap() {
 }
 
 async function getPostData() {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
 
-  const res = await fetch("https://chocoham.dev/api/posts", {
+  const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
     cache: "no-store",
   });
-  const { data, date } = await res.json();
-  const staticData: Array<number> = new Array(data).fill(1).map((id, i) => {
-    return (id += i);
-  });
+  const resData = await res.json();
+
+  if (!resData.success) {
+    throw new Error(resData.data);
+  }
+
+  const staticData: Array<number> = new Array(resData.data)
+    .fill(1)
+    .map((id, i) => {
+      return (id += i);
+    });
 
   return {
     staticData: staticData,
-    date: date,
+    date: resData.date,
   };
 }
