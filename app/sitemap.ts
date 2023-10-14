@@ -1,9 +1,4 @@
-import { headers } from "next/headers";
-
 export default async function sitemap() {
-  const header = headers();
-  console.log(header.get("host"));
-
   const { staticData, date } = await getPostData();
   return [
     {
