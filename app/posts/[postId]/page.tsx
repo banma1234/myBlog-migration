@@ -83,13 +83,8 @@ export async function generateMetadata({
   }
 
   const { postId } = params;
-  const myHeaders = new Headers();
-  myHeaders.append("postid", postId);
-
-  const res = await fetch(`${URL}/api/metadata`, {
+  const res = await fetch(`${URL}/api/metadata/${postId}`, {
     method: "GET",
-    headers: myHeaders,
-    cache: "no-store",
   });
   const { data, success } = await res.json();
 

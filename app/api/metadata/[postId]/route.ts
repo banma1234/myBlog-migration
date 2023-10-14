@@ -1,20 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { postId: string } }
+) {
   try {
-    return generateMetaData(req);
-  } catch (e: unknown) {
-    return NextResponse.json({
-      data: "failed to GET metaData",
-      success: false,
-    });
-  }
-}
-
-async function generateMetaData(req: NextRequest) {
-  try {
-    let postId = req.headers.get("postid");
+    let postId = params.postId;
     let { db } = await connectToDatabase();
 
     const options = {
