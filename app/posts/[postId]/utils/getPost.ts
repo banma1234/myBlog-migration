@@ -1,4 +1,6 @@
-export default async function getPost(postId: string) {
+import { cache } from "react";
+
+export default cache(async function getPost(postId: string) {
   let URL = process.env.DEV_URL;
 
   if (typeof URL === undefined) {
@@ -26,4 +28,4 @@ export default async function getPost(postId: string) {
     recent: resData.recent,
     bothSidePosts: resData.bothSidePosts,
   };
-}
+});
