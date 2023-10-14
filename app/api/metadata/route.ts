@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export default async function getMetaData(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     let postId = req.headers.get("postid");
     let { db } = await connectToDatabase();
