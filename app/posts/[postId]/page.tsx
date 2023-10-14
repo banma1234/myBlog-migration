@@ -94,7 +94,7 @@ export async function generateMetadata({
   });
   const { data, success } = await res.json();
 
-  if (!success) {
+  if (!success || !data.length) {
     throw new Error(data);
   }
   const metaData = data[0];
