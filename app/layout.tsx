@@ -12,11 +12,6 @@ export const metadata: Metadata = {
     template: "%s | ChocoHam",
     default: "ChocoHam 개발 블로그",
   },
-  formatDetection: {
-    email: true,
-    address: false,
-    telephone: false,
-  },
   manifest: "https://chocoham.dev/manifest.json",
 };
 

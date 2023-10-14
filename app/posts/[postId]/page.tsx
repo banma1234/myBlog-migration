@@ -5,7 +5,58 @@ import styles from "./styles/page.module.scss";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { postId: string };
+}): Promise<Metadata> {
+  let URL = process.env.DEV_URL;
+
+  if (typeof URL === undefined) {
+    URL = "https://chocoham.dev";
+  }
+
+  const { postId } = params;
+  const myHeaders = new Headers({
+    "Content-Type": "text/html; charset=utf-8",
+  });
+  myHeaders.append("postid", postId);
+
+  const res = await fetch(`${URL}/api/metadata`, {
+    method: "GET",
+    headers: myHeaders,
+  });
+  const { data, success } = await res.json();
+
+  if (!success) {
+    throw new Error(data);
+  }
+  const metaData = data[0];
+
+  return {
+    title: metaData.title,
+    description: metaData.description,
+    keywords: metaData.hashtag,
+    bookmarks: [`${URL}/posts/${postId}`],
+    openGraph: {
+      title: metaData.title,
+      description: metaData.description,
+      url: `${URL}/posts/${postId}`,
+      siteName: "ChocoHam 개발 블로그",
+      images: [{ url: metaData.thumbnail, width: 380, height: 250 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metaData.title,
+      description: metaData.description,
+      creator: "초코햄",
+      images: [metaData.thumbnail],
+    },
+  };
+}
 
 export default async function Posts({
   params,
@@ -69,54 +120,4 @@ export async function generateStaticParams() {
   }
 
   return staticData;
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { postId: string };
-}): Promise<Metadata> {
-  let URL = process.env.DEV_URL;
-
-  if (typeof URL === undefined) {
-    URL = "https://chocoham.dev";
-  }
-
-  const { postId } = params;
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("postid", postId);
-
-  const res = await fetch(`${URL}/api/metadata`, {
-    method: "GET",
-    headers: myHeaders,
-  });
-  const { data, success } = await res.json();
-
-  if (!success) {
-    throw new Error(data);
-  }
-
-  return {
-    title: data.title,
-    description: data.description,
-    keywords: data.hashtag,
-    bookmarks: [`${URL}/posts/${postId}`],
-    openGraph: {
-      title: data.title,
-      description: data.description,
-      url: `${URL}/posts/${postId}`,
-      siteName: "ChocoHam 개발 블로그",
-      images: [{ url: data.thumbnail, width: 380, height: 250 }],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: data.title,
-      description: data.description,
-      creator: "초코햄",
-      images: [data.thumbnail],
-    },
-  };
 }
