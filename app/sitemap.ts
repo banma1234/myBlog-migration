@@ -1,5 +1,7 @@
 import { headers } from "next/headers";
 
+const URL = process.env.DEV_URL;
+
 export default async function sitemap() {
   const header = headers();
   console.log(header.get("host"));
@@ -22,8 +24,6 @@ export default async function sitemap() {
 }
 
 async function getPostData() {
-  const URL = process.env.DEV_URL;
-
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
 
