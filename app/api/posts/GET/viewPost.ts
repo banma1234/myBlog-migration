@@ -9,9 +9,7 @@ export default async function viewPost(req: NextRequest) {
       projection: {
         _id: 0,
         images: 0,
-        thumbnail: 0,
         isThumbnail: 0,
-        description: 0,
       },
     };
     const options2 = {

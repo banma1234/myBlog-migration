@@ -3,7 +3,7 @@ import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import { CommentBox } from "./components/clientside";
-import { getPost, mdParser, getMetaData } from "./utils";
+import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
 import { Metadata } from "next/types";
 
@@ -76,28 +76,28 @@ export async function generateMetadata({
 }: {
   params: { postId: string };
 }): Promise<Metadata> {
-  const postId = params.postId;
-  const metaData = await getMetaData(postId);
+  const { postId } = params;
+  const { post } = await getPost(postId);
 
   return {
-    title: metaData.title,
-    description: metaData.description,
-    keywords: metaData.hashtag,
+    title: post.title,
+    description: post.description,
+    keywords: post.hashtag,
     bookmarks: [`${URL}/posts/${postId}`],
     openGraph: {
-      title: metaData.title,
-      description: metaData.description,
+      title: post.title,
+      description: post.description,
       url: `${URL}/posts/${postId}`,
       siteName: "ChocoHam 개발 블로그",
-      images: [{ url: metaData.thumbnail, width: 380, height: 250 }],
+      images: [{ url: post.thumbnail, width: 380, height: 250 }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: metaData.title,
-      description: metaData.description,
+      title: post.title,
+      description: post.description,
       creator: "초코햄",
-      images: [metaData.thumbnail],
+      images: [post.thumbnail],
     },
   };
 }
