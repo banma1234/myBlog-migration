@@ -22,11 +22,7 @@ export default async function sitemap() {
 }
 
 async function getPostData() {
-  let URL = process.env.DEV_URL;
-
-  if (typeof URL === undefined) {
-    URL = "https://chocoham.dev";
-  }
+  const URL = process.env.DEV_URL;
 
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
