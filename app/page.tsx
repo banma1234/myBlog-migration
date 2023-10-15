@@ -13,11 +13,7 @@ export default async function Home() {
 }
 
 async function getIndexBoard() {
-  let URL = process.env.DEV_URL;
-
-  if (typeof URL === undefined) {
-    URL = "https://chocoham.dev";
-  }
+  const URL = process.env.DEV_URL;
 
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",

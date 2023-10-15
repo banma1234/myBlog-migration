@@ -44,11 +44,7 @@ export default async function Posts({
 }
 
 export async function generateStaticParams() {
-  let URL = process.env.DEV_URL;
-
-  if (typeof URL === undefined) {
-    URL = "https://chocoham.dev";
-  }
+  const URL = process.env.DEV_URL;
 
   const myHeaders = new Headers();
   myHeaders.append("viewtype", "GET_STATIC_PARAMS");
@@ -76,14 +72,15 @@ export async function generateMetadata({
 }: {
   params: { postId: string };
 }): Promise<Metadata> {
+  const URL = process.env.DEV_URL;
   const { postId } = params;
   const { post } = await getPost(postId);
 
   return {
     title: post.title,
-    description: post.description,
+    description: post.description || `${post.title} | ChochHam`,
     keywords: post.hashtag,
-    bookmarks: [`${URL}/posts/${postId}`],
+    bookmarks: `${URL}/posts/${postId}`,
     openGraph: {
       title: post.title,
       description: post.description,
