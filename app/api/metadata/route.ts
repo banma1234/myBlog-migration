@@ -1,12 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { postId: string } }
-) {
+export async function GET(req: NextRequest) {
   try {
-    let postId = params.postId;
     let { db } = await connectToDatabase();
 
     const options = {
@@ -16,13 +12,10 @@ export async function GET(
         hashtag: 1,
         description: 1,
         thumbnail: 1,
+        postId: 1,
       },
     };
-
-    const metaData = await db
-      .collection("posts")
-      .find({ postId: Number(postId) }, options)
-      .toArray();
+    const metaData = await db.collection("posts").find({}, options).toArray();
 
     return NextResponse.json({
       data: metaData,
