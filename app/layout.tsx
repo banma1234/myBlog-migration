@@ -1,5 +1,6 @@
 import "styles/globals.scss";
 import styles from "./styles/page.module.scss";
+import { AuthProviders } from "util/context/authProvider";
 import { NavIcon } from "./components/clientside/navIcon";
 import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
@@ -34,14 +35,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={myFont.className}>
-        <Header />
-        <main className={styles.main}>
-          <aside />
-          {children}
-          <NavIcon />
-          <aside />
-        </main>
-        <Footer />
+        <AuthProviders>
+          <Header />
+          <main className={styles.main}>
+            <aside />
+            {children}
+            <NavIcon />
+            <aside />
+          </main>
+          <Footer />
+        </AuthProviders>
       </body>
     </html>
   );
