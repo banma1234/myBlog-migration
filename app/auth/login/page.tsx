@@ -1,15 +1,21 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import styles from "../styles/page.module.scss";
 
 export default function Login() {
   return (
-    <div>
+    <div className="login">
       <h3>Login component client rendered</h3>
-      <button onClick={() => signIn("google", { callbackUrl: "/" })}>
+      <button
+        className={styles.google}
+        onClick={() => signIn("google", { callbackUrl: "/" })}
+      >
         Google Sign in
       </button>
-      <button onClick={() => signOut({ callbackUrl: "/" })}>Sign Out</button>
+      <button onClick={() => signIn("github", { callbackUrl: "/" })}>
+        Github Sign in
+      </button>
     </div>
   );
 }

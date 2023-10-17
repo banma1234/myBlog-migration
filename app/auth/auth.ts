@@ -6,12 +6,18 @@ import type {
 import type { NextAuthOptions as NextAuthConfig } from "next-auth";
 import { getServerSession } from "next-auth";
 import Google from "next-auth/providers/google";
+import Github from "next-auth/providers/github";
+import Twitter from "next-auth/providers/twitter";
 
 export const authConfig: NextAuthConfig = {
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    Github({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
   ],
   secret: process.env.AUTH_SECRET as string,
