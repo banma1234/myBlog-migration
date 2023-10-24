@@ -7,7 +7,6 @@ import type { NextAuthOptions as NextAuthConfig } from "next-auth";
 import { getServerSession } from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
-import Twitter from "next-auth/providers/twitter";
 
 export const authConfig: NextAuthConfig = {
   providers: [
