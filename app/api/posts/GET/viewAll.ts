@@ -5,7 +5,7 @@ export default async function viewAll() {
   try {
     const { db } = await connectToDatabase();
     const options = {
-      sort: { uploadDate: -1 },
+      sort: { uploadDate: -1, postId: -1 },
       projection: {
         _id: 1,
         title: 1,
@@ -13,6 +13,7 @@ export default async function viewAll() {
         thumbnail: 1,
         postId: 1,
         description: 1,
+        series: 1,
       },
     };
 
