@@ -6,6 +6,7 @@ import {
   getGenerateInfo,
   getMetaData,
 } from "./GET";
+import addPost from "./POST/addPost";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -30,4 +31,8 @@ export async function GET(req: NextRequest) {
         success: false,
       });
   }
+}
+
+export async function POST(req: NextRequest) {
+  return addPost(req);
 }
