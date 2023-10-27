@@ -67,7 +67,7 @@ export function Banner() {
     <>
       <div className="banner">
         <div className="banner_thumbnail">
-          <Image src="/banner.png" alt="Banner Img" width={550} height={335} />
+          <Image src="/banner.png" alt="Banner Img" layout="fill" />
         </div>
         <div className="banner_info">
           <h1 className={myFont.className}>ChocoHam 개발 블로그</h1>
