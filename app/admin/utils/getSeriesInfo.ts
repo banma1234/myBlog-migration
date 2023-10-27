@@ -9,6 +9,7 @@ export default async function getSeriesInfo() {
   const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
+    cache: "no-store",
   });
   const { data } = await res.json();
 
