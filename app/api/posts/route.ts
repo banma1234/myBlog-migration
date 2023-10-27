@@ -7,6 +7,7 @@ import {
   getMetaData,
 } from "./GET";
 import addPost from "./POST/addPost";
+import rewritePost from "./PUT/rewritePost";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -35,4 +36,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   return addPost(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return rewritePost(req);
 }

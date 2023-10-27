@@ -4,21 +4,46 @@ import parseDate from "util/parseDate";
 import styles from "./styles/page.module.scss";
 import { useState, useCallback, ChangeEvent, useEffect } from "react";
 import { uploadImage } from "util/uploadImg";
+import { useRouter } from "next/navigation";
 import { mdParser } from "app/posts/[postId]/utils";
 
-export default function Write() {
+export default function WriteBoard(props: { postData: any }) {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [series, setSeries] = useState<string>("");
   const [hashtag, setHashtag] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [images, setImages] = useState<any[]>([]);
   const [imageTitle, setImageTitle] = useState<any[]>([]);
   const [isThumbnail, setIsThumbnail] = useState<boolean>(false);
   const [error, setError] = useState("");
 
+  const router = useRouter();
+  const postData = props.postData;
+
+  const initData = useCallback(
+    (isClear: boolean) => {
+      setTitle(isClear ? "" : postData.title);
+      setContent(isClear ? "" : postData.content);
+      setSeries(isClear ? "" : postData.series);
+      setHashtag(isClear ? "" : postData.hashtag);
+      setDescription(isClear ? "" : postData.description);
+      setImages([]);
+      setImageTitle([]);
+      setError("");
+    },
+    [postData],
+  );
+
   useEffect(() => {
     if (error) alert(error);
   }, [error]);
+
+  useEffect(() => {
+    if (postData) {
+      initData(false);
+    }
+  }, [postData, initData]);
 
   const handleImgUpload = useCallback(
     async (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,42 +56,37 @@ export default function Write() {
     [],
   );
 
-  const initData = () => {
-    setTitle("");
-    setContent("");
-    setSeries("");
-    setImages([]);
-    setImageTitle([]);
-    setError("");
-  };
-
   const handlePost = async (e: any) => {
     e.preventDefault();
     if (!title || !content) return setError("제목 / 내용을 입력해주세요");
 
-    const post = {
+    let post = {
       title,
       content,
       series,
       uploadDate: parseDate(new Date()),
       hashtag,
+      description,
       images,
       imageTitle,
       isThumbnail,
     };
 
     const res = await fetch("api/posts", {
-      method: "POST",
+      method: postData ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(post),
+      body: postData
+        ? JSON.stringify(Object.assign(post, { postid: postData.postId }))
+        : JSON.stringify(post),
     });
     const { data, success } = await res.json();
 
     if (success) {
-      initData();
+      initData(true);
       alert("게시글 작성이 완료되었습니다.");
+      router.push("/admin");
     } else {
       console.log(data);
       return setError(data);
@@ -75,7 +95,7 @@ export default function Write() {
 
   return (
     <div className={styles.write}>
-      <h1>hi</h1>
+      <h1>edit post</h1>
       <div className={styles.label}>
         <input
           className={styles.title}
@@ -95,6 +115,14 @@ export default function Write() {
           onChange={handleImgUpload}
           multiple
         />
+        <div>
+          <span>자체 썸네일 사용</span>
+          <input
+            type="checkbox"
+            checked={isThumbnail}
+            onChange={(e: any) => setIsThumbnail(!isThumbnail)}
+          />
+        </div>
       </div>
       <div className={styles.content}>
         <textarea
@@ -102,8 +130,15 @@ export default function Write() {
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <div dangerouslySetInnerHTML={mdParser(content)} />
+        <div
+          className={styles.preview}
+          dangerouslySetInnerHTML={mdParser(content)}
+        />
       </div>
+      <textarea
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+      />
       <input
         className={styles.input}
         placeholder="스페이스바로 태그를 구분해주세요"

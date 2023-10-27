@@ -1,4 +1,5 @@
 import { getAllPosts, getSeriesInfo } from "./utils";
+import Link from "next/link";
 import styles from "./styles/page.module.scss";
 
 export default async function Admin() {
@@ -25,9 +26,6 @@ export default async function Admin() {
           );
         })}
       </div>
-      <div>
-        <button>선택삭제</button>
-      </div>
       <table className={styles.table}>
         <tr>
           <th>
@@ -40,6 +38,7 @@ export default async function Admin() {
           <th>작성일자</th>
         </tr>
         {posts.map((post: any, i: number) => {
+          const url = `/admin/write/rewrite/${post.postId}`;
           return (
             <tr key={i}>
               <td>
@@ -47,7 +46,9 @@ export default async function Admin() {
               </td>
               <td>{post.postId}</td>
               <td>{post.series}</td>
-              <td>{post.title}</td>
+              <td>
+                <Link href={url}>{post.title}</Link>
+              </td>
               <td>
                 {"("}temp{")"}
               </td>

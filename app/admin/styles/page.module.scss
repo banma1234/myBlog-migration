@@ -1,3 +1,5 @@
+@import "styles/utils.scss";
+
 .table {
   border: 1px solid var(--color-text);
   border-collapse: collapse;
@@ -6,5 +8,10 @@
   td {
     padding: 0.5rem;
     border: 1px solid var(--color-text);
+  }
+
+  a {
+    text-decoration: underline;
+    color: $color_high;
   }
 }

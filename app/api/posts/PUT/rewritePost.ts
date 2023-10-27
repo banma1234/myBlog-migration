@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
-export default async function addPost(req: NextRequest) {
+export default async function rewritePost(req: NextRequest) {
   try {
     const {
       title,
@@ -14,6 +14,7 @@ export default async function addPost(req: NextRequest) {
       uploadDate,
       imageTitle,
       isThumbnail,
+      postid,
     } = await req.json();
 
     let { db } = await connectToDatabase();
@@ -63,20 +64,21 @@ export default async function addPost(req: NextRequest) {
       seriesThumbnail = null;
     }
 
-    const postId = await db.collection("posts").count();
-
-    await db.collection("posts").insertOne({
-      postId,
-      title,
-      content,
-      series,
-      hashtag,
-      description,
-      thumbnail: isThumbnail ? inherentThumbnail : seriesThumbnail,
-      imageTitle: imageTitle,
-      isThumbnail,
-      uploadDate,
-    });
+    await db.collection("posts").updateOne(
+      { postId: postid },
+      {
+        postId: postid,
+        title,
+        content,
+        series,
+        hashtag,
+        description,
+        thumbnail: isThumbnail ? inherentThumbnail : seriesThumbnail,
+        imageTitle: imageTitle,
+        isThumbnail,
+        uploadDate,
+      },
+    );
 
     return NextResponse.json({
       data: "post added successfully",
@@ -85,7 +87,7 @@ export default async function addPost(req: NextRequest) {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: "failed to POST data",
+      data: "failed to PUT data",
       success: false,
     });
   }
