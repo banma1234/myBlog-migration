@@ -1,10 +1,11 @@
 "use client";
 
 import parseDate from "util/parseDate";
-import styles from "./styles/page.module.scss";
+import styles from "app/admin/write/styles/page.module.scss";
 import { useState, useCallback, ChangeEvent, useEffect } from "react";
 import { uploadImage } from "util/uploadImg";
 import { useRouter } from "next/navigation";
+import { postHandler } from "app/admin/utils";
 import { mdParser } from "app/posts/[postId]/utils";
 
 export default function WriteBoard(props: { postData: any }) {
@@ -72,16 +73,12 @@ export default function WriteBoard(props: { postData: any }) {
       isThumbnail,
     };
 
-    const res = await fetch("api/posts", {
-      method: postData ? "PUT" : "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: postData
+    const { data, success } = await postHandler(
+      postData
         ? JSON.stringify(Object.assign(post, { postid: postData.postId }))
         : JSON.stringify(post),
-    });
-    const { data, success } = await res.json();
+      postData ? "PUT" : "POST",
+    );
 
     if (success) {
       initData(true);

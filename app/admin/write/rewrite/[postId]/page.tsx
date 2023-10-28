@@ -1,5 +1,5 @@
 import { getPost } from "../../../utils";
-import WriteBoard from "../../writeBoard";
+import WriteBoard from "../../../components/clientside/writeBoard";
 
 export default async function Rewrite({
   params,

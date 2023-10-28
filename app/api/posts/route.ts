@@ -8,6 +8,7 @@ import {
 } from "./GET";
 import addPost from "./POST/addPost";
 import rewritePost from "./PUT/rewritePost";
+import deletePosts from "./DELETE/deletePosts";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -40,4 +41,8 @@ export async function POST(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   return rewritePost(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return deletePosts(req);
 }
