@@ -1,8 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
+import { getServerSession } from "next-auth/next";
+import { authConfig } from "app/auth/auth";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 export async function POST(req: NextRequest) {
+  const session = getServerSession(authConfig);
+  if (!session) {
+    return NextResponse.json({
+      message: "access denied",
+      success: false,
+    });
+  }
+
   try {
     const { series, images, imageTitle } = await req.json();
     let { db } = await connectToDatabase();
@@ -27,9 +37,8 @@ export async function POST(req: NextRequest) {
 
     const putImagesCommand = new PutObjectCommand(params);
     try {
-      const response = await client.send(putImagesCommand);
-      console.log(response);
-    } catch (e: any) {
+      await client.send(putImagesCommand);
+    } catch (e: unknown) {
       console.log(e);
     }
     imageContainer.push({

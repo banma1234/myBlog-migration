@@ -9,6 +9,8 @@ import {
 import addPost from "./POST/addPost";
 import rewritePost from "./PUT/rewritePost";
 import deletePosts from "./DELETE/deletePosts";
+import { getServerSession } from "next-auth/next";
+import { authConfig } from "app/auth/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -36,13 +38,23 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  return addPost(req);
+  const session = await getServerSession(authConfig);
+  return session ? addPost(req) : accessDenied();
 }
 
 export async function PUT(req: NextRequest) {
-  return rewritePost(req);
+  const session = await getServerSession(authConfig);
+  return session ? rewritePost(req) : accessDenied();
 }
 
 export async function DELETE(req: NextRequest) {
-  return deletePosts(req);
+  const session = await getServerSession(authConfig);
+  return session ? deletePosts(req) : accessDenied();
+}
+
+function accessDenied() {
+  return NextResponse.json({
+    data: "access Denied",
+    success: false,
+  });
 }

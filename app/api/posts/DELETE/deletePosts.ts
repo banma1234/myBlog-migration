@@ -6,22 +6,22 @@ export default async function deletePosts(req: NextRequest) {
     const { db } = await connectToDatabase();
     let targets = await req
       .json()
-      .then(res => res.split(",").map((item: string) => Number(item)));
+      .then((res) => res.split(",").map((item: string) => Number(item)));
 
-    await db.collection("posts").deleteMany({ postId: { $in: targets } });
-
-    targets = await db
+    let temp = await db
       .collection("posts")
       .count()
       .then((res: number) =>
         targets
           .filter((item: number) => item != res)
-          .map((item: number) => item++),
+          .map((item: number) => item++)
       );
+
+    await db.collection("posts").deleteMany({ postId: { $in: targets } });
 
     await db
       .collection("posts")
-      .updateMany({ postId: { $in: targets } }, { $inc: { postId: -1 } });
+      .updateMany({ postId: { $in: temp } }, { $inc: { postId: -1 } });
 
     return NextResponse.json({
       data: "posts deleted successfully",
