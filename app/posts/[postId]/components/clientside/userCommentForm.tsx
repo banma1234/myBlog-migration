@@ -1,7 +1,6 @@
 "use client";
 
 import parseDate from "util/parseDate";
-import "../../styles/commentStyle/userCommentStyle.scss";
 import ToastMessage from "app/components/clientside/toastMessage";
 import { ChangeEvent, useState } from "react";
 import { commentHandler } from "../../utils";
@@ -10,6 +9,7 @@ import {
   UserCommentType,
   TreeHandlerType,
 } from "../componentType";
+import "../../styles/commentStyle/userCommentStyle.scss";
 
 const message = `💡 로그인 하지 않아도 댓글을 등록할 수 있습니다!`;
 
@@ -95,7 +95,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
     };
     const res = await commentHandler(
       { comment, commentType: props.type },
-      "POST",
+      "POST"
     );
 
     res.success ? initData() : alert(res.message);

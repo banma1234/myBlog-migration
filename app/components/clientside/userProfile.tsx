@@ -48,13 +48,14 @@ const Logout = (props: { session: Session }) => {
 
   return (
     <div>
-      <Image
+      {session.user?.name}
+      {/* <Image
         className="user_profile"
-        src={session.user?.image as string}
+        src="/profile_2.png"
         alt="user profile"
         width={30}
         height={30}
-      />
+      /> */}
     </div>
   );
 };
