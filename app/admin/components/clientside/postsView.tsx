@@ -6,11 +6,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { CardType } from "app/components/componentType";
 import styles from "app/admin/styles/page.module.scss";
 
-export default function PostsView({
-  props,
-}: {
-  props: { posts: any; series: any };
-}) {
+export default function PostsView(props: { posts: any }) {
   const [posts, setPosts] = useState<Array<CardType>>(props.posts);
   const [sortOption, setSortOption] = useState<boolean>(true);
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -31,7 +27,7 @@ export default function PostsView({
 
   const checkboxHandler = (
     postId: number,
-    e: ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>
   ) => {
     setIsChecked(!isChecked);
     checkedPostsHandler(e.target.checked, postId);
@@ -39,11 +35,11 @@ export default function PostsView({
 
   const checkedPostsHandler = (isChecked: boolean, postId: number) => {
     if (isChecked) {
-      setCheckedPosts(prev => [...prev, postId]);
+      setCheckedPosts((prev) => [...prev, postId]);
       return;
     }
     if (!isChecked && checkedPosts.includes(postId)) {
-      setCheckedPosts(checkedPosts.filter(item => item !== postId));
+      setCheckedPosts(checkedPosts.filter((item) => item !== postId));
       return;
     }
 
@@ -88,8 +84,7 @@ export default function PostsView({
               <td>
                 <input
                   type="checkbox"
-                  checked={post.postId}
-                  onChange={e => checkboxHandler(post.postId, e)}
+                  onChange={(e) => checkboxHandler(post.postId, e)}
                 />
               </td>
               <td>{post.postId}</td>
