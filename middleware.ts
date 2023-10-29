@@ -4,7 +4,7 @@ export default withAuth({
   secret: process.env.AUTH_SECRET as string,
   callbacks: {
     authorized({ token }) {
-      return token?.userRole === "admin";
+      return !!token;
     },
   },
 });

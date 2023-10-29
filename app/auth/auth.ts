@@ -3,41 +3,58 @@ import type {
   NextApiRequest,
   NextApiResponse,
 } from "next";
-import type { NextAuthOptions as NextAuthConfig } from "next-auth";
+import type { NextAuthOptions as NextAuthConfig, User } from "next-auth";
 import { getServerSession } from "next-auth";
-import Google from "next-auth/providers/google";
-import Github from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authConfig: NextAuthConfig = {
   providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    }),
-    Github({
-      clientId: process.env.GITHUB_CLIENT_ID as string,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    CredentialsProvider({
+      name: "Admin Login",
+
+      credentials: {
+        email: { label: "e-mail", type: "text", placeholder: "e-mail" },
+        password: {
+          label: "password",
+          type: "password",
+          placeholder: "password",
+        },
+      },
+      async authorize(credentials) {
+        const res = await fetch(`${process.env.DEV_URL}/api/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: credentials?.email,
+            password: credentials?.password,
+          }),
+        });
+        const { data, success } = await res.json();
+        const user: User = {
+          id: data.email,
+          email: data.email,
+          name: data.name,
+        };
+
+        return success ? user : null;
+      },
     }),
   ],
   secret: process.env.AUTH_SECRET as string,
+  session: {
+    maxAge: 60 * 60 * 24 * 7,
+    updateAge: 24 * 60 * 60,
+  },
   callbacks: {
-    async jwt({ token, user, account }) {
-      if (account) {
-        const role = user.email === process.env.USER_ROOT ? "admin" : "user";
-
-        token.accessToken = account.access_token;
-        token.userRole = role;
-      }
-      return token;
-    },
-
-    async session({ session, token }) {
-      session.accessToken = token.accessToken as string;
-      session.userRole = token.userRole as string;
-
+    async session({ session }) {
       return session;
     },
   },
+  // pages: {
+  //   signIn: "/auth/login",
+  // },
 };
 
 /*
