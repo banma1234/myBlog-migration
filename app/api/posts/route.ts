@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
     case "GET_STATIC_PARAMS":
       return getGenerateInfo();
     case "GET_META_DATA":
-      return getMetaData(req);
+      return getMetaData();
     default:
       return NextResponse.json({
         data: "failed to GET postsData : 400",

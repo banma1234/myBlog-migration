@@ -8,12 +8,7 @@ export async function POST(req: NextRequest) {
     const { email, password } = await req.json();
     const options = {
       sort: { postId: 1 },
-      projection: {
-        _id: 0,
-        name: 1,
-        email: 1,
-        password: 1,
-      },
+      projection: { _id: 0 },
     };
 
     const userData = await db

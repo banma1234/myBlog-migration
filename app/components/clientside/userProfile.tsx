@@ -37,8 +37,8 @@ export default function UserProfile() {
 
 const Login = () => {
   return (
-    <Link href="/auth/login" title="로그인">
-      {iconHandler("profile", "22")}
+    <Link href="/auth/login" title="관리자 로그인">
+      {iconHandler("profile", "23")}
     </Link>
   );
 };
@@ -48,14 +48,13 @@ const Logout = (props: { session: Session }) => {
 
   return (
     <div>
-      {session.user?.name}
-      {/* <Image
+      <Image
         className="user_profile"
-        src="/profile_2.png"
+        src={session.user?.image as string}
         alt="user profile"
         width={30}
         height={30}
-      /> */}
+      />
     </div>
   );
 };

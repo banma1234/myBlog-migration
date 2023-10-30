@@ -3,6 +3,7 @@ import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import Image from "next/image";
+// import generateRssFeed from "util/generateRSS";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
@@ -69,6 +70,8 @@ export async function generateStaticParams() {
     staticData.push(target);
   }
 
+  // await generateRssFeed();
+
   return staticData;
 }
 
@@ -99,7 +102,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       creator: "초코햄",
-      images: [post.thumbnail],
+      images: post.thumbnail,
     },
   };
 }

@@ -59,6 +59,8 @@ export default function UserCommentForm(props: UserCommentFormType) {
   const [password, setPassword] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
 
+  const session = props.session;
+
   const initData = async () => {
     const newComment = await commentHandler(props.postId.toString(), "GET");
     props.setComments(newComment);
@@ -78,7 +80,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
       alert("댓글을 입력해주세요.");
       return;
     }
-    if (userName === "ChocoHam") {
+    if (userName === "초코햄") {
       alert("해당 닉네임은 사용할 수 없습니다.");
       return;
     }
@@ -89,13 +91,14 @@ export default function UserCommentForm(props: UserCommentFormType) {
       RE_LEVEL: treeHandler.RE_LEVEL(props.data, props.type),
       postId: props.postId,
       date: parseDate(new Date()),
-      writter: userName,
+      writter: session ? (session.user?.name as string) : userName,
       password: password,
       content: userComment,
+      isAdmin: session ? true : false,
     };
     const res = await commentHandler(
       { comment, commentType: props.type },
-      "POST"
+      "POST",
     );
 
     res.success ? initData() : alert(res.message);
@@ -105,15 +108,17 @@ export default function UserCommentForm(props: UserCommentFormType) {
     <div className="comment_form">
       {props.type === "DEFAULT" && <ToastMessage>{message}</ToastMessage>}
       <div className="comment_form_input">
-        <input
-          id="input_nickname"
-          className="input_small"
-          value={userName}
-          placeholder="닉네임"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setUserName(e.target.value)
-          }
-        />
+        {!session && (
+          <input
+            id="input_nickname"
+            className="input_small"
+            value={userName}
+            placeholder="닉네임"
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setUserName(e.target.value)
+            }
+          />
+        )}
         <input
           id="input_password"
           className="input_small"

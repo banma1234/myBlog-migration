@@ -1,3 +1,4 @@
+import { Session } from "next-auth";
 import { Dispatch, SetStateAction } from "react";
 
 /*
@@ -11,6 +12,8 @@ export interface CommentType {
   date: string;
   writter: string;
   content: string;
+  isAdmin: boolean;
+  profile?: string;
 }
 
 export interface UserCommentFormType {
@@ -19,6 +22,7 @@ export interface UserCommentFormType {
   type: "DEFAULT" | "REPLY";
   setComments: Dispatch<SetStateAction<CommentType[] | undefined>>;
   setClose?: Dispatch<SetStateAction<boolean>>;
+  session?: Session | null;
 }
 
 export interface UserCommentType {
@@ -30,6 +34,7 @@ export interface UserCommentType {
   writter: string;
   password: string;
   content: string;
+  isAdmin: boolean;
 }
 
 export interface TreeHandlerType {

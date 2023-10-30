@@ -36,6 +36,7 @@ export const authConfig: NextAuthConfig = {
           id: data.email,
           email: data.email,
           name: data.name,
+          image: data.image,
         };
 
         return success ? user : null;
@@ -52,9 +53,9 @@ export const authConfig: NextAuthConfig = {
       return session;
     },
   },
-  // pages: {
-  //   signIn: "/auth/login",
-  // },
+  pages: {
+    signIn: "/auth/login",
+  },
 };
 
 /*
