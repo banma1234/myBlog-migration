@@ -1,12 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export default async function getMetaData(req: NextRequest) {
+export default async function getMetaData() {
   try {
-    let postId = req.headers.get("postid");
-    let { db } = await connectToDatabase();
-
+    const { db } = await connectToDatabase();
     const options = {
+      sort: { postId: 1 },
       projection: {
         _id: 0,
         title: 1,
@@ -16,13 +15,10 @@ export default async function getMetaData(req: NextRequest) {
       },
     };
 
-    const metaData = await db
-      .collection("posts")
-      .find({ postId: Number(postId) }, options)
-      .toArray();
+    const res = await db.collection("posts").find({}, options).toArray();
 
     return NextResponse.json({
-      data: metaData,
+      data: res,
       success: true,
     });
   } catch (e: unknown) {
