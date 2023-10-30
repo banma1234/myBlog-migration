@@ -12,6 +12,7 @@ export default async function getMetaData() {
         hashtag: 1,
         description: 1,
         thumbnail: 1,
+        postId: 1,
       },
     };
 
