@@ -54,13 +54,13 @@ export default async function addPost(req: NextRequest) {
     let seriesThumbnail = null;
     try {
       const option = { projection: { _id: 0, images: 0 } };
-      seriesThumbnail = await db
+      const temp = await db
         .collection("thumbnail")
         .findOne({ series: series }, option);
 
-      seriesThumbnail = `${process.env.NAVER_CDN_URL}/thumbnail/${seriesThumbnail.imageTitle}`;
+      seriesThumbnail = `${process.env.NAVER_CDN_URL}/thumbnail/${temp.imageTitle}`;
     } catch {
-      seriesThumbnail = null;
+      seriesThumbnail = `${process.env.NAVER_CDN_URL}/thumbnail/default/default_thumbnail.svg`;
     }
 
     const postId = await db.collection("posts").count();

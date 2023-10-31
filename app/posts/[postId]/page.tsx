@@ -94,7 +94,13 @@ export async function generateMetadata({
       description: post.description,
       url: `${URL}/posts/${postId}`,
       siteName: "ChocoHam 개발 블로그",
-      images: [{ url: post.thumbnail, width: 380, height: 250 }],
+      images: [
+        {
+          url: post.thumbnail || `${URL}/default_thumbnail.svg`,
+          width: 380,
+          height: 250,
+        },
+      ],
       type: "website",
     },
     twitter: {

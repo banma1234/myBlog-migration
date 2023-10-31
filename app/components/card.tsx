@@ -30,7 +30,7 @@ export function CardLayout(props: { posts: Array<CardType> }) {
       {posts &&
         posts.map((item: CardType, i: number) => {
           const url = `/posts/${item.postId}`;
-          const imgUrl = item.thumbnail || "/default_thumbnail.svg";
+          const imgUrl = item.thumbnail as string;
 
           return (
             <Link href={url} key={i}>

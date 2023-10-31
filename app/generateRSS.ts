@@ -29,8 +29,6 @@ export default async function generateRssFeed() {
     author,
   });
 
-  console.log(data);
-
   data.map((post: any) => {
     feed.addItem({
       title: post.title,
@@ -41,7 +39,7 @@ export default async function generateRssFeed() {
       author: [author],
       contributor: [author],
       date: post.uploadDate,
-      image: post.thumbnail,
+      image: post.thumbnail || "https://chocoham.dev/default_thumbnail.svg",
     });
   });
 
