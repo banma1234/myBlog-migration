@@ -2,6 +2,8 @@ import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
+import Image from "next/image";
+import generateRssFeed from "app/generateRSS";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
@@ -20,9 +22,13 @@ export default async function Posts({
 
   return (
     <>
-      <header>
-        <h1 className={styles.title}>{post.title}</h1>
+      <header className={styles.header}>
+        <Image src={post.thumbnail} alt="thumbnail" layout="fill" />
+        <div className={styles.overlap}>
+          <h2 className={styles.title}>{post.title}</h2>
+        </div>
       </header>
+      <h1 className={styles.subTitle}>{post.title}</h1>
       <SeriesBoard data={recent} postId={Number(postId)} />
       <div
         className={styles.post}
@@ -64,6 +70,8 @@ export async function generateStaticParams() {
     staticData.push(target);
   }
 
+  await generateRssFeed();
+
   return staticData;
 }
 
@@ -86,7 +94,13 @@ export async function generateMetadata({
       description: post.description,
       url: `${URL}/posts/${postId}`,
       siteName: "ChocoHam 개발 블로그",
-      images: [{ url: post.thumbnail, width: 380, height: 250 }],
+      images: [
+        {
+          url: post.thumbnail || `${URL}/default_thumbnail.svg`,
+          width: 380,
+          height: 250,
+        },
+      ],
       type: "website",
     },
     twitter: {
@@ -94,7 +108,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       creator: "초코햄",
-      images: [post.thumbnail],
+      images: post.thumbnail,
     },
   };
 }

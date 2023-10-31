@@ -5,6 +5,7 @@ import Image from "next/image";
 import "../../styles/commentStyle/commentBoxStyle.scss";
 import { CommentMenu, UserCommentForm } from ".";
 import { commentHandler } from "../../utils";
+import { useSession } from "next-auth/react";
 import { CommentType } from "../componentType";
 import { useState, useEffect } from "react";
 
@@ -15,6 +16,8 @@ export default function CommentBox(props: { postId: number }) {
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
     new Array<CommentType>(),
   );
+
+  const { data: session } = useSession();
 
   useEffect(() => {
     const getComment = async () => {
@@ -51,7 +54,7 @@ export default function CommentBox(props: { postId: number }) {
               >
                 <Image
                   className="comment_profile"
-                  src="/profile.jpg"
+                  src={item.isAdmin ? (item.profile as string) : "/profile.jpg"}
                   alt="profile"
                   width={70}
                   height={70}
@@ -59,6 +62,9 @@ export default function CommentBox(props: { postId: number }) {
                 <div className="content">
                   <div className="content_info">
                     <span className="content_info_writter">{item.writter}</span>
+                    {item.isAdmin && (
+                      <span className="content_info_admin">Admin</span>
+                    )}
                     <span className="content_info_date">{item.date}</span>
                   </div>
                   {item.content}
@@ -97,6 +103,7 @@ export default function CommentBox(props: { postId: number }) {
                     type="REPLY"
                     setComments={setComments}
                     setClose={setReplyClick}
+                    session={session}
                   />
                 )}
               </div>
@@ -108,6 +115,7 @@ export default function CommentBox(props: { postId: number }) {
         postId={props.postId}
         type="DEFAULT"
         setComments={setComments}
+        session={session}
       />
     </>
   );

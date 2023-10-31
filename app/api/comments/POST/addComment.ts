@@ -6,6 +6,11 @@ export default async function addComment(req: NextRequest) {
     const { db } = await connectToDatabase();
     const newBody = await req.json();
 
+    if (newBody.isAdmin) {
+      newBody.profile =
+        "https://choco-image-server.cdn.ntruss.com/user/profile/admin.png";
+    }
+
     await db.collection("comments").insertOne(newBody);
 
     return NextResponse.json({

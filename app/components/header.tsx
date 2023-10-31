@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import iconHandler from "util/iconHandler";
+import UserProfile from "./clientside/userProfile";
 import "../styles/headerStyle.scss";
 
-const Header: React.FC = () => {
+export default async function Header() {
   return (
     <header className="header">
       <div className="header_container">
@@ -14,18 +15,21 @@ const Header: React.FC = () => {
           <span>초코햄의 개발 블로그</span>
         </Link>
         <ul>
-          <div className="header_icon">
+          <li>
             <Link href="/search" title="포스트 검색">
               {iconHandler("search", "20")}
             </Link>
-          </div>
+          </li>
           <li>
-            <Link href="https://github.com/banma1234">About</Link>
+            <Link href="https://github.com/banma1234" title="프로젝트">
+              {iconHandler("launch", "20")}
+            </Link>
+          </li>
+          <li>
+            <UserProfile />
           </li>
         </ul>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
