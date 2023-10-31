@@ -2,10 +2,11 @@
 @import "styles/animations.scss";
 
 .seriesBoard {
+  position: relative;
   background-color: var(--color-low);
   border-radius: 0.65rem;
   padding: 0;
-  margin-top: 3.5rem;
+  margin-top: 6rem;
   box-shadow: 0 8px 12px rgb(0 0 0 / 20%);
   overflow: hidden;
   cursor: pointer;
@@ -18,9 +19,16 @@
     cursor: pointer;
     padding: 1rem 3rem 1rem 3rem;
   }
+
+  @media all and (max-width: $mobile) {
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
 }
 
 .container {
+  position: relative;
   padding: 2rem;
   &_true {
     @include animation("dropDown_true 0.4s ease");
@@ -32,6 +40,7 @@
 }
 
 .container_ul {
+  position: relative;
   height: 16rem;
   margin: 0 0 2rem 0;
   background-color: var(--color-low);

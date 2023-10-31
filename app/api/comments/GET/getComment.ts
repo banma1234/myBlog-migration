@@ -7,14 +7,6 @@ export default async function getComment(req: NextRequest) {
     const { db } = await connectToDatabase();
     const options = {
       sort: { REF: 1, RE_STEP: 1 },
-      projection: {
-        REF: 1,
-        RE_STEP: 1,
-        RE_LEVEL: 1,
-        writter: 1,
-        content: 1,
-        date: 1,
-      },
     };
 
     const comments = await db

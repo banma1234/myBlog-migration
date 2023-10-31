@@ -6,5 +6,6 @@ export interface CardType {
   thumbnail: string | undefined;
   uploadDate: string;
   postId: number;
+  series?: string;
   description?: string;
 }

@@ -1,11 +1,7 @@
 import { cache } from "react";
 
 export default cache(async function getPost(postId: string) {
-  let URL = process.env.DEV_URL;
-
-  if (typeof URL === undefined) {
-    URL = "https://chocoham.dev";
-  }
+  const URL = process.env.DEV_URL;
 
   const myHeaders = new Headers({
     "Content-Type": "text/html; charset=utf-8",

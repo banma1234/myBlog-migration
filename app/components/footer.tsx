@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           </Link>
         </li>
         <li title="RSS xml">
-          <Link href="/rss.xml">{iconHandler("rss", "20")}</Link>
+          <Link href="/public/feed.xml">{iconHandler("rss", "20")}</Link>
         </li>
       </div>
       <p>
