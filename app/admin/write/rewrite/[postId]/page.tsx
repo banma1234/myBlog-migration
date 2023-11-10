@@ -9,5 +9,5 @@ export default async function Rewrite({
   const { postId } = params;
   const { post } = await getPost(postId);
 
-  return <WriteBoard postData={post} />;
+  return <WriteBoard postData={post} type="REWRITE" />;
 }
