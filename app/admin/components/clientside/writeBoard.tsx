@@ -78,9 +78,7 @@ export default function WriteBoard(props: {
     };
 
     const { data, success } = await postHandler(
-      TYPE === "NEW"
-        ? JSON.stringify(post)
-        : JSON.stringify(Object.assign(post, { postid: postData.postId })),
+      TYPE === "NEW" ? post : Object.assign(post, { postid: postData.postId }),
       TYPE === "NEW" ? "POST" : "PUT"
     );
 
