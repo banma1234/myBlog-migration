@@ -11,7 +11,7 @@ export default function postHandler(
 }
 
 async function writePost(data: any, type: "POST" | "PUT") {
-  const { post } = data;
+  const post = data;
 
   const res = await fetch("/api/posts", {
     method: type === "POST" ? "POST" : "PUT",
