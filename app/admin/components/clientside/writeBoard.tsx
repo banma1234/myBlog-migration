@@ -8,7 +8,10 @@ import { useRouter } from "next/navigation";
 import { postHandler } from "app/admin/utils";
 import { mdParser } from "app/posts/[postId]/utils";
 
-export default function WriteBoard(props: { postData: any }) {
+export default function WriteBoard(props: {
+  postData: any;
+  type: "NEW" | "REWRITE";
+}) {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [series, setSeries] = useState<string>("");
@@ -21,6 +24,7 @@ export default function WriteBoard(props: { postData: any }) {
 
   const router = useRouter();
   const postData = props.postData;
+  const TYPE = props.type;
 
   const initData = useCallback(
     (isClear: boolean) => {
@@ -33,18 +37,18 @@ export default function WriteBoard(props: { postData: any }) {
       setImageTitle([]);
       setError("");
     },
-    [postData],
+    [postData]
   );
 
   useEffect(() => {
-    if (error) alert(error);
+    if (error.length) alert(error);
   }, [error]);
 
   useEffect(() => {
-    if (postData) {
+    if (TYPE === "REWRITE") {
       initData(false);
     }
-  }, [postData, initData]);
+  }, [TYPE, initData]);
 
   const handleImgUpload = useCallback(
     async (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +58,7 @@ export default function WriteBoard(props: { postData: any }) {
         setImageTitle(imageTitle);
       }
     },
-    [],
+    []
   );
 
   const handlePost = async (e: any) => {
@@ -74,10 +78,10 @@ export default function WriteBoard(props: { postData: any }) {
     };
 
     const { data, success } = await postHandler(
-      postData
-        ? JSON.stringify(Object.assign(post, { postid: postData.postId }))
-        : JSON.stringify(post),
-      postData ? "PUT" : "POST",
+      TYPE === "NEW"
+        ? JSON.stringify(post)
+        : JSON.stringify(Object.assign(post, { postid: postData.postId })),
+      TYPE === "NEW" ? "POST" : "PUT"
     );
 
     if (success) {
@@ -86,6 +90,7 @@ export default function WriteBoard(props: { postData: any }) {
       router.push("/admin");
     } else {
       console.log(data);
+      alert(data);
       return setError(data);
     }
   };
@@ -98,13 +103,13 @@ export default function WriteBoard(props: { postData: any }) {
           className={styles.title}
           placeholder="제목"
           value={title}
-          onChange={e => setTitle(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <input
           className="input_small"
           placeholder="시리즈"
           value={series}
-          onChange={e => setSeries(e.target.value)}
+          onChange={(e) => setSeries(e.target.value)}
         />
         <input
           className="write_image"
@@ -125,7 +130,7 @@ export default function WriteBoard(props: { postData: any }) {
         <textarea
           className={styles.textarea}
           value={content}
-          onChange={e => setContent(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
         />
         <div
           className={styles.preview}
@@ -134,13 +139,13 @@ export default function WriteBoard(props: { postData: any }) {
       </div>
       <textarea
         value={description}
-        onChange={e => setDescription(e.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
       />
       <input
         className={styles.input}
         placeholder="스페이스바로 태그를 구분해주세요"
         value={hashtag}
-        onChange={e => setHashtag(e.target.value)}
+        onChange={(e) => setHashtag(e.target.value)}
       />
       <button onClick={handlePost}>Submit</button>
     </div>
