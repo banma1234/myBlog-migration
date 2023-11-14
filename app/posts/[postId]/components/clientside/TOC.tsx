@@ -25,7 +25,7 @@ export default function TOC() {
         listItem += currentId === item.id ? "current" : "none";
 
         return (
-          <Link href={item.id} key={i}>
+          <Link href={`#${item.id}`} key={i}>
             <li className={listItem}>{item.innerText}</li>
           </Link>
         );
