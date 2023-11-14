@@ -5,7 +5,7 @@ export default async function viewIndex() {
   try {
     const { db } = await connectToDatabase();
     const options = {
-      sort: { uploadDate: -1 },
+      sort: { postId: -1 },
       projection: {
         _id: 0,
         title: 1,
