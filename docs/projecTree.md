@@ -1,4 +1,4 @@
-# Project Tree
+# 🌲 Project structure
 
 프로젝트의 폴더구조입니다.
 
