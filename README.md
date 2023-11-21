@@ -63,15 +63,12 @@
   ![next.js](https://img.shields.io/badge/next.js-444444?style=for-the-badge&logo=next.js)
   ![react](https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react)
   ![typescript](https://img.shields.io/badge/typescript-444444?style=for-the-badge&logo=typescript)
-
-  <br/>
+  ![scss](https://img.shields.io/badge/scss-444444?style=for-the-badge&logo=scss)
 
 - 백앤드
 
   ![node.js](https://img.shields.io/badge/node.js-444444?style=for-the-badge&logo=node.js)
   ![mongoDB](https://img.shields.io/badge/mongoDB-444444?style=for-the-badge&logo=mongoDB)
-
-  <br/>
 
 - 배포 및 디자인
 
@@ -79,11 +76,9 @@
   ![vercel](https://img.shields.io/badge/vercel-444444?style=for-the-badge&logo=vercel)
   ![figma](https://img.shields.io/badge/figma-444444?style=for-the-badge&logo=figma)
 
-  <br/>
-
 - 기타 사용 라이브러리
 
-  `next-auth` &nbsp; `marked` &nbsp; `prismjs` &nbsp;`bcrypt`
+  `next-auth` &nbsp; `marked` &nbsp; `prismjs`
 
 - 코드 컨벤션
   https://github.com/airbnb/javascript
