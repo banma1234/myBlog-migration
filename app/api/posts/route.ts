@@ -3,6 +3,7 @@ import {
   viewAll,
   viewPost,
   viewSeries,
+  viewRecommend,
   getGenerateInfo,
   getMetaData,
 } from "./GET";
@@ -25,6 +26,8 @@ export async function GET(req: NextRequest) {
       return viewPost(req);
     case "VIEW_SERIES":
       return viewSeries();
+    case "VIEW_RECOMMEND":
+      return viewRecommend();
     case "GET_STATIC_PARAMS":
       return getGenerateInfo();
     case "GET_META_DATA":

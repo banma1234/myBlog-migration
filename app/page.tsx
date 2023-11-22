@@ -1,31 +1,20 @@
 import { CardLayout, Banner } from "./components/card";
+import { getIndexBoard, getRecommendPost } from "./utils";
 
 export default async function Home() {
-  const { posts } = await getIndexBoard();
+  const [index, recommend] = await Promise.all([
+    getIndexBoard(),
+    getRecommendPost(),
+  ]);
 
   return (
     <section>
       <Banner />
       <h2>🆕 최신 포스트</h2>
-      <CardLayout posts={posts} />
+      <CardLayout posts={index.data} />
+      <h2>👍 추천 포스트</h2>
+      <CardLayout posts={recommend.data} />
+      <h2>🆕 시리즈별로 보기</h2>
     </section>
   );
-}
-
-async function getIndexBoard() {
-  const URL = process.env.DEV_URL;
-
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("viewType", "VIEW_INDEX");
-
-  const res = await fetch(`${URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-    cache: "no-store",
-  });
-  const { data } = await res.json();
-
-  return { posts: data };
 }
