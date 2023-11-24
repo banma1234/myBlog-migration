@@ -14,7 +14,6 @@ export default async function Home() {
       <CardLayout posts={index.data} />
       <h2>👍 추천 포스트</h2>
       <CardLayout posts={recommend.data} />
-      <h2>🆕 시리즈별로 보기</h2>
     </section>
   );
 }
