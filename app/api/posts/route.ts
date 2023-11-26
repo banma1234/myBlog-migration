@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
       return getMetaData();
     default:
       return NextResponse.json({
-        data: `failed to GET postsData : 400 (${viewType})`,
+        data: "failed to GET postsData : 400 " + viewType,
         success: false,
       });
   }

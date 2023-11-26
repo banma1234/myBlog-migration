@@ -11,6 +11,7 @@ export default async function getRecommendPost() {
   const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
+    next: { revalidate: 3600 },
   });
   const { data, success }: { data: CardType[]; success: boolean } =
     await res.json();
