@@ -63,7 +63,7 @@
   ![next.js](https://img.shields.io/badge/next.js-444444?style=for-the-badge&logo=next.js)
   ![react](https://img.shields.io/badge/react-444444?style=for-the-badge&logo=react)
   ![typescript](https://img.shields.io/badge/typescript-444444?style=for-the-badge&logo=typescript)
-  ![scss](https://img.shields.io/badge/scss-444444?style=for-the-badge&logo=scss)
+  ![scss](https://img.shields.io/badge/scss-444444?style=for-the-badge&logo=sass)
 
 - 백앤드
 
