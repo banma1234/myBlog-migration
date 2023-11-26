@@ -99,5 +99,7 @@
 
 ## ⚠️ Trouble shoot
 
-- CDN
-- 대댓글 로직
+프로젝트를 진행하며 당면했던 문제와 그 해결방안을 정리해봤습니다.
+
+- CDN 서버를 활용한 이미지 출력 최적화 : https://chocoham.dev/posts/28
+- 트리 자료구조를 이용한 대댓글 로직 구현 : https://chocoham.dev/posts/31
