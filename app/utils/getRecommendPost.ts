@@ -12,7 +12,12 @@ export default async function getRecommendPost() {
     method: "GET",
     headers: myHeaders,
   });
-  const { data }: { data: CardType[] } = await res.json();
+  const { data, success }: { data: CardType[]; success: boolean } =
+    await res.json();
 
-  return { data };
+  if (!success) {
+    throw new Error(data.toString());
+  }
+
+  return data;
 }

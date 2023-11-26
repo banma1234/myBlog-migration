@@ -11,9 +11,14 @@ export default async function getIndexBoard() {
   const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
-    cache: "no-store",
+    next: { revalidate: 3600 },
   });
-  const { data }: { data: CardType[] } = await res.json();
+  const { data, success }: { data: CardType[]; success: boolean } =
+    await res.json();
 
-  return { data };
+  if (!success) {
+    throw new Error(data.toString());
+  }
+
+  return data;
 }

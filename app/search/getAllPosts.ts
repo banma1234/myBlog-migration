@@ -9,7 +9,7 @@ export default async function getAllPosts() {
   const res = await fetch(`${URL}/api/posts`, {
     method: "GET",
     headers: myHeaders,
-    cache: "no-store",
+    next: { revalidate: 3600 },
   });
   const { data, success } = await res.json();
 

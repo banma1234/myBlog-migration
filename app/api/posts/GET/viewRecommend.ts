@@ -5,7 +5,6 @@ export default async function viewRecommend() {
   try {
     const { db } = await connectToDatabase();
     const options = {
-      sort: { postId: -1 },
       projection: {
         _id: 0,
         title: 1,
@@ -16,10 +15,9 @@ export default async function viewRecommend() {
       },
     };
 
-    const targets = [28, 2, 3];
     const res = await db
       .collection("posts")
-      .find({ postId: { $in: targets } }, options)
+      .find({ postId: { $in: [28, 2, 3] } }, options)
       .toArray();
 
     return NextResponse.json({

@@ -2,18 +2,20 @@ import { CardLayout, Banner } from "./components/card";
 import { getIndexBoard, getRecommendPost } from "./utils";
 
 export default async function Home() {
-  const [index, recommend] = await Promise.all([
-    getIndexBoard(),
-    getRecommendPost(),
-  ]);
+  // const [newest, recommend] = await Promise.all([
+  //   getIndexBoard(),
+  //   getRecommendPost(),
+  // ]);
+  const newest = await getIndexBoard();
+  const recommend = await getRecommendPost();
 
   return (
     <section>
       <Banner />
       <h2>🆕 최신 포스트</h2>
-      <CardLayout posts={index.data} />
+      <CardLayout posts={newest} />
       <h2>👍 추천 포스트</h2>
-      <CardLayout posts={recommend.data} />
+      <CardLayout posts={recommend} />
     </section>
   );
 }
