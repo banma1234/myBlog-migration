@@ -12,7 +12,6 @@ export default function SeriesBoard(props: {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
   const TITLE = `📋 [ ${props.data[0].series} ] 시리즈 몰아보기 (${props.data.length})`;
-  const dropDownName = `container_${isClick}`;
 
   useEffect(() => {
     if (isClick) {
@@ -36,23 +35,38 @@ export default function SeriesBoard(props: {
         </div>
 
         {show && (
-          <div className={dropDownName}>
-            <ul className="container_ul">
-              {props.data.map((item: any, i: number) => {
-                const url = `/posts/${item.postId}`;
-                const postName =
-                  props.postId === item.postId ? "current" : "others";
-
-                return (
-                  <Link href={url} key={i}>
-                    <li className={postName}>{item.title}</li>
-                  </Link>
-                );
-              })}
-            </ul>
-          </div>
+          <SeriesOnPage
+            data={props.data}
+            postId={props.postId}
+            isClick={isClick}
+          />
         )}
       </div>
     </>
   );
 }
+
+const SeriesOnPage = (props: {
+  data: Array<any>;
+  postId: number;
+  isClick: boolean;
+}) => {
+  const dropDownName = `container_${props.isClick}`;
+
+  return (
+    <div className={dropDownName}>
+      <ul className="container_ul">
+        {props.data.map((item: any, i: number) => {
+          const url = `/posts/${item.postId}`;
+          const postName = props.postId === item.postId ? "current" : "others";
+
+          return (
+            <Link href={url} key={i}>
+              <li className={postName}>{item.title}</li>
+            </Link>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};

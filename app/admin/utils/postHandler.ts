@@ -1,6 +1,6 @@
 export default function postHandler(
   data: any,
-  type: "POST" | "PUT" | "DELETE",
+  type: "POST" | "PUT" | "DELETE"
 ) {
   switch (type) {
     case "DELETE":
@@ -10,10 +10,10 @@ export default function postHandler(
   }
 }
 
-async function writePost(data: any, type: string) {
-  const { post } = data;
+async function writePost(data: any, type: "POST" | "PUT") {
+  const post = data;
 
-  const res = await fetch("api/posts", {
+  const res = await fetch("/api/posts", {
     method: type === "POST" ? "POST" : "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +27,7 @@ async function writePost(data: any, type: string) {
 async function deletePosts(data: any) {
   const { target } = data;
 
-  const res = await fetch("api/posts", {
+  const res = await fetch("/api/posts", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

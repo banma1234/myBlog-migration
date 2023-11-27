@@ -3,6 +3,7 @@ import {
   viewAll,
   viewPost,
   viewSeries,
+  viewRecommendPost,
   getGenerateInfo,
   getMetaData,
 } from "./GET";
@@ -25,13 +26,15 @@ export async function GET(req: NextRequest) {
       return viewPost(req);
     case "VIEW_SERIES":
       return viewSeries();
+    case "VIEW_RECOMMENDED_POST":
+      return viewRecommendPost();
     case "GET_STATIC_PARAMS":
       return getGenerateInfo();
     case "GET_META_DATA":
       return getMetaData();
     default:
       return NextResponse.json({
-        data: "failed to GET postsData : 400",
+        data: "failed to GET postsData : 400 " + viewType,
         success: false,
       });
   }

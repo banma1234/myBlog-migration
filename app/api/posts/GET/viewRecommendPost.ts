@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export default async function viewIndex() {
+export default async function viewRecommendPost() {
   try {
     const { db } = await connectToDatabase();
     const options = {
@@ -18,8 +18,7 @@ export default async function viewIndex() {
 
     const res = await db
       .collection("posts")
-      .find({}, options)
-      .limit(6)
+      .find({ postId: { $in: [28, 2, 3] } }, options)
       .toArray();
 
     return NextResponse.json({
@@ -29,7 +28,7 @@ export default async function viewIndex() {
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json({
-      data: "failed to GET indexBoard",
+      data: "failed to GET recommended posts",
       success: false,
     });
   }

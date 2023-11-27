@@ -46,6 +46,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="A1qLguIf9gLBQEkoscbYdxPvOgBxPrI3NF0v3FaFDKU"
+        />
+      </head>
       <body className={myFont.className}>
         <AuthProviders>
           <Header />

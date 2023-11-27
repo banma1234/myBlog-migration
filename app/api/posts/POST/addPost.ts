@@ -63,10 +63,10 @@ export default async function addPost(req: NextRequest) {
       seriesThumbnail = `${process.env.NAVER_CDN_URL}/thumbnail/default/default_thumbnail.svg`;
     }
 
-    const postId = await db.collection("posts").count();
+    let postId = await db.collection("posts").count();
 
     await db.collection("posts").insertOne({
-      postId,
+      postId: postId++,
       title,
       content,
       series,
