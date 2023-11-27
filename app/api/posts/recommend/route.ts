@@ -21,15 +21,25 @@ export async function GET(req: NextRequest) {
       .find({ postId: { $in: [28, 2, 3] } }, options)
       .toArray();
 
-    return NextResponse.json({
-      data: res,
-      success: true,
+    if (!res.length) {
+      return new NextResponse(JSON.stringify({ error: "No posts found" }), {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    return new NextResponse(JSON.stringify({ data: res }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
     });
   } catch (e: unknown) {
-    console.log(e);
-    return NextResponse.json({
-      data: "failed to GET recommended posts",
-      success: false,
-    });
+    console.error(e);
+    return new NextResponse(
+      JSON.stringify({ error: "Internal Server Error" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      },
+    );
   }
 }
