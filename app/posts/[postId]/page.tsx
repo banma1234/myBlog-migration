@@ -52,27 +52,34 @@ export default async function Posts({
 export async function generateStaticParams() {
   const URL = process.env.DEV_URL;
 
-  const myHeaders = new Headers();
-  myHeaders.append("viewtype", "GET_STATIC_PARAMS");
-  const res = await fetch(`${URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-  });
-  const resData = await res.json();
+  try {
+    const res = await fetch(`${URL}/api/seo/static-params`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
 
-  if (!resData.success) {
-    throw new Error(resData.data);
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { count }: { count: number } = await res.json();
+
+    const staticData: Array<{ postId: string }> = new Array();
+    for (let i = 1; i < count + 1; i++) {
+      let target = { postId: i.toString() };
+      staticData.push(target);
+    }
+
+    await generateRssFeed();
+
+    return staticData;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
   }
-
-  const staticData: Array<{ postId: string }> = new Array();
-  for (let i = 1; i < resData.data + 1; i++) {
-    let target = { postId: i.toString() };
-    staticData.push(target);
-  }
-
-  await generateRssFeed();
-
-  return staticData;
 }
 
 export async function generateMetadata({

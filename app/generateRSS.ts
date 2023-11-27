@@ -2,8 +2,8 @@ import fs from "fs";
 import { Feed } from "feed";
 
 export default async function generateRssFeed() {
-  const data = await getMetaData();
-  const url = process.env.DEV_URL as string;
+  const URL = process.env.DEV_URL as string;
+  const data = await getMetaData(URL);
   const date = new Date();
   const author = {
     name: "ChocoHam(@banma1234)",
@@ -15,16 +15,16 @@ export default async function generateRssFeed() {
     title: "ChocoHam 개발 블로그",
     description:
       "프론트앤드 개발자 ChocoHam(@banma1234)의 개발 & 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.",
-    id: url,
-    link: url,
-    image: `${url}/banner.png`,
-    favicon: `${url}/favicon.ico`,
+    id: URL,
+    link: URL,
+    image: `${URL}/banner.png`,
+    favicon: `${URL}/favicon.ico`,
     copyright: `All rights reserved ${date.getFullYear()}`,
     updated: date,
     generator: "chocoham.dev",
     feedLinks: {
-      rss2: `${url}/rss/feed.xml`, // xml format
-      json: `${url}/rss/feed.json`, // json fromat
+      rss2: `${URL}/rss/feed.xml`, // xml format
+      json: `${URL}/rss/feed.json`, // json fromat
     },
     author,
   });
@@ -32,13 +32,12 @@ export default async function generateRssFeed() {
   data.map((post: any) => {
     feed.addItem({
       title: post.title,
-      id: url,
-      link: `${url}/posts/${post.postId}`,
+      id: post.posdId,
+      link: `${URL}/posts/${post.postId}`,
       description: post.description,
-      content: post.content,
       author: [author],
       contributor: [author],
-      date: post.uploadDate,
+      date: new Date(post.uploadDate),
       image: post.thumbnail || "https://chocoham.dev/default_thumbnail.svg",
     });
   });
@@ -49,18 +48,25 @@ export default async function generateRssFeed() {
   fs.writeFileSync(`./public/rss/feed.xml`, feed.rss2(), "utf8");
 }
 
-async function getMetaData() {
-  const myHeaders = new Headers();
-  myHeaders.append("viewtype", "GET_META_DATA");
-  const res = await fetch(`${process.env.DEV_URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-  });
-  const { data, success } = await res.json();
+async function getMetaData(URL: string) {
+  try {
+    const res = await fetch(`${URL}/api/seo/meta-tag`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
 
-  if (!success) {
-    throw new Error(data);
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { data } = await res.json();
+
+    return data;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
   }
-
-  return data;
 }

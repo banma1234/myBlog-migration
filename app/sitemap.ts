@@ -1,12 +1,11 @@
 import { headers } from "next/headers";
 
-const URL = process.env.DEV_URL;
-
 export default async function sitemap() {
+  const URL = process.env.DEV_URL as string;
   const header = headers();
   console.log(header.get("host"));
 
-  const { staticData, date } = await getPostData();
+  const { staticData, date } = await getPostData(URL);
   return [
     {
       url: `${URL}`,
@@ -23,29 +22,33 @@ export default async function sitemap() {
   ];
 }
 
-async function getPostData() {
-  const myHeaders = new Headers();
-  myHeaders.append("viewtype", "GET_STATIC_PARAMS");
+async function getPostData(URL: string) {
+  try {
+    const res = await fetch(`${URL}/api/seo/static-params`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
 
-  const res = await fetch(`${URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-    cache: "no-store",
-  });
-  const resData = await res.json();
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { count, date } = await res.json();
 
-  if (!resData.success) {
-    throw new Error(resData.data);
-  }
-
-  const staticData: Array<number> = new Array(resData.data)
-    .fill(1)
-    .map((id, i) => {
+    const staticData: Array<number> = new Array(count).fill(1).map((id, i) => {
       return (id += i);
     });
 
-  return {
-    staticData: staticData,
-    date: resData.date,
-  };
+    return {
+      staticData: staticData,
+      date: date,
+    };
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }

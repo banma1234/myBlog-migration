@@ -13,27 +13,51 @@ export default function postHandler(
 async function writePost(data: any, type: "POST" | "PUT") {
   const post = data;
 
-  const res = await fetch("/api/posts", {
-    method: type === "POST" ? "POST" : "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(post),
-  });
+  try {
+    const res = await fetch("/api/admin/post", {
+      method: type,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(post),
+    });
 
-  return await res.json();
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { message } = await res.json();
+
+    return message;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }
 
 async function deletePosts(data: any) {
   const { target } = data;
 
-  const res = await fetch("/api/posts", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(target),
-  });
+  try {
+    const res = await fetch("/api/posts", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(target),
+    });
 
-  return await res.json();
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { message } = await res.json();
+
+    return message;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }

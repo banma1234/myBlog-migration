@@ -21,25 +21,36 @@ export const authConfig: NextAuthConfig = {
         },
       },
       async authorize(credentials) {
-        const res = await fetch(`${process.env.DEV_URL}/api/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
-          }),
-        });
-        const { data, success } = await res.json();
-        const user: User = {
-          id: data.email,
-          email: data.email,
-          name: data.name,
-          image: data.image,
-        };
+        try {
+          const res = await fetch(`${process.env.DEV_URL}/api/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: credentials?.email,
+              password: credentials?.password,
+            }),
+          });
 
-        return success ? user : null;
+          if (!res.ok) {
+            const failed = await res.json();
+            throw new Error(failed.error as string);
+          }
+          const { userData } = await res.json();
+          const user: User = {
+            id: userData.email,
+            email: userData.email,
+            name: userData.name,
+            image: userData.image,
+          };
+
+          return user;
+        } catch (e: unknown) {
+          if (e instanceof Error) {
+            throw new Error(e.message);
+          } else {
+            throw new Error("Unknown error");
+          }
+        }
       },
     }),
   ],
