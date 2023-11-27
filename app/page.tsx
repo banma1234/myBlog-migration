@@ -2,12 +2,10 @@ import { CardLayout, Banner } from "./components/card";
 import { getIndexBoard, getRecommendPost } from "./utils";
 
 export default async function Home() {
-  // const [newest, recommend] = await Promise.all([
-  //   getIndexBoard(),
-  //   getRecommendPost(),
-  // ]);
-  const newest = await getIndexBoard();
-  const recommend = await getRecommendPost();
+  const [newest, recommend] = await Promise.all([
+    getIndexBoard(),
+    getRecommendPost(),
+  ]);
 
   return (
     <section>
