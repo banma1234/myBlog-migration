@@ -1,29 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export default async function getComment(req: NextRequest) {
-  const postId = req.nextUrl.searchParams.get("postid");
-
+export async function GET() {
   try {
     const { db } = await connectToDatabase();
     const options = {
-      sort: { REF: 1, RE_STEP: 1 },
+      sort: { postId: 1 },
+      projection: {
+        _id: 0,
+        title: 1,
+        hashtag: 1,
+        description: 1,
+        thumbnail: 1,
+        postId: 1,
+        uploadDate: 1,
+      },
     };
+    const res = await db.collection("posts").find({}, options).toArray();
 
-    const comment = await db
-      .collection("comments")
-      .find({ postId: Number(postId) }, options)
-      .toArray();
-
-    if (!comment.length) {
+    if (!res.length) {
       return NextResponse.json(
-        { error: "comment not found" },
+        { error: "documents not found" },
         { status: 404, headers: { "Content-Type": "application/json" } }
       );
     }
 
     return NextResponse.json(
-      { comment: comment },
+      { data: res },
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (e: unknown) {

@@ -18,23 +18,22 @@ export async function POST(req: NextRequest) {
 
     const res = await bcrypt.compare(password, userData[0].password);
     if (!res) {
-      return NextResponse.json({
-        data: "invalid password",
-        success: false,
-      });
+      return NextResponse.json(
+        { error: "invalid password" },
+        { status: 404, headers: { "Content-Type": "application/json" } }
+      );
     }
-
     delete userData[0]["password"];
 
-    return NextResponse.json({
-      data: userData[0],
-      success: true,
-    });
+    return NextResponse.json(
+      { userData: userData[0] },
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
   } catch (e: unknown) {
     console.log(e);
-    return NextResponse.json({
-      data: "failed to GET staticparams",
-      success: false,
-    });
+    return NextResponse.json(
+      { error: "internal Server Error" },
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }

@@ -39,21 +39,21 @@ export default async function deleteComment(req: NextRequest) {
       );
       await db.collection("comments").deleteOne({ _id: targetComment[0]._id });
 
-      return NextResponse.json({
-        message: "Comment deleted successfully",
-        success: true,
-      });
+      return NextResponse.json(
+        { message: `comment deleted successfully at ${newBody.postId}` },
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
     } else {
-      return NextResponse.json({
-        message: "invalid password issue",
-        success: false,
-      });
+      return NextResponse.json(
+        { error: "invalid password error" },
+        { status: 404, headers: { "Content-Type": "application/json" } }
+      );
     }
   } catch (e: unknown) {
     console.log(e);
-    return NextResponse.json({
-      message: "failed to DELETE comment",
-      success: false,
-    });
+    return NextResponse.json(
+      { error: "internal Server Error" },
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
