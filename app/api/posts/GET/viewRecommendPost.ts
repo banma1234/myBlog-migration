@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export default async function viewRecommend() {
+export default async function viewRecommendPost() {
   try {
     const { db } = await connectToDatabase();
     const options = {
+      sort: { postId: -1 },
       projection: {
         _id: 0,
         title: 1,

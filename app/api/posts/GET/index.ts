@@ -2,7 +2,7 @@ import viewIndex from "./viewIndex";
 import viewAll from "./viewAll";
 import viewPost from "./viewPost";
 import viewSeries from "./viewSeries";
-import viewRecommend from "./viewRecommend";
+import viewRecommendPost from "./viewRecommendPost";
 import getGenerateInfo from "./getGenerateInfo";
 import getMetaData from "./getMetaData";
 
@@ -13,7 +13,7 @@ const Components = {
   viewSeries,
   getGenerateInfo,
   getMetaData,
-  viewRecommend,
+  viewRecommendPost,
 };
 
 export default Components;
@@ -25,5 +25,5 @@ export {
   viewSeries,
   getGenerateInfo,
   getMetaData,
-  viewRecommend,
+  viewRecommendPost,
 };

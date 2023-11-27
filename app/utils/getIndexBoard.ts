@@ -13,11 +13,11 @@ export default async function getIndexBoard() {
     headers: myHeaders,
     next: { revalidate: 3600 },
   });
-  const { data, success }: { data: CardType[]; success: boolean } =
+  const { data, success }: { data: CardType[] | string; success: boolean } =
     await res.json();
 
-  if (!success) {
-    throw new Error(data.toString());
+  if (!success || typeof data === "string") {
+    throw new Error(data as string);
   }
 
   return data;
