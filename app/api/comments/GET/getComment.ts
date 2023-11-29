@@ -15,22 +15,15 @@ export default async function getComment(req: NextRequest) {
       .find({ postId: Number(postId) }, options)
       .toArray();
 
-    if (!comment.length) {
-      return NextResponse.json(
-        { error: "comment not found" },
-        { status: 404, headers: { "Content-Type": "application/json" } }
-      );
-    }
-
     return NextResponse.json(
       { comment: comment },
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      { status: 200, headers: { "Content-Type": "application/json" } },
     );
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json(
       { error: "internal Server Error" },
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }
 }

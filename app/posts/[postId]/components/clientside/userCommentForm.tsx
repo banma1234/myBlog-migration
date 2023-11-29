@@ -96,12 +96,10 @@ export default function UserCommentForm(props: UserCommentFormType) {
       content: userComment,
       isAdmin: session ? true : false,
     };
-    const res = await commentHandler(
-      { comment, commentType: props.type },
-      "POST",
-    );
 
-    res.success ? initData() : alert(res.message);
+    await commentHandler({ comment, commentType: props.type }, "POST");
+
+    initData();
   };
 
   return (

@@ -12,10 +12,8 @@ export default function commentHandler(data: any, type: string) {
 }
 
 async function getComment(postid: string) {
-  const URL = process.env.DEV_URL as string;
-
   try {
-    const res = await fetch(`${URL}/api/comments?postid=${postid}`, {
+    const res = await fetch(`/api/comments?postid=${postid}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       cache: "no-store",
@@ -57,9 +55,8 @@ async function addComment(data: {
       const failed = await res.json();
       throw new Error(failed.error as string);
     }
-    const { message } = await res.json();
 
-    return message;
+    return;
   } catch (e: unknown) {
     if (e instanceof Error) {
       throw new Error(e.message);
