@@ -28,28 +28,26 @@ const treeHandler: TreeHandlerType = {
   },
 
   RE_STEP(data, type) {
-    if (data) {
-      switch (type) {
-        case "DEFAULT":
-          return 0;
-        case "REPLY":
-          return data.RE_STEP + 1;
-      }
+    if (data && type === "REPLY") {
+      return data.RE_STEP;
     } else {
       return 0;
     }
   },
 
   RE_LEVEL(data, type) {
-    if (data) {
-      switch (type) {
-        case "DEFAULT":
-          return 0;
-        case "REPLY":
-          return data.RE_LEVEL + 1;
-      }
+    if (data && type === "REPLY") {
+      return data.RE_LEVEL + 1;
     } else {
       return 0;
+    }
+  },
+
+  RE_PARENT(data, type) {
+    if (data && type === "REPLY") {
+      return data._id;
+    } else {
+      return undefined;
     }
   },
 };
@@ -89,6 +87,7 @@ export default function UserCommentForm(props: UserCommentFormType) {
       REF: treeHandler.REF(props.data, props.type),
       RE_STEP: treeHandler.RE_STEP(props.data, props.type),
       RE_LEVEL: treeHandler.RE_LEVEL(props.data, props.type),
+      RE_PARENT: treeHandler.RE_PARENT(props.data, props.type),
       postId: props.postId,
       date: parseDate(new Date()),
       writter: session ? (session.user?.name as string) : userName,

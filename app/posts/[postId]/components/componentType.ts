@@ -29,6 +29,7 @@ export interface UserCommentType {
   REF: number;
   RE_STEP: number;
   RE_LEVEL: number;
+  RE_PARENT?: string | undefined;
   postId: number;
   date: string;
   writter: string;
@@ -50,6 +51,10 @@ export interface TreeHandlerType {
     data: UserCommentFormType["data"],
     type: UserCommentFormType["type"],
   ) => number;
+  RE_PARENT: (
+    data: UserCommentFormType["data"],
+    type: UserCommentFormType["type"],
+  ) => string | undefined;
 }
 
 export interface DropdownType {
