@@ -23,9 +23,9 @@ export default function CommentMenu(props: DropdownType) {
     }
 
     const target: TargetType = { password: password, ...props.data };
-    const resData = await commentHandler(target, "DELETE");
+    await commentHandler(target, "DELETE");
 
-    resData.success ? initData() : alert(resData.message);
+    initData();
   };
 
   return (
