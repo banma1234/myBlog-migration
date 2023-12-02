@@ -2,6 +2,9 @@ import fs from "fs";
 import { Feed } from "feed";
 
 export default async function generateRssFeed() {
+  if (process.env.ENVIRONMENT === "develop") {
+    return;
+  }
   const URL = process.env.DEV_URL as string;
   const data = await getMetaData(URL);
   const date = new Date();
