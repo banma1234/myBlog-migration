@@ -1,21 +1,27 @@
+import { CardType } from "app/components/componentType";
+
 export default async function getAllPosts() {
   const URL = process.env.DEV_URL;
 
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("viewType", "VIEW_ALL");
+  try {
+    const res = await fetch(`${URL}/api/dashboard?viewtype=all`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      next: { revalidate: 3600 },
+    });
 
-  const res = await fetch(`${URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-    next: { revalidate: 3600 },
-  });
-  const { data, success } = await res.json();
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { data }: { data: CardType[] } = await res.json();
 
-  if (!success) {
-    throw new Error(data);
+    return data;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
   }
-
-  return data;
 }

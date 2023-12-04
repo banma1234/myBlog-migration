@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 import { getServerSession } from "next-auth/next";
 import { authConfig } from "app/auth/auth";
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  ObjectCannedACL,
+  PutObjectCommand,
+  S3Client,
+} from "@aws-sdk/client-s3";
 
 export async function POST(req: NextRequest) {
   const session = getServerSession(authConfig);
@@ -30,7 +34,7 @@ export async function POST(req: NextRequest) {
       Bucket: "choco-image",
       Key: `thumbnail/${imageTitle[0]}`,
       Body: imageBuffer,
-      ACL: "public-read",
+      ACL: ObjectCannedACL.public_read,
       ContentEncoding: "base64",
       ContentType: `image/${contentType}`,
     };

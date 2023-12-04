@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  ObjectCannedACL,
+  PutObjectCommand,
+  S3Client,
+} from "@aws-sdk/client-s3";
 
 export default async function rewritePost(req: NextRequest) {
   try {
@@ -34,7 +38,7 @@ export default async function rewritePost(req: NextRequest) {
           Bucket: "choco-image",
           Key: `images/${imageTitle[i]}`,
           Body: imageBuffer,
-          ACL: "public-read",
+          ACL: ObjectCannedACL.public_read,
           ContentEncoding: "base64",
           ContentType: `image/${contentType}`,
         };
@@ -64,31 +68,40 @@ export default async function rewritePost(req: NextRequest) {
       seriesThumbnail = null;
     }
 
-    await db.collection("posts").updateOne(
-      { postId: postid },
-      {
-        postId: postid,
-        title,
-        content,
-        series,
-        hashtag,
-        description,
-        thumbnail: isThumbnail ? inherentThumbnail : seriesThumbnail,
-        imageTitle: imageTitle,
-        isThumbnail,
-        uploadDate,
-      },
-    );
+    await db
+      .collection("posts")
+      .updateOne(
+        { postId: postid },
+        {
+          postId: postid,
+          title,
+          content,
+          series,
+          hashtag,
+          description,
+          thumbnail: isThumbnail ? inherentThumbnail : seriesThumbnail,
+          imageTitle: imageTitle,
+          isThumbnail,
+          uploadDate,
+        },
+      )
+      .catch((e: unknown) => {
+        console.log(e);
+        return NextResponse.json(
+          { error: "target not found : REWRITE" },
+          { status: 404, headers: { "Content-Type": "application/json" } },
+        );
+      });
 
-    return NextResponse.json({
-      data: "post added successfully",
-      success: true,
-    });
+    return NextResponse.json(
+      { message: `comment edited successfully at ${postid}` },
+      { status: 200, headers: { "Content-Type": "application/json" } },
+    );
   } catch (e: unknown) {
     console.log(e);
-    return NextResponse.json({
-      data: "failed to PUT data",
-      success: false,
-    });
+    return NextResponse.json(
+      { error: "internal Server Error" },
+      { status: 500, headers: { "Content-Type": "application/json" } },
+    );
   }
 }

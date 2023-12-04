@@ -13,14 +13,15 @@ export default async function addComment(req: NextRequest) {
 
     await db.collection("comments").insertOne(newBody);
 
-    return NextResponse.json({
-      message: "Comment added successfully",
-      success: true,
-    });
+    return NextResponse.json(
+      { message: `comment added successfully at ${newBody.postId} : DEFAULT` },
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
   } catch (e: unknown) {
-    return NextResponse.json({
-      message: "failed to POST comment : 500",
-      success: false,
-    });
+    console.log(e);
+    return NextResponse.json(
+      { error: "internal Server Error" },
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }

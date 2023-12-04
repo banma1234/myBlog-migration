@@ -11,23 +11,28 @@ export default function commentHandler(data: any, type: string) {
   }
 }
 
-const URL = process.env.DEV_URL || "";
+async function getComment(postid: string) {
+  try {
+    const res = await fetch(`/api/comments?postid=${postid}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
 
-async function getComment(postId: string) {
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("postid", postId);
-  const res = await fetch(`${URL}/api/comments`, {
-    method: "GET",
-    headers: myHeaders,
-    cache: "no-store",
-  });
-  const comments = await res.json();
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { comment } = await res.json();
 
-  return comments.success && comments["message"].length
-    ? comments["message"]
-    : undefined;
+    return comment;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }
 
 async function addComment(data: {
@@ -36,25 +41,51 @@ async function addComment(data: {
 }) {
   const { comment, commentType } = data;
 
-  const myHeaders = new Headers({});
-  myHeaders.append("commenttype", commentType);
+  try {
+    const myHeaders = new Headers({ "Content-Type": "application/json" });
+    myHeaders.append("commenttype", commentType);
 
-  const res = await fetch("/api/comments", {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(comment),
-  });
-  const resData = await res.json();
+    const res = await fetch("/api/comments", {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(comment),
+    });
 
-  return resData;
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+
+    return;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }
 
 async function deleteComment(target: TargetType) {
-  const res = await fetch("/api/comments", {
-    method: "DELETE",
-    body: JSON.stringify(target),
-  });
-  const resData = await res.json();
+  try {
+    const res = await fetch(`/api/comments`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(target),
+    });
 
-  return resData;
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { message } = await res.json();
+
+    return message;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }
