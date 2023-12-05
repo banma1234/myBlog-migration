@@ -3,11 +3,11 @@ import getAllPosts from "./getAllPosts";
 import styles from "./styles/page.module.scss";
 
 export default async function Search() {
-  // const data = await getAllPosts();
+  const data = await getAllPosts();
 
   return (
     <section className={styles.search}>
-      {/* <SearchBoard data={data} /> */}
+      <SearchBoard data={data} />
     </section>
   );
 }
