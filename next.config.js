@@ -7,6 +7,9 @@ const nextConfig = {
       "lh3.googleusercontent.com",
     ],
   },
+  experimental: {
+    taint: true,
+  },
 };
 
 module.exports = nextConfig;
