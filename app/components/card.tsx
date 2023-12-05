@@ -17,6 +17,9 @@ const MY_TAG = [
   "design",
 ].join(" ");
 
+const MY_INTRO =
+  "프론트앤드 디발자, 웹 개자이너 초코햄입니다. javascript 기반의 프론트앤드 개발을 주력으로 하고 있으며 일러스트 및 웹디자인 또한 다룹니다.";
+
 const myFont = Black_Han_Sans({
   weight: ["400"],
   subsets: ["latin"],
@@ -71,11 +74,7 @@ export function Banner() {
         </div>
         <div className="banner_info">
           <h1 className={myFont.className}>ChocoHam 개발 블로그</h1>
-          <p>
-            프론트앤드 디발자, 웹 개자이너 초코햄입니다. javascript 기반의
-            프론트앤드 개발을 주력으로 하고 있으며 일러스트 및 웹디자인 또한
-            다룹니다.
-          </p>
+          <p>{MY_INTRO}</p>
         </div>
         <HashTag hashTag={MY_TAG} />
       </div>

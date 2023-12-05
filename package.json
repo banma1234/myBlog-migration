@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -turbo",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8080",
     "lint": "next lint",
     "deploy": "vercel-deploy"
   },
@@ -15,7 +15,7 @@
     "bcrypt": "^5.1.1",
     "marked": "7.0.3",
     "mongodb": "^5.0.0",
-    "next": "13.5.2",
+    "next": "^14.0.3",
     "next-auth": "^4.23.2",
     "prismjs": "^1.29.0",
     "react": "18.2.0",
@@ -31,7 +31,7 @@
     "@types/react-dom": "18.2.11",
     "@types/rss": "^0.0.31",
     "eslint": "8.51.0",
-    "eslint-config-next": "13.5.2",
+    "eslint-config-next": "^14.0.3",
     "feed": "^4.2.2",
     "sass": "^1.69.0",
     "typescript": "5.1.6"

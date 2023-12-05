@@ -1,17 +1,25 @@
 export default async function getSeriesInfo() {
   const URL = process.env.DEV_URL;
 
-  const myHeaders = new Headers({
-    "Content-Type": "text/html; charset=utf-8",
-  });
-  myHeaders.append("viewType", "VIEW_SERIES");
+  try {
+    const res = await fetch(`${URL}/api/dashboard?viewtype=series`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
 
-  const res = await fetch(`${URL}/api/posts`, {
-    method: "GET",
-    headers: myHeaders,
-    cache: "no-store",
-  });
-  const { data } = await res.json();
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
+    }
+    const { series } = await res.json();
 
-  return data;
+    return series;
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else {
+      throw new Error("Unknown error");
+    }
+  }
 }

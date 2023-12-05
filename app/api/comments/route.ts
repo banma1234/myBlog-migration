@@ -17,10 +17,10 @@ export async function POST(req: NextRequest) {
     case "REPLY":
       return addReply(req);
     default:
-      return NextResponse.json({
-        message: "failed to POST comment : 400",
-        success: false,
-      });
+      return NextResponse.json(
+        { error: "invalid comment type" },
+        { status: 404, headers: { "Content-Type": "application/json" } }
+      );
   }
 }
 

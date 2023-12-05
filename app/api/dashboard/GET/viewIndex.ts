@@ -5,7 +5,7 @@ export default async function viewIndex() {
   try {
     const { db } = await connectToDatabase();
     const options = {
-      sort: { uploadDate: -1 },
+      sort: { postId: -1 },
       projection: {
         _id: 0,
         title: 1,
@@ -22,15 +22,22 @@ export default async function viewIndex() {
       .limit(6)
       .toArray();
 
-    return NextResponse.json({
-      data: res,
-      success: true,
-    });
+    if (!res.length) {
+      return NextResponse.json(
+        { error: "posts not found : viewIndex" },
+        { status: 404, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    return NextResponse.json(
+      { data: res },
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
   } catch (e: unknown) {
     console.log(e);
-    return NextResponse.json({
-      data: "failed to GET indexBoard",
-      success: false,
-    });
+    return NextResponse.json(
+      { error: "internal Server Error" },
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }

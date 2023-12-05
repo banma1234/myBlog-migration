@@ -1,36 +1,39 @@
-import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
-const bcrypt = require("bcrypt");
+import { NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export default async function viewRecommed() {
   try {
     const { db } = await connectToDatabase();
-    const { email, password } = await req.json();
     const options = {
-      sort: { postId: 1 },
-      projection: { _id: 0 },
+      sort: { postId: -1 },
+      projection: {
+        _id: 0,
+        title: 1,
+        uploadDate: 1,
+        thumbnail: 1,
+        postId: 1,
+        description: 1,
+      },
     };
 
-    const userData = await db
-      .collection("user")
-      .find({ email: email }, options)
+    const res = await db
+      .collection("posts")
+      .find({ postId: { $in: [28, 2, 3] } }, options)
       .toArray();
 
-    const res = await bcrypt.compare(password, userData[0].password);
-    if (!res) {
+    if (!res.length) {
       return NextResponse.json(
-        { error: "invalid password" },
+        { error: "posts not found : viewRecommend" },
         { status: 404, headers: { "Content-Type": "application/json" } }
       );
     }
-    delete userData[0]["password"];
 
     return NextResponse.json(
-      { userData: userData[0] },
+      { data: res },
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (e: unknown) {
-    console.log(e);
+    console.error(e);
     return NextResponse.json(
       { error: "internal Server Error" },
       { status: 500, headers: { "Content-Type": "application/json" } }

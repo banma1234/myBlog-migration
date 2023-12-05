@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export default async function viewPost(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { postid: string } },
+) {
   try {
-    let postId = req.headers.get("postid");
+    let postId = params.postid[0];
     let { db } = await connectToDatabase();
     const options = {
       projection: {
@@ -33,21 +36,28 @@ export default async function viewPost(req: NextRequest) {
       },
     };
 
-    const posts = await db
+    const post = await db
       .collection("posts")
       .find({ postId: Number(postId) }, options)
       .toArray();
+
+    if (!post.length) {
+      return NextResponse.json(
+        { error: "post not found" },
+        { status: 404, headers: { "Content-Type": "application/json" } },
+      );
+    }
 
     let recentPosts = undefined;
     try {
       let temp = await db
         .collection("posts")
-        .find({ series: posts[0].series, postId: { $ne: postId } }, options2)
+        .find({ series: post[0].series, postId: { $ne: postId } }, options2)
         .toArray();
 
       if (temp) recentPosts = temp;
     } catch {
-      console.log("no recent posts");
+      console.log("no recent post");
     }
 
     let both = await db
@@ -66,17 +76,19 @@ export default async function viewPost(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({
-      data: posts,
-      recent: recentPosts,
-      bothSidePosts: both,
-      success: true,
-    });
+    return NextResponse.json(
+      {
+        post: post[0],
+        recent: recentPosts,
+        bothSidePosts: both,
+      },
+      { status: 200, headers: { "Content-Type": "application/json" } },
+    );
   } catch (e: unknown) {
     console.log(e);
-    return NextResponse.json({
-      data: "failed to GET post",
-      success: false,
-    });
+    return NextResponse.json(
+      { error: "internal Server Error" },
+      { status: 500, headers: { "Content-Type": "application/json" } },
+    );
   }
 }

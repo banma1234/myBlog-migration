@@ -1,10 +1,13 @@
 import { CardType } from "app/components/componentType";
+import { headers } from "next/headers";
 
-export default async function getAllPosts() {
+export default async function getIndexBoard() {
   const URL = process.env.DEV_URL;
+  const header = headers();
+  console.log(header.get("host"));
 
   try {
-    const res = await fetch(`${URL}/api/dashboard?viewtype=all`, {
+    const res = await fetch(`${URL}/api/dashboard?viewtype=index`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       next: { revalidate: 3600 },

@@ -15,7 +15,7 @@ export default function Login() {
 
   const verifyEmail = () => {
     const regex = new RegExp(
-      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
+      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
     );
     return regex.test(email);
   };
@@ -31,15 +31,21 @@ export default function Login() {
       return setError("이메일 혹은 비밀번호를 입력해주세요.");
     if (!verifyEmail) return setError("잘못된 이메일 형식입니다.");
 
-    const res = await signIn("credentials", {
-      email: email,
-      password: password,
-      redirect: true,
-      callbackUrl: "/",
-    });
-
-    if (!res) return setError("해당 계정을 찾을 수 없습니다.");
-    return;
+    try {
+      await signIn("credentials", {
+        email: email,
+        password: password,
+        redirect: true,
+        callbackUrl: "/",
+      });
+      return;
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(e.message);
+      } else {
+        throw new Error("Unknown error");
+      }
+    }
   };
 
   return (
@@ -50,14 +56,14 @@ export default function Login() {
           className={styles.input}
           value={email}
           placeholder="e-mail"
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className={styles.input}
           value={password}
           type="password"
           placeholder="password"
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <hr />
         <button className={styles.button} onClick={handleLogin}>
