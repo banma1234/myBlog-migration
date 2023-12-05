@@ -49,6 +49,7 @@ export default async function Posts({
   );
 }
 
+/*
 export async function generateStaticParams() {
   const URL = process.env.DEV_URL;
 
@@ -81,6 +82,7 @@ export async function generateStaticParams() {
     }
   }
 }
+*/
 
 export async function generateMetadata({
   params,

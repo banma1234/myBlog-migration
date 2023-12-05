@@ -1,7 +1,10 @@
 import { CardType } from "app/components/componentType";
+import { headers } from "next/headers";
 
 export default async function getIndexBoard() {
   const URL = process.env.DEV_URL;
+  const header = headers();
+  console.log(header.get("host"));
 
   try {
     const res = await fetch(`${URL}/api/dashboard?viewtype=index`, {
