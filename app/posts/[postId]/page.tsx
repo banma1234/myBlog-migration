@@ -50,7 +50,7 @@ export default async function Posts({
 }
 
 export async function generateStaticParams() {
-  const URL = process.env.DEV_URL;
+  const URL = process.env.DEV_URL as string;
 
   try {
     const res = await fetch(`${URL}/api/seo/static-params`, {
@@ -87,7 +87,7 @@ export async function generateMetadata({
 }: {
   params: { postId: string };
 }): Promise<Metadata> {
-  const URL = process.env.DEV_URL;
+  const URL = process.env.DEV_URL as string;
   const { postId } = params;
   const { post } = await getPost(postId);
 
@@ -115,7 +115,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       creator: "초코햄",
-      images: post.thumbnail,
+      images: post.thumbnail || `${URL}/default_thumbnail.svg`,
     },
   };
 }
