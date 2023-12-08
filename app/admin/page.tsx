@@ -1,10 +1,16 @@
 import { getAllPosts, getSeriesInfo } from "./utils";
+import type { Metadata } from "next";
 import PostsView from "./components/clientside/postsView";
 
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default async function Admin() {
-  const postData = getAllPosts();
-  const seriesData = getSeriesInfo();
-  const [posts, series] = await Promise.all([postData, seriesData]);
+  const [posts, series] = await Promise.all([getAllPosts(), getSeriesInfo()]);
 
   return (
     <div>

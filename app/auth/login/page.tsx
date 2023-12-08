@@ -15,7 +15,7 @@ export default function Login() {
 
   const verifyEmail = () => {
     const regex = new RegExp(
-      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
     );
     return regex.test(email);
   };
@@ -49,30 +49,28 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.login}>
-      <div className={styles.container} onKeyDown={handleKeyDown}>
-        <h1>Login</h1>
-        <input
-          className={styles.input}
-          value={email}
-          placeholder="e-mail"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className={styles.input}
-          value={password}
-          type="password"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <hr />
-        <button className={styles.button} onClick={handleLogin}>
-          Submit
-        </button>
-        <p className={styles.description}>
-          관리자 로그인 페이지로 일반 사용자는 회원가입 및 로그인할 수 없습니다.
-        </p>
-      </div>
-    </div>
+    <section className={styles.container} onKeyDown={handleKeyDown}>
+      <h1>Login</h1>
+      <input
+        className={styles.input}
+        value={email}
+        placeholder="e-mail"
+        onChange={e => setEmail(e.target.value)}
+      />
+      <input
+        className={styles.input}
+        value={password}
+        type="password"
+        placeholder="password"
+        onChange={e => setPassword(e.target.value)}
+      />
+      <hr />
+      <button className={styles.button} onClick={handleLogin}>
+        Submit
+      </button>
+      <p className={styles.description}>
+        관리자 로그인 페이지로 일반 사용자는 회원가입 및 로그인할 수 없습니다.
+      </p>
+    </section>
   );
 }

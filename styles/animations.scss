@@ -15,21 +15,6 @@
   animation: #{$str};
 }
 
-/*
-  * 카드 위로 뜨는 애니메이션
-  */
-@include keyframes(cardUp) {
-  0% {
-    top: 0;
-  }
-  50% {
-    top: -0.5rem;
-  }
-  100% {
-    top: -0;
-  }
-}
-
 @include keyframes(input_true) {
   0% {
     width: 0;
