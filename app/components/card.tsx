@@ -49,6 +49,9 @@ export function CardLayout(props: { posts: Array<CardType> }) {
                       height: "10rem",
                     }}
                   />
+                  <div className="overlap">
+                    <h3>{item.title}</h3>
+                  </div>
                 </div>
                 <div className="card_info">
                   <h3 className="card_title">{item.title}</h3>
