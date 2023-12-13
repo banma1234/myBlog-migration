@@ -75,20 +75,12 @@ export default function WriteBoard(props: {
       isThumbnail,
     };
 
-    const { data, success } = await postHandler(
+    const { message } = await postHandler(
       TYPE === "NEW" ? post : Object.assign(post, { postid: postData.postId }),
       TYPE === "NEW" ? "POST" : "PUT",
     );
 
-    if (success) {
-      initData(true);
-      alert("게시글 작성이 완료되었습니다.");
-      router.push("/admin");
-    } else {
-      console.log(data);
-      alert(data);
-      return setError(data);
-    }
+    alert(message);
   };
 
   return (
