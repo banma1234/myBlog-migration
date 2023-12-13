@@ -1,0 +1,18 @@
+@import "styles/utils.scss";
+
+.error_image {
+  border-radius: 3rem;
+}
+
+.error_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem 0 5rem 0;
+
+  h2:hover {
+    color: $color_base;
+    transition: all 0.3s;
+  }
+}
