@@ -4,7 +4,7 @@ export default async function getRecommendPost() {
   const URL = process.env.DEV_URL;
 
   try {
-    const res = await fetch(`${URL}/api/dashboard?viewtype=recommend`, {
+    const res = await fetch(`${URL || ""}/api/dashboard?viewtype=recommend`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
