@@ -8,8 +8,8 @@ export default function ArticleLayout({
 }) {
   return (
     <>
-      <article className={styles.article}>
-        <section className={styles.article}>{children}</section>
+      <article>
+        <section>{children}</section>
       </article>
       <aside className={styles.TOC}>
         <TOC />
