@@ -37,27 +37,24 @@ export default function Thumbnail() {
       images,
     };
 
-    let response = await fetch("/api/thumbnail", {
+    const res = await fetch("/api/thumbnail", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(thumbnail),
     });
 
-    const data = await response.json();
-
-    if (data.success) {
-      initData();
-      alert("썸네일 등록이 완료되었습니다.");
-    } else {
-      console.log(data.message);
-      return setError(data.message);
+    if (!res.ok) {
+      const failed = await res.json();
+      throw new Error(failed.error as string);
     }
+    initData();
+    const { message } = await res.json();
+
+    alert(message);
   };
 
   return (
-    <>
+    <section>
       <h1>시리즈 썸네일 등록</h1>
       <input type="file" onChange={handleImgUpload} />
       <input
@@ -66,6 +63,7 @@ export default function Thumbnail() {
         value={series}
         onChange={e => setSeries(e.target.value)}
       />
-    </>
+      <button onClick={handleThumbnail}>제출</button>
+    </section>
   );
 }
