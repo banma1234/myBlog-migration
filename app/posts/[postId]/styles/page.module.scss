@@ -1,9 +1,5 @@
 @import "styles/utils.scss";
 
-.article {
-  margin-top: 6rem;
-}
-
 .TOC {
   display: flex;
   justify-content: flex-start;
@@ -62,6 +58,7 @@
   margin: 0 auto;
   overflow: hidden;
   text-align: center;
+  margin-top: 6rem;
 
   @media all and (max-width: $mobile) {
     display: none;
