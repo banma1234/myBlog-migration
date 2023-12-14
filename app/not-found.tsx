@@ -1,9 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-
+import { useState, useEffect } from "react";
+import { getRecommendPost } from "./utils";
+import { CardLayout } from "./components/card";
+import { CardType } from "./components/componentType";
 import "./styles/errorStyle.scss";
 
 export default function NotFound() {
+  const [recommend, setRecommend] = useState<CardType[]>(new Array<CardType>());
+
+  useEffect(() => {
+    const fetchRecommendData = async () => {
+      const res = await getRecommendPost();
+      setRecommend(res);
+    };
+
+    fetchRecommendData();
+  }, []);
+
   return (
     <section className="error_container">
       <Image
@@ -11,13 +27,22 @@ export default function NotFound() {
         src="/404.svg"
         alt="404 banner"
         width={600}
-        height={565}
+        height={560}
       />
-      <div>
+      <div className="error_nav">
+        <Link href="/">
+          <button>메인화면 바로가기</button>
+        </Link>
         <Link href="/search">
-          <h2>👉 포스트 검색으로 이동하세요!</h2>
+          <button>검색창 바로가기</button>
         </Link>
       </div>
+      {recommend.length != 0 && (
+        <div>
+          <h2>추천 포스트</h2>
+          <CardLayout posts={recommend} />
+        </div>
+      )}
     </section>
   );
 }

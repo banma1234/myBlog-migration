@@ -2,6 +2,7 @@
 
 .error_image {
   border-radius: 3rem;
+  margin-bottom: 2rem;
 }
 
 .error_container {
@@ -9,10 +10,26 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 5rem 0 5rem 0;
+  margin: 5rem;
+}
 
-  h2:hover {
-    color: $color_base;
-    transition: all 0.3s;
+.error_nav {
+  display: flex;
+  column-gap: 2rem;
+  margin-bottom: 2rem;
+
+  button {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 1px solid $color_high;
+    background-color: inherit;
+    color: $color_high;
+    box-shadow: none;
+    width: auto;
+
+    &:hover {
+      transition: all 0.5s;
+      background-color: $color_high;
+      color: $color_gray;
+    }
   }
 }
