@@ -16,7 +16,8 @@ export default function Error({
 
   return (
     <>
-      {error.message === "post not found" ? (
+      {error.digest === "NEXT_NOT_FOUND" ||
+      error.message === "NEXT_NOT_FOUND" ? (
         <NotFound />
       ) : (
         <section>
