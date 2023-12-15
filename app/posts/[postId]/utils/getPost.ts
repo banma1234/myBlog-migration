@@ -5,12 +5,14 @@ export default cache(async function getPost(postId: string) {
   const postid = postId;
 
   try {
-    const res = await fetch(`${URL}/api/posts/${postid}`, {
+    const res = await fetch(`${URL || ""}/api/posts/${postid}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
 
-    if (!res.ok) {
+    if (res.status === 404) {
+      return undefined;
+    } else if (!res.ok) {
       const failed = await res.json();
       throw new Error(failed.error as string);
     }
