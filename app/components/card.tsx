@@ -74,7 +74,7 @@ export function Banner() {
       <div className="banner">
         <div className="banner_thumbnail">
           <Image
-            src="https://choco-image-server.cdn.ntruss.com/images/banner.png"
+            src="https://choco-image-server.cdn.ntruss.com/build/banner.png"
             alt="Banner Img"
             layout="fill"
           />

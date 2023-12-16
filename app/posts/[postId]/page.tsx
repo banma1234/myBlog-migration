@@ -4,6 +4,7 @@ import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import Image from "next/image";
 import generateRssFeed from "app/generateRSS";
+import { notFound } from "next/navigation";
 import { CommentBox } from "./components/clientside";
 import { getPost, mdParser } from "./utils";
 import { CardLayout } from "app/components/card";
@@ -15,7 +16,11 @@ export default async function Posts({
   params: { postId: string };
 }) {
   const { postId } = params;
-  const { post, recent, bothSidePosts } = await getPost(postId);
+  const resData = await getPost(postId).then(res => {
+    return res ? res : notFound();
+  });
+
+  const { post, recent, bothSidePosts } = resData;
   const recentPosts = recent
     .filter((post: any) => post.postId != postId)
     .slice(-3);
@@ -89,7 +94,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const URL = process.env.DEV_URL as string;
   const { postId } = params;
-  const { post } = await getPost(postId);
+  const resData = await getPost(postId).then(res => {
+    return res ? res : notFound();
+  });
+
+  const { post } = resData;
 
   return {
     title: post.title,
