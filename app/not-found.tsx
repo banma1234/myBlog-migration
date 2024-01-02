@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getRecommendPost } from "./utils";
-import { Suspense } from "react";
 import { CardLayout } from "./components/card";
 import { CardType } from "./components/componentType";
 import "./styles/errorStyle.scss";
@@ -51,9 +50,9 @@ export default function NotFound() {
 export function LoadingUi() {
   return (
     <div className="container">
-      {new Array(3).fill(1).map(() => {
+      {new Array(3).fill(true).map((item: boolean, i: number) => {
         return (
-          <div className="skeleton">
+          <div className="skeleton" key={i}>
             <div className="skeleton__thumbnail" />
             <div className="skeleton__info">
               <div className="skeleton__article" />
