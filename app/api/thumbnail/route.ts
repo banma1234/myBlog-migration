@@ -35,19 +35,19 @@ export async function POST(req: NextRequest) {
       Key: `thumbnail/${imageTitle[0]}`,
       Body: imageBuffer,
       ACL: ObjectCannedACL.public_read,
-      ContentEncoding: "base64",
       ContentType: `image/${contentType}`,
     };
 
-    const putImagesCommand = new PutObjectCommand(params);
-    try {
-      await client.send(putImagesCommand);
-    } catch (e: unknown) {
-      console.log(e);
-    }
+    await client
+      .send(new PutObjectCommand(params))
+      .then(() => console.log("success"))
+      .catch(e => {
+        console.log(e);
+      });
+
     imageContainer.push({
       data: imageBuffer,
-      contentType: imageTitle[0].split(".").pop(), // Replace this with the actual content type of the image
+      contentType: imageTitle[0].split(".").pop(),
     });
 
     await db.collection("thumbnail").insertOne({

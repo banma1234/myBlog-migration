@@ -75,12 +75,15 @@ export default function WriteBoard(props: {
       isThumbnail,
     };
 
-    const { message } = await postHandler(
+    await postHandler(
       TYPE === "NEW" ? post : Object.assign(post, { postid: postData.postId }),
       TYPE === "NEW" ? "POST" : "PUT",
-    );
+    ).then(res => {
+      console.log(res);
+      alert(res);
+    });
 
-    alert(message);
+    router.replace("/admin");
   };
 
   return (
