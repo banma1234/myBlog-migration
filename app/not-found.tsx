@@ -13,8 +13,9 @@ export default function NotFound() {
 
   useEffect(() => {
     const fetchRecommendData = async () => {
-      const res = await getRecommendPost();
-      setRecommend(res);
+      await getRecommendPost().then(res => {
+        setRecommend(res);
+      });
     };
 
     fetchRecommendData();
@@ -28,6 +29,7 @@ export default function NotFound() {
         alt="404 banner"
         width={600}
         height={560}
+        style={{ maxWidth: "100%", minWidth: "28rem" }}
       />
       <div className="error_nav">
         <Link href="/">
@@ -37,12 +39,28 @@ export default function NotFound() {
           <button>검색창 바로가기</button>
         </Link>
       </div>
-      {recommend.length != 0 && (
-        <div>
-          <h2>추천 포스트</h2>
-          <CardLayout posts={recommend} />
-        </div>
-      )}
+      <div>
+        <h2>추천 포스트</h2>
+        {!recommend.length ? <LoadingUi /> : <CardLayout posts={recommend} />}
+      </div>
     </section>
+  );
+}
+
+export function LoadingUi() {
+  return (
+    <div className="container">
+      {new Array(3).fill(true).map((item: boolean, i: number) => {
+        return (
+          <div className="skeleton" key={i}>
+            <div className="skeleton__thumbnail" />
+            <div className="skeleton__info">
+              <div className="skeleton__article" />
+              <div className="skeleton__description" />
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }

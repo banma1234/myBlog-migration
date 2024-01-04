@@ -38,7 +38,6 @@ export default async function addPost(req: NextRequest) {
           Key: `images/${imageTitle[i]}`,
           Body: imageBuffer,
           ACL: ObjectCannedACL.public_read,
-          ContentEncoding: "base64",
           ContentType: `image/${contentType}`,
         };
         if (isThumbnail && i === 1) {
