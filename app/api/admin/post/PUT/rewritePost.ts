@@ -94,7 +94,7 @@ export default async function rewritePost(req: NextRequest) {
       });
 
     return NextResponse.json(
-      { message: `comment edited successfully at ${postid}` },
+      { message: `edit post successfully at ${postid}` },
       { status: 200, headers: { "Content-Type": "application/json" } },
     );
   } catch (e: unknown) {
