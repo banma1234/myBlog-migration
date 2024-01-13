@@ -1,5 +1,6 @@
-import { marked } from "marked";
+import iconHandler from "util/iconHandler";
 import prism from "prismjs";
+import { marked } from "marked";
 
 import "../styles/prism_custom.scss";
 import "../styles/mdParserStyle.scss";
@@ -52,12 +53,33 @@ export default function mdParser(content: string) {
       .replace(/\t|\\n/, "");
 
     return `
+        <script>
+          function copyCode(dom) {
+            window.getSelection().selectAllChildren(dom.parentElement.querySelector('table'));
+            document.execCommand('copy');
+
+            const origin = dom.innerHTML;
+            dom.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-icon="check" class="i-check"><path fill="white" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>';
+
+            dom.style.background = "#29c941";
+            setTimeout(() => {
+              dom.innerHTML = origin;
+              dom.style.background = "var(--color-codeblock)";
+            }, 1000);
+          }
+        </script>
+
         <div class="codeblock">
           <div class="top">
             <div></div>
             <div></div>
             <div></div>
           </div>
+
+          <button onClick="copyCode(this)" title="복사">
+            ${copyIcon}
+          </button>
+
           <pre class="language-${langClass}">
             <table>
               <tbody>${line}</tbody>
@@ -86,3 +108,13 @@ export default function mdParser(content: string) {
 
   return { __html: rawMd };
 }
+
+const copyIcon = `<svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#f0f3f5"
+          className="bi bi-clipboard"
+          viewBox="0 0 16 16"
+        >
+          <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+          <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>`;

@@ -92,4 +92,18 @@ code:not([class*="language-"]) {
       padding: 0.2rem 1rem 0.2rem 2rem;
     }
   }
+
+  button {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-codeblock);
+    cursor: pointer;
+    border: none;
+    box-shadow: none;
+    border-radius: 10px;
+    transition: 0.5s;
+  }
 }
