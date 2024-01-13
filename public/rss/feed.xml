@@ -4,7 +4,7 @@
         <title>ChocoHam 개발 블로그</title>
         <link>https://chocoham.dev</link>
         <description>프론트앤드 개발자 ChocoHam(@banma1234)의 개발 &amp; 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.</description>
-        <lastBuildDate>Fri, 08 Dec 2023 09:05:43 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 13 Jan 2024 08:56:14 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
@@ -13,7 +13,7 @@
             <url>https://choco-image-server.cdn.ntruss.com/images/banner.png</url>
             <link>https://chocoham.dev</link>
         </image>
-        <copyright>All rights reserved 2023, ChocoHam</copyright>
+        <copyright>All rights reserved 2024, ChocoHam</copyright>
         <category>technologies</category>
         <item>
             <title><![CDATA[[python]백준_1256 : 사전]]></title>
@@ -472,6 +472,41 @@
             <category>naver</category>
             <category>AWS</category>
             <enclosure url="https://choco-image-server.cdn.ntruss.com/thumbnail/myblog_thumbnail.webp" length="0" type="image/webp"/>
+        </item>
+        <item>
+            <title><![CDATA[네이버 CDN 서버를 활용한 Markdown 이미지 첨부(3)]]></title>
+            <link>https://chocoham.dev/posts/30</link>
+            <guid>https://chocoham.dev/posts/30</guid>
+            <pubDate>Sat, 16 Dec 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[네이버 CDN 서버를 활용한 Markdown 이미지 첨부(3)]]></description>
+            <content:encoded><![CDATA[AWS S3에서 제공하는 javascript SDK를 이용해 node.js 환경에서 파일(이미지)를 api 요청을 통해 전송해보겠습니다. @aws-sdk/client-s3 모듈을 설치 후 next.js의 원하는 api 엔드포인트에서 route.ts를 작성합니다. S3 클라이언트에 연결하기 위한 객체를 선언하고 접근권한(ACL), 경로 등을 설정하고 Buffer 객체에 이미지를 담아 S3에 전송합니다. 바이너리 데이터로 이미지를 변환해 api의 요청사항을 만족시킵니다. 이미지를 별도의 DB에 분산저장(백업) 하여 데이터의 무결성을 유지합니다.]]></content:encoded>
+            <author>banma1234@gmail.com (ChocoHam(@banma1234))</author>
+            <category>javascript</category>
+            <category>CDN</category>
+            <category>next.js</category>
+            <category>markdown</category>
+            <category>AWS</category>
+            <category>S3</category>
+            <category>mongoDB</category>
+            <category>데이터무결성</category>
+            <enclosure url="https://choco-image-server.cdn.ntruss.com/thumbnail/myblog_thumbnail.webp" length="0" type="image/webp"/>
+        </item>
+        <item>
+            <title><![CDATA[Next.js 13+에서 무한 대댓글 구현 (with mongoDB)]]></title>
+            <link>https://chocoham.dev/posts/31</link>
+            <guid>https://chocoham.dev/posts/31</guid>
+            <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Next.js 13+에서 무한 대댓글 구현 (with mongoDB)]]></description>
+            <content:encoded><![CDATA[next.js 13 이상의 버전에서 mongoDB와 계층형 트리구조를 활용한 무한 대댓글을 구현하였습니다. 댓글가 대댓글의 그룹으로 묶어 관리하는 REF, 댓글의 순서를 결정하는 RE_STEP, 댓글의 들여쓰기 레벨을 의미하는 RE_LEVEL, 부모 댓글의 고유 식별자를 의미하는 RE_PARENT 총 4개의 속성을 이용해 자동으로 대댓글의 위치를 조정하도록 하였습니다. 클라이언트에서는 React의 hooks를 활용해 interactive한 사용자 경험을 제공하고 next.js의 serverless function을 활용해 대댓글 작성 api를 손쉽게 구현하였습니다.]]></content:encoded>
+            <author>banma1234@gmail.com (ChocoHam(@banma1234))</author>
+            <category>next.js</category>
+            <category>mongoDB</category>
+            <category>무한대댓글</category>
+            <category>대댓글</category>
+            <category>typescript</category>
+            <category>트리</category>
+            <category>계층형트리</category>
+            <enclosure url="https://choco-image-server.cdn.ntruss.com/images/Frame_1.png" length="0" type="image/png"/>
         </item>
     </channel>
 </rss>
