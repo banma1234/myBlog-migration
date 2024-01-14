@@ -1,25 +1,5 @@
 @use "./utils.scss" as *;
 
-:root {
-  --color-text: #{$color_gray};
-  --color-background: #{$color-black_high};
-  --color-codeblock: #{$color_black};
-  --color-card: #{$color_black};
-  --color-low: #{$color_black_low};
-
-  // prism-tomorrow
-  --prism-maintext: #ccc;
-  --prism-text: #999;
-  --prism-keywords: #cc99cd;
-  --prism-punctuation: #ccc;
-  --prism-functions: #f08d49;
-  --prism-strings: #7ec699;
-  --prism-namespace: #e2777a;
-  --prism-names: #6196cc;
-  --prism-symbol: #f8c555;
-  --prism-url: #9a6e3a;
-}
-
 html[data-theme="light"] {
   --color-text: #{$color_black_low};
   --color-background: #ffffff;
@@ -38,4 +18,24 @@ html[data-theme="light"] {
   --prism-names: #6196cc;
   --prism-symbol: #dd4a68;
   --prism-url: #67cdcc;
+}
+
+html[data-theme="dark"] {
+  --color-text: #{$color_gray};
+  --color-background: #{$color-black_high};
+  --color-codeblock: #{$color_black};
+  --color-card: #{$color_black};
+  --color-low: #{$color_black_low};
+
+  // prism-tomorrow
+  --prism-maintext: #ccc;
+  --prism-text: #999;
+  --prism-keywords: #cc99cd;
+  --prism-punctuation: #ccc;
+  --prism-functions: #f08d49;
+  --prism-strings: #7ec699;
+  --prism-namespace: #e2777a;
+  --prism-names: #6196cc;
+  --prism-symbol: #f8c555;
+  --prism-url: #9a6e3a;
 }
