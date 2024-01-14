@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { AuthProviders } from "util/context/authProvider";
 import { NavIcon } from "./components/clientside/navIcon";
 import { Noto_Sans_KR } from "next/font/google";
