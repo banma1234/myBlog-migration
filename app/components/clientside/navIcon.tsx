@@ -5,25 +5,23 @@ import iconHandler from "util/iconHandler";
 import "app/styles/navButton.scss";
 
 export const NavIcon = () => {
-  const [current, setCurrent] = useState("dark");
+  const [current, setCurrent] = useState("");
 
   useEffect(() => {
-    const THEME = window.localStorage.getItem("THEME");
-    THEME ? setCurrent(THEME) : "dark";
+    const THEME = document.documentElement.getAttribute("data-theme");
+    THEME ? setCurrent(THEME) : setCurrent("light");
   }, []);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", current);
-  }, [current]);
 
   const handleIcon = () => {
     switch (current) {
       case "dark":
         window.localStorage.setItem("THEME", "light");
+        document.documentElement.setAttribute("data-theme", "light");
         setCurrent("light");
         break;
       case "light":
         window.localStorage.setItem("THEME", "dark");
+        document.documentElement.setAttribute("data-theme", "dark");
         setCurrent("dark");
         break;
     }

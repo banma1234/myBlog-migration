@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { AuthProviders } from "util/context/authProvider";
 import { NavIcon } from "./components/clientside/navIcon";
 import { Noto_Sans_KR } from "next/font/google";
@@ -47,6 +48,18 @@ export default function RootLayout({
         />
       </head>
       <body className={myFont.className}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const localStorageTheme = localStorage.getItem("THEME");
+              const theme = localStorageTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+              if (theme === 'dark') {
+                document.documentElement.setAttribute("data-theme", "dark");
+              } else {
+                document.documentElement.setAttribute("data-theme", "light")
+              }`,
+          }}
+        ></script>
         <AuthProviders>
           <Header />
           <main className={styles.main}>
