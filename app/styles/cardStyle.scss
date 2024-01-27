@@ -105,6 +105,9 @@
   row-gap: 3rem;
   padding-top: 2rem;
   margin: 0 0 6rem 0;
+  // fadeIn 애니메이션
+  opacity: 0;
+  transform: translate3d(0, 30%, 0);
 
   @media all and (max-width: $tablet) {
     grid-template-columns: 1fr 1fr;
