@@ -30,6 +30,6 @@ function detectKeyCombinations(e) {
 window.addEventListener('keydown', detectKeyCombinations);
 `;
 
-const GLOBAL_SCRIPT = THEME_SCRIPT + "\n" + CLIENT_SECURE_SCRIPT;
+const GLOBAL_SCRIPT = THEME_SCRIPT + "\n" + CLIENT_SECURE_SCRIPT + "\n";
 
 export default GLOBAL_SCRIPT;
