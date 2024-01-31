@@ -9,7 +9,6 @@ if (theme === 'dark') {
 `;
 
 const CLIENT_SECURE_SCRIPT = `
-// 특정 키 조합 감지 함수
 function detectKeyCombinations(e) {
     const forbiddenKeys = ['I', 'J', 'C', 'F12', 'U'];
     const isForbiddenKey = forbiddenKeys.includes(e.key.toUpperCase()) || forbiddenKeys.includes(e.key);
