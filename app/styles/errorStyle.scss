@@ -1,11 +1,11 @@
 @import "styles/utils.scss";
 
-.error_image {
+.error__image {
   border-radius: 10%;
   margin-bottom: 2rem;
 }
 
-.error_container {
+.error__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   margin: 5rem;
 }
 
-.error_nav {
+.error__nav {
   display: flex;
   column-gap: 2rem;
   margin-bottom: 2rem;
@@ -35,7 +35,7 @@
   }
 }
 
-.container {
+.loading {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -45,40 +45,11 @@
   margin: 0 0 6rem 0;
 }
 
-.skeleton {
+.loading__image {
   position: relative;
-  background-color: var(--color-card);
   width: 16.875rem;
   height: 22rem;
   cursor: pointer;
-
-  &__thumbnail {
-    margin: 1rem;
-    background-color: var(--color-low);
-    width: auto;
-    height: 40%;
-    border-radius: 1rem;
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    justify-content: flex-start;
-    padding: 0 1rem 0 1rem;
-    margin-top: 1rem;
-  }
-
-  &__article {
-    width: 80%;
-    height: 2.5rem;
-    border-radius: 1rem;
-    background-color: var(--color-low);
-  }
-
-  &__description {
-    height: 6rem;
-    border-radius: 1rem;
-    background-color: var(--color-low);
-  }
+  display: flex;
+  justify-content: center;
 }

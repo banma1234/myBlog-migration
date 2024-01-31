@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
 import { Session } from "next-auth";
+import { Tooltip } from "..";
 import "app/styles/headerStyle.scss";
 
 export default function UserProfile() {
@@ -37,9 +38,9 @@ export default function UserProfile() {
 
 const Login = () => {
   return (
-    <Link href="/auth/login" title="관리자 로그인">
-      {iconHandler("profile", "23")}
-    </Link>
+    <Tooltip title={"관리자 로그인"}>
+      <Link href="/auth/login">{iconHandler("profile", "23")}</Link>
+    </Tooltip>
   );
 };
 
