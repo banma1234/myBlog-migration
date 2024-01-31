@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import iconHandler from "util/iconHandler";
 import UserProfile from "./clientside/userProfile";
+import { Tooltip } from ".";
 import "../styles/headerStyle.scss";
 
 export default async function Header() {
@@ -16,14 +17,16 @@ export default async function Header() {
         </Link>
         <ul>
           <li>
-            <Link href="/search" title="포스트 검색">
-              {iconHandler("search", "20")}
-            </Link>
+            <Tooltip title={"포스트 검색"}>
+              <Link href="/search">{iconHandler("search", "20")}</Link>
+            </Tooltip>
           </li>
           <li>
-            <Link href="https://github.com/banma1234" title="프로젝트">
-              {iconHandler("launch", "20")}
-            </Link>
+            <Tooltip title={"프로젝트"}>
+              <Link href="https://github.com/banma1234">
+                {iconHandler("launch", "20")}
+              </Link>
+            </Tooltip>
           </li>
           <li>
             <UserProfile />

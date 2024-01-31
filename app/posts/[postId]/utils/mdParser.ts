@@ -59,8 +59,11 @@ export default function mdParser(content: string) {
           <div></div>
         </div>
 
-        <button onClick="copyCode(this)" title="복사">
-          ${copyIcon}
+        <button onClick="copyCode(this)">
+          <div class="tooltip">
+            ${copyIcon}
+            <span class="tooltip__text">코드 복사</span>
+          </div>
         </button>
 
         <pre class="language-${langClass}">
