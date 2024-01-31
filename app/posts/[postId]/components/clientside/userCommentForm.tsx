@@ -102,13 +102,13 @@ export default function UserCommentForm(props: UserCommentFormType) {
   };
 
   return (
-    <div className="comment_form">
+    <div className="comment__form">
       {props.type === "DEFAULT" && <ToastMessage>{message}</ToastMessage>}
-      <div className="comment_form_input">
+      <div className="comment__form__input">
         {!session && (
           <input
-            id="input_nickname"
-            className="input_small"
+            id="input__nickname"
+            className="input__small"
             value={userName}
             placeholder="닉네임"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -117,8 +117,8 @@ export default function UserCommentForm(props: UserCommentFormType) {
           />
         )}
         <input
-          id="input_password"
-          className="input_small"
+          id="input__password"
+          className="input__small"
           value={password}
           placeholder="비밀번호"
           type="password"
@@ -128,13 +128,13 @@ export default function UserCommentForm(props: UserCommentFormType) {
         />
       </div>
       <textarea
-        id="textarea_comment"
+        id="textarea__comment"
         value={userComment}
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setUserComment(e.target.value)
         }
       />
-      <div className="comment_form_button">
+      <div className="comment__form__button">
         <button onClick={submitComment}>Submit</button>
       </div>
     </div>

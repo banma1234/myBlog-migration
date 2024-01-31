@@ -1,11 +1,11 @@
 /*
 * eyframe animation 처리 함수
 */
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes #{$animation-name} {
+@mixin keyframes($animation_name) {
+  @-webkit-keyframes #{$animation_name} {
     @content;
   }
-  @keyframes #{$animation-name} {
+  @keyframes #{$animation_name} {
     @content;
   }
 }

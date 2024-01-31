@@ -14,7 +14,7 @@ export default function PostNavigate(props: { both: any }) {
     <>
       {both[0] && (
         <Link href={routePath.previous}>
-          <div className="navigate_left">
+          <div className="navigate__left">
             {iconHandler("arrowLeft", "2rem", "#77a6f7")}
             <ul>
               <li className="small">
@@ -27,7 +27,7 @@ export default function PostNavigate(props: { both: any }) {
       )}
       {both[1] && (
         <Link href={routePath.next}>
-          <div className="navigate_right">
+          <div className="navigate__right">
             <ul>
               <li className="small">Next</li>
               <li>{both[1].title}</li>

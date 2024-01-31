@@ -11,14 +11,14 @@
   padding: 1rem;
   color: $color_gray;
 
-  &_profile {
+  &__profile {
     position: relative;
     width: 12rem;
     height: auto;
     border-radius: 100%;
   }
 
-  &_layout {
+  &__layout {
     display: flex;
     flex-direction: row;
     column-gap: 1rem;

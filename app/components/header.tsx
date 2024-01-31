@@ -8,9 +8,9 @@ import "../styles/headerStyle.scss";
 export default async function Header() {
   return (
     <header className="header">
-      <div className="header_container">
-        <Link className="header_logo" href="/">
-          <div className="header_logo_img">
+      <div className="header__container">
+        <Link className="header__logo" href="/">
+          <div className="header__logo_img">
             <Image src="/favicon.ico" alt="logo Img" width={22} height={22} />
           </div>
           <span>초코햄의 개발 블로그</span>

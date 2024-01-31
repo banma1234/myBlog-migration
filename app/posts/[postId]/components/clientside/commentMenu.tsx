@@ -31,7 +31,7 @@ export default function CommentMenu(props: DropdownType) {
   return (
     <div className="dropdown">
       <input
-        className="dropdown_input_small"
+        className="dropdown__input__small"
         value={password}
         type="password"
         placeholder="password"
@@ -39,7 +39,7 @@ export default function CommentMenu(props: DropdownType) {
           setPassword(e.target.value)
         }
       />
-      <button className="dropdown_button" onClick={deleteComment}>
+      <button className="dropdown__button" onClick={deleteComment}>
         Submit
       </button>
     </div>

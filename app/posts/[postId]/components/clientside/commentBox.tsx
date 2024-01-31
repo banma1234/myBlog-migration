@@ -14,7 +14,7 @@ export default function CommentBox(props: { postId: number }) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    new Array<CommentType>(),
+    new Array<CommentType>()
   );
 
   const { data: session } = useSession();
@@ -48,30 +48,32 @@ export default function CommentBox(props: { postId: number }) {
           return (
             <div className="comment" key={i}>
               <div
-                className="comment_id"
+                className="comment__id"
                 style={{ width: `${100 - item.RE_LEVEL * 6}%` }}
                 key={i}
               >
                 <Image
-                  className="comment_profile"
+                  className="comment__profile"
                   src={item.isAdmin ? (item.profile as string) : "/profile.jpg"}
                   alt="profile"
                   width={70}
                   height={70}
                 />
                 <div className="content">
-                  <div className="content_info">
-                    <span className="content_info_writter">{item.writter}</span>
+                  <div className="content__info">
+                    <span className="content__info__writter">
+                      {item.writter}
+                    </span>
                     {item.isAdmin && (
-                      <span className="content_info_admin">Admin</span>
+                      <span className="content__info__admin">Admin</span>
                     )}
-                    <span className="content_info_date">{item.date}</span>
+                    <span className="content__info__date">{item.date}</span>
                   </div>
                   {item.content}
                 </div>
                 <div>
                   <div
-                    className="content_icon"
+                    className="content__icon"
                     onClick={() => {
                       setTarget(item._id, "MENU");
                     }}
@@ -87,7 +89,7 @@ export default function CommentBox(props: { postId: number }) {
                   )}
                 </div>
                 <div
-                  className="content_menu"
+                  className="content__menu"
                   onClick={() => {
                     setTarget(item._id, "REPLY");
                   }}

@@ -22,7 +22,7 @@ export default function UserProfile() {
 
   return (
     <>
-      <div className="user_profile" onClick={handleDropDown}>
+      <div className="user__profile" onClick={handleDropDown}>
         {session ? <Logout session={session} /> : <Login />}
       </div>
       {click && (
@@ -50,7 +50,7 @@ const Logout = (props: { session: Session }) => {
   return (
     <div>
       <Image
-        className="user_profile"
+        className="user__profile"
         src={session.user?.image as string}
         alt="user profile"
         width={30}
