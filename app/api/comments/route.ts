@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     default:
       return NextResponse.json(
         { error: "invalid comment type" },
-        { status: 404, headers: { "Content-Type": "application/json" } }
+        { status: 404, headers: { "Content-Type": "application/json" } },
       );
   }
 }

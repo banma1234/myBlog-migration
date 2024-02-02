@@ -17,7 +17,7 @@ export default async function Posts({
   params: { postId: string };
 }) {
   const { postId } = params;
-  const resData = await getPost(postId).then((res) => {
+  const resData = await getPost(postId).then(res => {
     return res ? res : notFound();
   });
 
@@ -102,7 +102,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const URL = process.env.DEV_URL as string;
   const { postId } = params;
-  const resData = await getPost(postId).then((res) => {
+  const resData = await getPost(postId).then(res => {
     return res ? res : notFound();
   });
 

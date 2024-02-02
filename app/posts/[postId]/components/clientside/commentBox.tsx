@@ -14,7 +14,7 @@ export default function CommentBox(props: { postId: number }) {
   const [menuClick, setMenuClick] = useState(false);
   const [commentId, setCommentId] = useState("");
   const [comments, setComments] = useState<Array<CommentType> | undefined>(
-    new Array<CommentType>()
+    new Array<CommentType>(),
   );
 
   const { data: session } = useSession();

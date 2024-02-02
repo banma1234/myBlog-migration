@@ -37,7 +37,7 @@ export default function WriteBoard(props: {
       setImageTitle([]);
       setError("");
     },
-    [postData]
+    [postData],
   );
 
   useEffect(() => {
@@ -77,8 +77,8 @@ export default function WriteBoard(props: {
 
     await postHandler(
       TYPE === "NEW" ? post : Object.assign(post, { postid: postData.postId }),
-      TYPE === "NEW" ? "POST" : "PUT"
-    ).then((res) => {
+      TYPE === "NEW" ? "POST" : "PUT",
+    ).then(res => {
       console.log(res);
       alert(res);
     });
@@ -94,13 +94,13 @@ export default function WriteBoard(props: {
           className={styles.title}
           placeholder="제목"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={e => setTitle(e.target.value)}
         />
         <input
           className="input__small"
           placeholder="시리즈"
           value={series}
-          onChange={(e) => setSeries(e.target.value)}
+          onChange={e => setSeries(e.target.value)}
         />
         <input
           className="write__image"
@@ -121,7 +121,7 @@ export default function WriteBoard(props: {
         <textarea
           className={styles.textarea}
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={e => setContent(e.target.value)}
         />
         <div
           className={styles.preview}
@@ -130,13 +130,13 @@ export default function WriteBoard(props: {
       </div>
       <textarea
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={e => setDescription(e.target.value)}
       />
       <input
         className={styles.input}
         placeholder="스페이스바로 태그를 구분해주세요"
         value={hashtag}
-        onChange={(e) => setHashtag(e.target.value)}
+        onChange={e => setHashtag(e.target.value)}
       />
       <button onClick={handlePost}>Submit</button>
     </div>
