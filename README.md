@@ -78,7 +78,7 @@
 
 - 기타 사용 라이브러리
 
-  `next-auth` &nbsp; `marked` &nbsp; `prismjs`
+  `next-auth` &nbsp; `marked` &nbsp; `prismjs` &nbsp; `feed`
 
 - 코드 컨벤션
   https://github.com/airbnb/javascript
