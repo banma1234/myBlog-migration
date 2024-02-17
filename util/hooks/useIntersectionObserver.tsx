@@ -12,11 +12,11 @@ export default function useIntersectionObserver({
     if (elements.length === 0) return;
 
     observer.current = new IntersectionObserver(callback, options);
-    elements.forEach(el => observer.current?.observe(el));
+    elements.forEach((el) => observer.current?.observe(el));
 
     return () => {
       if (observer.current) {
-        elements.forEach(el => observer.current?.unobserve(el));
+        elements.forEach((el) => observer.current?.unobserve(el));
         observer.current.disconnect();
       }
     };
