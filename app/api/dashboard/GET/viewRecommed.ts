@@ -18,7 +18,7 @@ export default async function viewRecommed() {
 
     const res = await db
       .collection("posts")
-      .find({ postId: { $in: [28, 2, 3] } }, options)
+      .find({ postId: { $in: [31, 28, 2] } }, options)
       .toArray();
 
     if (!res.length) {
