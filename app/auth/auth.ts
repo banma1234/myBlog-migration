@@ -4,14 +4,17 @@ import type {
   NextApiResponse,
 } from "next";
 import type { NextAuthOptions as NextAuthConfig, User } from "next-auth";
+import type { Adapter } from "next-auth/adapters";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import { adpaterPromise } from "util/mongodb";
 import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authConfig: NextAuthConfig = {
+  adapter: MongoDBAdapter(adpaterPromise()) as Adapter,
   providers: [
     CredentialsProvider({
       name: "Admin Login",
-
       credentials: {
         email: { label: "e-mail", type: "text", placeholder: "e-mail" },
         password: {
@@ -21,6 +24,15 @@ export const authConfig: NextAuthConfig = {
         },
       },
       async authorize(credentials) {
+        const adapter = authConfig.adapter;
+
+        if (!credentials || !credentials.email || !credentials.password) {
+          throw new Error("제대로 입력해라");
+        }
+        if (!adapter) {
+          throw new Error("어뎁터 확인해바");
+        }
+
         try {
           const res = await fetch(`${process.env.DEV_URL}/api/login`, {
             method: "POST",
@@ -35,6 +47,7 @@ export const authConfig: NextAuthConfig = {
             const failed = await res.json();
             throw new Error(failed.error as string);
           }
+
           const { userData } = await res.json();
           const user: User = {
             id: userData.email,
@@ -56,11 +69,13 @@ export const authConfig: NextAuthConfig = {
   ],
   secret: process.env.AUTH_SECRET as string,
   session: {
+    strategy: "database",
     maxAge: 60 * 60 * 24 * 7,
     updateAge: 24 * 60 * 60,
   },
   callbacks: {
-    async session({ session }) {
+    async session({ session, user }) {
+      // session.accessToken = user;
       return session;
     },
   },
