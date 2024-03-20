@@ -9,10 +9,10 @@
 <table>
   <tr>
     <td>
-      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/a4fd17c8-fbbb-45f4-8c33-5ab3a37b37e5"/>
+      <image src="https://choco-image-server.cdn.ntruss.com/build/blog_main.gif"/>
     </td>
         <td>
-      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/671e2562-89c5-44c2-a7b6-279f8bfb2122"/>
+      <image src="https://choco-image-server.cdn.ntruss.com/build/reply_new.gif2"/>
     </td>
   </tr>
   <tr>
