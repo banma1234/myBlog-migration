@@ -1,20 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
-import { getServerSession } from "next-auth/next";
-import { authConfig } from "app/auth/auth";
+import { cookies } from "next/headers";
 import {
   ObjectCannedACL,
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
+import { verifyJwt } from "app/auth/handleJWT";
 
 export async function POST(req: NextRequest) {
-  const session = getServerSession(authConfig);
-  if (!session) {
-    return NextResponse.json({
-      message: "access denied",
-      success: false,
-    });
+  const cookieStore = cookies();
+  const token = cookieStore.get("next-auth.session-token");
+
+  if (!token || verifyJwt(token.value)) {
+    return NextResponse.json(
+      { message: `Authentication failed` },
+      { status: 401, headers: { "Content-Type": "application/json" } },
+    );
   }
 
   try {
