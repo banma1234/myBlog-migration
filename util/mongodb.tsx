@@ -5,7 +5,6 @@ const MONGODB_DB = process.env.DB_NAME;
 
 let cachedClient: any = null;
 let cachedDb: any = null;
-let clientPromise: Promise<MongoClient>;
 
 export async function connectToDatabase() {
   if (!MONGODB_URL) {
@@ -43,14 +42,4 @@ export async function connectToDatabase() {
     client: cachedClient,
     db: cachedDb,
   };
-}
-
-export function adpaterPromise() {
-  if (!MONGODB_URL) {
-    throw new Error("Define the MONGODB_URL environmental variable");
-  }
-  let client = new MongoClient(MONGODB_URL);
-  clientPromise = client.connect();
-
-  return clientPromise;
 }
