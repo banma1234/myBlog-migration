@@ -2,21 +2,29 @@
 
 import Link from "next/link";
 import "../../styles/TOCStyle.scss";
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import useIntersectionObserver from "util/hooks/useIntersectionObserver";
+import { useState, useEffect } from "react";
 
 export default function TOC() {
   const [currentId, setCurrentId] = useState<string>("");
   const [headerItems, setHeaderItems] = useState<Element[]>([]);
 
   useEffect(() => {
-    const observer = getIntersectionObserver(setCurrentId);
     const currentHeaders = Array.from(document.querySelectorAll(".md_header"));
     setHeaderItems(currentHeaders);
-
-    currentHeaders.map(header => {
-      observer.observe(header);
-    });
   }, []);
+
+  useIntersectionObserver({
+    elements: headerItems,
+    callback: entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setCurrentId(entry.target.id);
+        }
+      });
+    },
+    options: { root: null, threshold: 1.0, rootMargin: "-30% 0px 0px 0px" },
+  });
 
   return (
     <div className="TOC">
@@ -33,44 +41,3 @@ export default function TOC() {
     </div>
   );
 }
-
-const getIntersectionObserver = (
-  setState: Dispatch<SetStateAction<string>>,
-) => {
-  let direction = "";
-  let prevYposition = 0;
-  const options = {
-    root: null,
-    threshold: 1.0,
-    rootMargin: "-30% 0px 0px 0px",
-  };
-
-  /*
-   * 스크롤 방향을 감지하는 함수
-   */
-  const checkScrollDirection = (prev: number) => {
-    if (window.scrollY === 0 && prev === 0) return;
-    else if (window.scrollY > prev) direction = "down";
-    else direction = "up";
-
-    prevYposition = window.scrollY;
-  };
-
-  /*
-   * 화면상의 헤더들을 감지
-   */
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      checkScrollDirection(prevYposition);
-
-      if (
-        (direction === "down" && !entry.isIntersecting) ||
-        (direction === "up" && entry.isIntersecting)
-      ) {
-        setState(entry.target.id);
-      }
-    });
-  }, options);
-
-  return observer;
-};

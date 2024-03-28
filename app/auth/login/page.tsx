@@ -45,7 +45,7 @@ export default function Login() {
 
   const verifyEmail = (email: string) => {
     const regex = new RegExp(
-      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])",
     );
     return regex.test(email);
   };
@@ -80,7 +80,7 @@ export default function Login() {
           }
           return handleError(
             "⚠️ ID 혹은 비밀번호가 일치하지 않습니다.",
-            "PASSWORD"
+            "PASSWORD",
           );
         case 200:
           setError("");
@@ -105,7 +105,7 @@ export default function Login() {
         value={email}
         placeholder="e-mail"
         ref={setEmailRef}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
       />
       <input
         className={styles.input}
@@ -113,7 +113,7 @@ export default function Login() {
         type="password"
         placeholder="password"
         ref={setpasswordRef}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={e => setPassword(e.target.value)}
       />
       <hr />
       <button className={styles.button} onClick={handleLogin}>

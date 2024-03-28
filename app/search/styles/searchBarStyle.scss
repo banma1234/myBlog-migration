@@ -1,41 +1,41 @@
 @import "styles/utils.scss";
 @import "styles/animations.scss";
 
-.tooltip {
-  position: relative;
-  display: flex;
-  font-size: 0.8rem;
-  align-items: flex-end;
-  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-  bottom: 1rem;
-  border-radius: 5rem;
-  height: 1rem;
-  background-color: var(--color-low);
-  color: $color_gray_high;
-}
-
 .searchBar {
   display: flex;
   flex-direction: row-reverse;
 
-  &_icon {
+  &__icon {
     display: flex;
     flex-direction: row;
     cursor: pointer;
   }
 
-  &_true {
+  &__true {
     margin-left: 1rem;
     padding-left: 0.8rem;
     @include animation("input_true 0.4s");
   }
 
-  &_false {
+  &__false {
     @include animation("input_false 0.4s");
+  }
+
+  &__tooltip {
+    position: relative;
+    display: flex;
+    font-size: 0.8rem;
+    align-items: flex-end;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    bottom: 1rem;
+    border-radius: 5rem;
+    height: 1rem;
+    background-color: var(--color-low);
+    color: $color_gray_high;
   }
 }
 
-.options_button {
+.options__button {
   cursor: pointer;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 99999px;

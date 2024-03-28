@@ -8,7 +8,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
   const [isClick, setIsClick] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
   const [inputData, setInputData] = useState<string>("");
-  const inputName = `searchBar_${isClick}`;
+  const inputName = `searchBar__${isClick}`;
   const focusPoint = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
     <div className="searchBar">
       {show && (
         <input
-          id="input_searchBar"
+          id="input__searchBar"
           className={inputName}
           value={inputData}
           placeholder="검색"
@@ -42,8 +42,8 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
           ref={focusPoint}
         />
       )}
-      <div className="searchBar_icon" onClick={() => setIsClick(!isClick)}>
-        <div className="tooltip">click here! </div>
+      <div className="searchBar__icon" onClick={() => setIsClick(!isClick)}>
+        <div className="searchBar__tooltip">click here! </div>
         {iconHandler("search", "28")}
       </div>
     </div>

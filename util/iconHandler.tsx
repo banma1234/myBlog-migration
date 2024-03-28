@@ -4,7 +4,7 @@
 export default function iconHandler(
   type: string,
   size: string,
-  color?: string,
+  color?: string
 ) {
   switch (type) {
     case "mail":

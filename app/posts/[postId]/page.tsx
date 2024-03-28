@@ -7,7 +7,7 @@ import generateRssFeed from "app/generateRSS";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import { CommentBox } from "./components/clientside";
-import { getPost, mdParser } from "./utils";
+import { getPost, mdParser, COPY_CODE } from "./utils";
 import { CardLayout } from "app/components/card";
 import { Metadata } from "next/types";
 
@@ -32,23 +32,7 @@ export default async function Posts({
         id="copyCode"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: `
-            function copyCode(dom) {
-              window
-                .getSelection()
-                .selectAllChildren(dom.parentElement.querySelector("table"));
-              document.execCommand("copy");
-
-              const origin = dom.innerHTML;
-              dom.innerHTML =
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-icon="check" class="i-check"><path fill="white" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>';
-
-              dom.style.background = "#29c941";
-              setTimeout(() => {
-                dom.innerHTML = origin;
-                dom.style.background = "var(--color-codeblock)";
-              }, 1000);
-            }`,
+          __html: COPY_CODE,
         }}
       ></Script>
       <header className={styles.header}>
@@ -99,7 +83,7 @@ export async function generateStaticParams() {
       staticData.push(target);
     }
 
-    // await generateRssFeed();
+    await generateRssFeed();
 
     return staticData;
   } catch (e: unknown) {

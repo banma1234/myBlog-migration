@@ -43,7 +43,7 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
   return (
     <article>
       <label className="options">
-        <div className="options_button" onClick={sortData}>
+        <div className="options__button" onClick={sortData}>
           정렬 : {sortOption ? "오름차순" : "내림차순"}
         </div>
         <SearchBar filter={searchEngine} />
@@ -60,8 +60,8 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
             {"<"}
           </li>
           {new Array(max).fill(0).map((item: number, i: number) => {
-            const targetName = i + 1 === currentPage ? "pagination_target" : "";
-
+            const targetName =
+              i + 1 === currentPage ? "pagination__target" : "";
             return (
               <div key={i} className={targetName}>
                 <li onClick={() => currentPageHandler(i + 1)}>{i + 1}</li>
