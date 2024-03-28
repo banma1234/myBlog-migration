@@ -10,18 +10,19 @@
   padding: 0.5rem;
   font-size: 14px;
   background-color: var(--color-low);
+  z-index: 999999;
 
   @media all and (max-width: $tablet) {
     right: 5%;
   }
 
-  &_button {
+  &__button {
     width: 6rem;
     border-radius: 0px;
     height: 100%;
   }
 
-  &_input_small {
+  &__input__small {
     height: 100%;
     padding-left: 1rem;
     width: 10rem;

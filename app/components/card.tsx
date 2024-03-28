@@ -31,16 +31,16 @@ export function CardLayout(props: { posts: Array<CardType> }) {
 
   return (
     <ScrollFadeIn>
-      <div className="card_layout">
+      <div className="card__layout">
         {posts &&
           posts.map((item: CardType, i: number) => {
             const url = `/posts/${item.postId}`;
             const imgUrl = item.thumbnail as string;
 
             return (
-              <Link href={url} key={i} className="card_container">
+              <Link href={url} key={i} className="card__container">
                 <div className="card">
-                  <div className="card_thumbnail">
+                  <div className="card__thumbnail">
                     <Image
                       src={imgUrl}
                       alt="card Img"
@@ -55,11 +55,11 @@ export function CardLayout(props: { posts: Array<CardType> }) {
                       <h3>{item.title}</h3>
                     </div>
                   </div>
-                  <div className="card_info">
-                    <h3 className="card_title">{item.title}</h3>
+                  <div className="card__info">
+                    <h3 className="card__title">{item.title}</h3>
                     <p>{item.description}</p>
                   </div>
-                  <p className="card_date">
+                  <p className="card__date">
                     {iconHandler("calendar", "12")} &nbsp; {item.uploadDate}
                   </p>
                 </div>
@@ -75,14 +75,14 @@ export function Banner() {
   return (
     <>
       <div className="banner">
-        <div className="banner_thumbnail">
+        <div className="banner__thumbnail">
           <Image
             src="https://choco-image-server.cdn.ntruss.com/build/banner.png"
             alt="Banner Img"
             layout="fill"
           />
         </div>
-        <div className="banner_info">
+        <div className="banner__info">
           <h1 className={myFont.className}>ChocoHam 개발 블로그</h1>
           <p>{MY_INTRO}</p>
         </div>

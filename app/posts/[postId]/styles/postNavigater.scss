@@ -1,25 +1,22 @@
 @import "styles/utils.scss";
 
-.navigate_left {
+@mixin navigate-style {
   width: 16rem;
   min-width: 16rem;
   display: grid;
-  grid-template-columns: 2rem 1fr;
   background-color: var(--color-low);
   padding: 0.6rem 1rem 0.6rem 1rem;
   align-items: center;
   box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
-
   @media all and (max-width: $mobile) {
     width: auto;
     min-width: 12rem;
   }
 
   ul {
-    margin: 0 0 0 1rem;
+    margin: 0 1rem 0 1rem;
     padding: 0;
     list-style: none;
-
     overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
@@ -27,39 +24,25 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     word-break: break-all;
+  }
+}
+
+.navigate__left {
+  @include navigate-style;
+  grid-template-columns: 2rem 1fr;
+  ul {
+    margin-left: 1rem;
     li {
       text-align: left;
     }
   }
 }
 
-.navigate_right {
-  width: 16rem;
-  min-width: 16rem;
-  display: grid;
+.navigate__right {
+  @include navigate-style;
   grid-template-columns: 1fr 2rem;
-  background-color: var(--color-low);
-  padding: 0.6rem 1rem 0.6rem 1rem;
-  align-items: center;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
-
-  @media all and (max-width: $mobile) {
-    width: auto;
-    min-width: 12rem;
-  }
-
   ul {
-    margin: 0 1rem 0 0;
-    padding: 0;
-    list-style: none;
-
-    overflow: hidden;
-    white-space: normal;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    word-break: break-all;
+    margin-right: 1rem;
     li {
       text-align: right;
     }

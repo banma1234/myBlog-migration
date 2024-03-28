@@ -20,7 +20,7 @@
     list-style: none;
   }
 
-  &_target {
+  &__target {
     color: $color_high;
     font-weight: 900;
     text-decoration: underline;
@@ -32,11 +32,11 @@
   flex-direction: row;
   justify-content: space-between;
 
-  &_button {
+  &__button {
     justify-content: center;
   }
 
-  &_sort {
+  &__sort {
     font-size: 1rem;
     cursor: pointer;
     padding: 0.5rem 1rem 0.5rem 1rem;

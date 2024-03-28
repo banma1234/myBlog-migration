@@ -8,10 +8,10 @@ import iconHandler from "util/iconHandler";
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
-      <Image className="footer_profile" src={imgUrl} alt="profile" />
+      <Image className="footer__profile" src={imgUrl} alt="profile" />
       <h2>Choco Ham</h2>
       <p>프론트앤드 디발자, 웹 개자이너 초코햄입니다.</p>
-      <div className="footer_layout">
+      <div className="footer__layout">
         <Tooltip title={"github"}>
           <li>
             <Link href="https://github.com/banma1234">
@@ -26,12 +26,8 @@ const Footer: React.FC = () => {
             </Link>
           </li>
         </Tooltip>
-        <Tooltip title={"X-twitter"}>
-          <li>
-            <Link href="https://twitter.com/chocoham47">
-              {iconHandler("twitter", "20")}
-            </Link>
-          </li>
+        <Tooltip title={"X-twitter : 현재 비활성화"}>
+          <li className="deactivate">{iconHandler("twitter", "20")}</li>
         </Tooltip>
         <Tooltip title={"linked-in"}>
           <li>

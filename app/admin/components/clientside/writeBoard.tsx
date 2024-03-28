@@ -97,13 +97,13 @@ export default function WriteBoard(props: {
           onChange={e => setTitle(e.target.value)}
         />
         <input
-          className="input_small"
+          className="input__small"
           placeholder="시리즈"
           value={series}
           onChange={e => setSeries(e.target.value)}
         />
         <input
-          className="write_image"
+          className="write__image"
           type="file"
           onChange={handleImgUpload}
           multiple

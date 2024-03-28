@@ -11,7 +11,6 @@ export const authConfig: NextAuthConfig = {
   providers: [
     CredentialsProvider({
       name: "Admin Login",
-
       credentials: {
         email: { label: "e-mail", type: "text", placeholder: "e-mail" },
         password: {
@@ -35,12 +34,14 @@ export const authConfig: NextAuthConfig = {
             const failed = await res.json();
             throw new Error(failed.error as string);
           }
+
           const { userData } = await res.json();
+
           const user: User = {
             id: userData.email,
-            email: userData.email,
             name: userData.name,
             image: userData.image,
+            token: userData.token,
           };
 
           return user;
@@ -56,11 +57,15 @@ export const authConfig: NextAuthConfig = {
   ],
   secret: process.env.AUTH_SECRET as string,
   session: {
-    maxAge: 60 * 60 * 24 * 7,
-    updateAge: 24 * 60 * 60,
+    strategy: "jwt",
+    maxAge: 60 * 30,
   },
   callbacks: {
-    async session({ session }) {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      session.token = token;
       return session;
     },
   },

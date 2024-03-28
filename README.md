@@ -9,10 +9,10 @@
 <table>
   <tr>
     <td>
-      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/a4fd17c8-fbbb-45f4-8c33-5ab3a37b37e5"/>
+      <image src="https://choco-image-server.cdn.ntruss.com/build/blog_main.gif"/>
     </td>
         <td>
-      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/671e2562-89c5-44c2-a7b6-279f8bfb2122"/>
+      <image src="https://choco-image-server.cdn.ntruss.com/build/reply_new.gif2"/>
     </td>
   </tr>
   <tr>
@@ -24,7 +24,7 @@
       <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/2d4e8715-2bbc-4a59-8194-d200bdbd5a4a"/>
     </td>
         <td>
-      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/599a8bb6-189e-4327-b558-68b1ec5d950e"/>
+      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/9e809a7d-2cf3-409b-aff6-7fd591240729"/>
     </td>
   </tr>
   <tr>
@@ -37,7 +37,7 @@
       <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/dc7de19c-6504-4b16-a7ea-2ef6f1d389fb"/>
     </td>
         <td>
-      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/d09b8dcb-8c3f-4afd-bba8-92002514d91f"/>
+      <image src="https://github.com/banma1234/myBlog-migration/assets/77619465/7d352087-e972-4662-933c-3e900362aa95"/>
     </td>
   </tr>
   <tr>
@@ -78,7 +78,7 @@
 
 - 기타 사용 라이브러리
 
-  `next-auth` &nbsp; `marked` &nbsp; `prismjs`
+  `next-auth` &nbsp; `marked` &nbsp; `prismjs` &nbsp; `feed`
 
 - 코드 컨벤션
   https://github.com/airbnb/javascript

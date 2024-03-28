@@ -1,7 +1,7 @@
 @import "styles/utils.scss";
 
-.card_container {
-  // fadeIn 애니메이션
+.card__container {
+  // fadeIn 애니메이션용
   opacity: 0;
   transform: translate3d(0, 5rem, 0);
 }
@@ -20,7 +20,7 @@
     transition: transform 0.5s;
   }
 
-  &_thumbnail {
+  &__thumbnail {
     position: relative;
     margin: 0 auto;
     overflow: hidden;
@@ -28,7 +28,7 @@
     height: auto;
   }
 
-  &_info {
+  &__info {
     p {
       font-size: 0.8rem;
       color: $color_gray_high;
@@ -48,7 +48,7 @@
     min-height: 7.2rem;
   }
 
-  &_title {
+  &__title {
     margin: 0.4rem 0 0 0;
     height: 3rem;
     font-size: 1rem;
@@ -61,7 +61,7 @@
     word-break: break-all;
   }
 
-  &_date {
+  &__date {
     display: flex;
     justify-content: flex-end;
     font-size: 0.75rem;
@@ -103,7 +103,7 @@
   }
 }
 
-.card_layout {
+.card__layout {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -134,7 +134,7 @@
     display: none;
   }
 
-  &_thumbnail {
+  &__thumbnail {
     position: relative;
     border-radius: 1rem;
     box-shadow: 0 0 1.3rem 0 var(--color-text);
@@ -143,7 +143,7 @@
     height: 335px;
   }
 
-  &_info {
+  &__info {
     display: flex;
     flex-direction: column;
     align-items: center;
