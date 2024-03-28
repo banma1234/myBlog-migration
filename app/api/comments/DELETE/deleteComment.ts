@@ -21,7 +21,7 @@ export default async function deleteComment(req: NextRequest) {
           _id: new ObjectId(newBody._id),
           password: newBody.password,
         },
-        option
+        option,
       )
       .toArray();
 
@@ -35,25 +35,25 @@ export default async function deleteComment(req: NextRequest) {
         },
         {
           $inc: { RE_STEP: -1 },
-        }
+        },
       );
       await db.collection("comments").deleteOne({ _id: targetComment[0]._id });
 
       return NextResponse.json(
         { message: `comment deleted successfully at ${newBody.postId}` },
-        { status: 200, headers: { "Content-Type": "application/json" } }
+        { status: 200, headers: { "Content-Type": "application/json" } },
       );
     } else {
       return NextResponse.json(
         { error: "invalid password error" },
-        { status: 404, headers: { "Content-Type": "application/json" } }
+        { status: 404, headers: { "Content-Type": "application/json" } },
       );
     }
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json(
       { error: "internal Server Error" },
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }
 }

@@ -27,7 +27,7 @@ export default function SeriesBoard(props: {
     <>
       <div className="seriesBoard">
         <div
-          className="seriesBoard_dropDown"
+          className="seriesBoard__dropDown"
           onClick={() => setIsClick(!isClick)}
         >
           <h2>{TITLE}</h2>
@@ -51,11 +51,11 @@ const SeriesOnPage = (props: {
   postId: number;
   isClick: boolean;
 }) => {
-  const dropDownName = `container_${props.isClick}`;
+  const dropDownName = `container__${props.isClick}`;
 
   return (
     <div className={dropDownName}>
-      <ul className="container_ul">
+      <ul className="container__ul">
         {props.data.map((item: any, i: number) => {
           const url = `/posts/${item.postId}`;
           const postName = props.postId === item.postId ? "current" : "others";

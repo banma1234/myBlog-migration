@@ -37,7 +37,7 @@ export default async function generateRssFeed() {
       title: post.title,
       id: post.posdId,
       link: `${URL}/posts/${post.postId}`,
-      description: post.title,
+      description: post.description,
       content: post.description,
       author: [author],
       contributor: [author],

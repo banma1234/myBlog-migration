@@ -7,7 +7,7 @@ export default function HashTag(props: { hashTag: string }) {
       {hashTag &&
         hashTag.map((item: string, i: number) => {
           return (
-            <div className="hashTag_box" key={i}>
+            <div className="hashTag__box" key={i}>
               {`# ${item}`}
             </div>
           );

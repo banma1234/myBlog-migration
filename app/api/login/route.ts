@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
+import { signJwtAccessToken } from "app/auth/handleJWT";
 const bcrypt = require("bcrypt");
 
 export async function POST(req: NextRequest) {
@@ -23,10 +24,12 @@ export async function POST(req: NextRequest) {
         { status: 401, headers: { "Content-Type": "application/json" } },
       );
     }
+
     delete userData[0]["password"];
+    const token = signJwtAccessToken(userData[0]);
 
     return NextResponse.json(
-      { userData: userData[0] },
+      { userData: { ...userData[0], token: token } },
       { status: 200, headers: { "Content-Type": "application/json" } },
     );
   } catch (e: unknown) {

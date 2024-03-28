@@ -2,7 +2,7 @@ import { AuthProviders } from "util/context/authProvider";
 import { NavIcon } from "./components/clientside/navIcon";
 import { Noto_Sans_KR } from "next/font/google";
 import type { Metadata, Viewport } from "next";
-import { globalMetaData } from "./utils";
+import { globalMetaData, GLOBAL_SCRIPT } from "./utils";
 import { Footer, Header } from "./components";
 import styles from "./styles/page.module.scss";
 import "styles/globals.scss";
@@ -33,20 +33,13 @@ export default function RootLayout({
           name="google-site-verification"
           content="A1qLguIf9gLBQEkoscbYdxPvOgBxPrI3NF0v3FaFDKU"
         />
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          href="/rss/feed.xml"
-          title="RSS"
-        />
-        <link
-          rel="alternate"
-          type="application/json"
-          href="/rss/rss.json"
-          title="JSON Feed"
-        />
       </head>
       <body className={myFont.className}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: GLOBAL_SCRIPT,
+          }}
+        ></script>
         <AuthProviders>
           <Header />
           <main className={styles.main}>

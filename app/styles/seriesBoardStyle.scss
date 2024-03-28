@@ -11,7 +11,7 @@
   overflow: hidden;
   cursor: pointer;
 
-  &_dropDown {
+  &__dropDown {
     background-color: var(--color-low);
     display: flex;
     justify-content: space-between;
@@ -30,16 +30,16 @@
 .container {
   position: relative;
   padding: 2rem;
-  &_true {
+  &__true {
     @include animation("dropDown_true 0.4s ease");
   }
 
-  &_false {
+  &__false {
     @include animation("dropDown_false 0.4s ease");
   }
 }
 
-.container_ul {
+.container__ul {
   position: relative;
   height: 16rem;
   margin: 0 0 2rem 0;

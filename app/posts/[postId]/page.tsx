@@ -4,9 +4,10 @@ import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
 import Image from "next/image";
 import generateRssFeed from "app/generateRSS";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { CommentBox } from "./components/clientside";
-import { getPost, mdParser } from "./utils";
+import { getPost, mdParser, COPY_CODE } from "./utils";
 import { CardLayout } from "app/components/card";
 import { Metadata } from "next/types";
 
@@ -27,6 +28,13 @@ export default async function Posts({
 
   return (
     <>
+      <Script
+        id="copyCode"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: COPY_CODE,
+        }}
+      ></Script>
       <header className={styles.header}>
         <Image src={post.thumbnail} alt="thumbnail" layout="fill" />
         <div className={styles.overlap}>

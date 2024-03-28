@@ -18,9 +18,9 @@ export default function ToastMessage(props: { children: string }) {
   return (
     <>
       {open && (
-        <div className="toast_ui">
+        <div className="toast__ui">
           <p>{props.children}</p>
-          <p className="toast_ui_button" onClick={handleUI}>
+          <p className="toast__ui__button" onClick={handleUI}>
             {iconHandler("cancel", "18px")}
           </p>
         </div>

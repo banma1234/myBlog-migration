@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
 import { Session } from "next-auth";
+import { Tooltip } from "..";
 import "app/styles/headerStyle.scss";
 
 export default function UserProfile() {
@@ -21,7 +22,7 @@ export default function UserProfile() {
 
   return (
     <>
-      <div className="user_profile" onClick={handleDropDown}>
+      <div className="user__profile" onClick={handleDropDown}>
         {session ? <Logout session={session} /> : <Login />}
       </div>
       {click && (
@@ -37,9 +38,9 @@ export default function UserProfile() {
 
 const Login = () => {
   return (
-    <Link href="/auth/login" title="관리자 로그인">
-      {iconHandler("profile", "23")}
-    </Link>
+    <Tooltip title={"관리자 로그인"}>
+      <Link href="/auth/login">{iconHandler("profile", "23")}</Link>
+    </Tooltip>
   );
 };
 
@@ -49,7 +50,7 @@ const Logout = (props: { session: Session }) => {
   return (
     <div>
       <Image
-        className="user_profile"
+        className="user__profile"
         src={session.user?.image as string}
         alt="user profile"
         width={30}

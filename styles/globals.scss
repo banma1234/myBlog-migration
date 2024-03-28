@@ -7,7 +7,6 @@ html {
 
 body {
   margin: 0;
-  transition: 0.5s all;
   background-color: var(--color-background);
   color: var(--color-text);
 }
@@ -36,13 +35,12 @@ textarea,
 input {
   background-color: var(--color-low);
   color: var(--color-text);
-  transition: all 0.3s;
   border: none;
   border-radius: 0.3rem;
   outline: none;
   font-size: 16px;
 
-  &.input_small {
+  &.input__small {
     width: 10rem;
     padding: 0.8rem;
   }

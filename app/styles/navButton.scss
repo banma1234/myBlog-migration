@@ -8,7 +8,7 @@
   height: 3rem;
   z-index: 9999;
 
-  &_theme {
+  &__theme {
     width: 7rem;
     height: 3rem;
     background-color: var(--color-text);
@@ -16,7 +16,7 @@
     box-shadow: 0 8px 12px rgb(0 0 0 / 10%);
   }
 
-  &_up {
+  &__up {
     background-color: var(--color-low);
     margin-left: 1rem;
     width: 3rem;

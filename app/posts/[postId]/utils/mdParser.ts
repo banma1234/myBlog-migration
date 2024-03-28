@@ -1,4 +1,3 @@
-import iconHandler from "util/iconHandler";
 import prism from "prismjs";
 import { marked } from "marked";
 
@@ -53,40 +52,27 @@ export default function mdParser(content: string) {
       .replace(/\t|\\n/, "");
 
     return `
-        <script>
-          function copyCode(dom) {
-            window.getSelection().selectAllChildren(dom.parentElement.querySelector('table'));
-            document.execCommand('copy');
-
-            const origin = dom.innerHTML;
-            dom.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-icon="check" class="i-check"><path fill="white" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>';
-
-            dom.style.background = "#29c941";
-            setTimeout(() => {
-              dom.innerHTML = origin;
-              dom.style.background = "var(--color-codeblock)";
-            }, 1000);
-          }
-        </script>
-
-        <div class="codeblock">
-          <div class="top">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-
-          <button onClick="copyCode(this)" title="복사">
-            ${copyIcon}
-          </button>
-
-          <pre class="language-${langClass}">
-            <table>
-              <tbody>${line}</tbody>
-            </table>
-          </pre>
+      <div class="codeblock">
+        <div class="top">
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-        `;
+
+        <button class="copy__button" onClick="copyCode(this)">
+          <div class="tooltip">
+            ${copyIcon}
+            <span class="tooltip__text">코드 복사</span>
+          </div>
+        </button>
+
+        <pre class="language-${langClass}">
+          <table>
+            <tbody>${line}</tbody>
+          </table>
+        </pre>
+      </div>
+    `;
   };
   /*
     h1, h2 등 제목 태그에 포커스 링크 삽입
