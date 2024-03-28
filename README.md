@@ -12,7 +12,7 @@
       <image src="https://choco-image-server.cdn.ntruss.com/build/blog_main.gif"/>
     </td>
         <td>
-      <image src="https://choco-image-server.cdn.ntruss.com/build/reply_new.gif2"/>
+      <image src="https://choco-image-server.cdn.ntruss.com/build/reply_new.gif"/>
     </td>
   </tr>
   <tr>
