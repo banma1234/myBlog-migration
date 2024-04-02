@@ -10,7 +10,7 @@ const DEFAULT_SIGN_OPTION: SignOption = {
 
 export function signJwtAccessToken(
   payload: JwtPayload,
-  options: SignOption = DEFAULT_SIGN_OPTION,
+  options: SignOption = DEFAULT_SIGN_OPTION
 ) {
   const secret_key = process.env.AUTH_SECRET;
   const token = jwt.sign(payload, secret_key!, options);

@@ -15,7 +15,7 @@ export default function ScrollFadeIn(props: { children: any }) {
 
   useEffect(() => {
     elementsRef.current = Array.from(selectors);
-    setIsMounted(state => !state);
+    setIsMounted((state) => !state);
     if (!selectors.length && isMounted) {
       setSelectors(document.querySelectorAll(".card__container"));
       setIsMounted(false);
@@ -24,8 +24,8 @@ export default function ScrollFadeIn(props: { children: any }) {
 
   useIntersectionObserver({
     elements: elementsRef.current,
-    callback: entries => {
-      entries.forEach(entry => {
+    callback: (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const target = entry.target as HTMLElement;
           target.style.opacity = "1";

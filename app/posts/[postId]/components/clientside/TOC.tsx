@@ -16,8 +16,8 @@ export default function TOC() {
 
   useIntersectionObserver({
     elements: headerItems,
-    callback: entries => {
-      entries.forEach(entry => {
+    callback: (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setCurrentId(entry.target.id);
         }
