@@ -16,7 +16,8 @@ export default async function sitemap() {
     ...staticData.map((postId: number, i: number) => ({
       url: `${URL}/posts/${postId}`,
       author: "ChocoHam(@banma1234)",
-      lastModified: new Date(date[i].uploadDate),
+      // lastModified: new Date(date[i].uploadDate),
+      lastModified: new Date(),
       priority: 1,
     })),
   ];

@@ -23,6 +23,7 @@ export default async function generateRssFeed() {
     image: `https://choco-image-server.cdn.ntruss.com/images/banner.png`,
     favicon: `${URL}/favicon.ico`,
     language: "ko",
+    feed: `${URL}/rss/feed.xml`,
     copyright: `All rights reserved ${date.getFullYear()}, ChocoHam`,
     updated: date,
     feedLinks: {
