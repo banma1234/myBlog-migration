@@ -61,7 +61,7 @@ export default function Thumbnail() {
         className="input_small"
         placeholder="시리즈"
         value={series}
-        onChange={e => setSeries(e.target.value)}
+        onChange={(e) => setSeries(e.target.value)}
       />
       <button onClick={handleThumbnail}>제출</button>
     </section>

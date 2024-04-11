@@ -27,7 +27,7 @@ export default function PostsView(props: { posts: any }) {
 
   const checkboxHandler = (
     postId: number,
-    e: ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement>
   ) => {
     setIsChecked(!isChecked);
     checkedPostsHandler(e.target.checked, postId);
@@ -35,11 +35,11 @@ export default function PostsView(props: { posts: any }) {
 
   const checkedPostsHandler = (isChecked: boolean, postId: number) => {
     if (isChecked) {
-      setCheckedPosts(prev => [...prev, postId]);
+      setCheckedPosts((prev) => [...prev, postId]);
       return;
     }
     if (!isChecked && checkedPosts.includes(postId)) {
-      setCheckedPosts(checkedPosts.filter(item => item !== postId));
+      setCheckedPosts(checkedPosts.filter((item) => item !== postId));
       return;
     }
 
@@ -84,7 +84,7 @@ export default function PostsView(props: { posts: any }) {
               <td>
                 <input
                   type="checkbox"
-                  onChange={e => checkboxHandler(post.postId, e)}
+                  onChange={(e) => checkboxHandler(post.postId, e)}
                 />
               </td>
               <td>{post.postId}</td>

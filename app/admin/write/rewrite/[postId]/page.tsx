@@ -8,7 +8,7 @@ export default async function Rewrite({
   params: { postId: string };
 }) {
   const { postId } = params;
-  const resData = await getPost(postId).then(res => {
+  const resData = await getPost(postId).then((res) => {
     if (!res) {
       console.log("404 : post not found");
       alert("404 : post not found");

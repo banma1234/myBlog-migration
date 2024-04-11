@@ -1,6 +1,6 @@
 export default function postHandler(
   data: any,
-  type: "POST" | "PUT" | "DELETE",
+  type: "POST" | "PUT" | "DELETE"
 ) {
   switch (type) {
     case "DELETE":
