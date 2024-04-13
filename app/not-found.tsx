@@ -13,7 +13,7 @@ export default function NotFound() {
 
   useEffect(() => {
     const fetchRecommendData = async () => {
-      await getRecommendPost().then((res) => {
+      await getRecommendPost().then(res => {
         setRecommend(res);
       });
     };
@@ -41,7 +41,11 @@ export default function NotFound() {
       </div>
       <div>
         <h2>추천 포스트</h2>
-        {!recommend.length ? <LoadingUi /> : <CardLayout posts={recommend} />}
+        {!recommend.length ? (
+          <LoadingUi />
+        ) : (
+          <CardLayout posts={recommend} fadeIn={true} />
+        )}
       </div>
     </section>
   );

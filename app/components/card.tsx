@@ -26,8 +26,9 @@ const myFont = Black_Han_Sans({
   subsets: ["latin"],
 });
 
-export function CardLayout(props: { posts: Array<CardType> }) {
+export function CardLayout(props: { posts: Array<CardType>; fadeIn: boolean }) {
   const posts = props.posts;
+  const isFadeIn = props.fadeIn;
 
   return (
     <ScrollFadeIn>
@@ -38,7 +39,11 @@ export function CardLayout(props: { posts: Array<CardType> }) {
             const imgUrl = item.thumbnail as string;
 
             return (
-              <Link href={url} key={i} className="card__container">
+              <Link
+                href={url}
+                key={i}
+                className={isFadeIn ? "card__container" : ""}
+              >
                 <div className="card">
                   <div className="card__thumbnail">
                     <Image
