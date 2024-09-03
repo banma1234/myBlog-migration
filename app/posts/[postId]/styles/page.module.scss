@@ -23,6 +23,7 @@
 
   @media all and (max-width: $mobile) {
     display: block;
+    margin-top: 3rem;
   }
 }
 
@@ -30,6 +31,16 @@
   a {
     text-decoration: underline;
     color: $color_high;
+  }
+
+  img {
+    @media all and (max-width: $tablet) {
+      max-width: 90%;
+    }
+  }
+
+  @media all and (max-width: $tablet) {
+    font-size: 0.8rem;
   }
 }
 
@@ -54,6 +65,7 @@
 .header {
   position: relative;
   width: 50rem;
+  max-width: 90%;
   height: 30rem;
   margin: 0 auto;
   overflow: hidden;
