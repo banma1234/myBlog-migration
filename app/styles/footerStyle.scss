@@ -11,6 +11,10 @@
   padding: 1rem;
   color: $color_gray;
 
+  @media all and (max-width: $mobile) {
+    padding: 1rem 0;
+  }
+
   &__profile {
     position: relative;
     width: 12rem;
