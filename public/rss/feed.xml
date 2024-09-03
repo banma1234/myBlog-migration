@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>ChocoHam 개발 블로그</title>
-        <link>https://chocoham.dev</link>
+        <link>http://localhost:3000</link>
         <description>프론트앤드 개발자 ChocoHam(@banma1234)의 개발 &amp; 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.</description>
-        <lastBuildDate>Sat, 13 Apr 2024 09:46:47 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 03 Sep 2024 09:41:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
         <image>
             <title>ChocoHam 개발 블로그</title>
             <url>https://choco-image-server.cdn.ntruss.com/images/banner.png</url>
-            <link>https://chocoham.dev</link>
+            <link>http://localhost:3000</link>
         </image>
         <copyright>All rights reserved 2024, ChocoHam</copyright>
         <category>technologies</category>
-        <atom:link href="https://chocoham.dev/rss/feed.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="http://localhost:3000/rss/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[[python]백준_1256 : 사전]]></title>
-            <link>https://chocoham.dev/posts/1</link>
-            <guid>https://chocoham.dev/posts/1</guid>
+            <link>http://localhost:3000/posts/1</link>
+            <guid>http://localhost:3000/posts/1</guid>
             <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[백준 1256 : 사전. 해당 문제는 같은 자료를 반복해서 참고해야 하기 때문에 dp(dynamic programming)를 이용해 시간복잡도를 줄여 문제를 해결할 수 있다.]]></description>
             <content:encoded><![CDATA[백준 1256 : 사전. 해당 문제는 같은 자료를 반복해서 참고해야 하기 때문에 dp(dynamic programming)를 이용해 시간복잡도를 줄여 문제를 해결할 수 있다.]]></content:encoded>
@@ -32,8 +32,8 @@
         </item>
         <item>
             <title><![CDATA[[python] snscrape를 이용한 웹크롤링 및 데이터 시각화]]></title>
-            <link>https://chocoham.dev/posts/2</link>
-            <guid>https://chocoham.dev/posts/2</guid>
+            <link>http://localhost:3000/posts/2</link>
+            <guid>http://localhost:3000/posts/2</guid>
             <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[python 모듈인 snscrape, wordCloud 모듈을 이용해 twitter에서 특정 키워드가 포함된 트윗을 크롤링하여 언급 빈도수에 따라 시각화된 자료를 생성할 수 있다.]]></description>
             <content:encoded><![CDATA[python 모듈인 snscrape, wordCloud 모듈을 이용해 twitter에서 특정 키워드가 포함된 트윗을 크롤링하여 언급 빈도수에 따라 시각화된 자료를 생성할 수 있다.]]></content:encoded>
@@ -46,8 +46,8 @@
         </item>
         <item>
             <title><![CDATA[[코어자바스크립트] 변수 선언과 데이터 할당]]></title>
-            <link>https://chocoham.dev/posts/3</link>
-            <guid>https://chocoham.dev/posts/3</guid>
+            <link>http://localhost:3000/posts/3</link>
+            <guid>http://localhost:3000/posts/3</guid>
             <pubDate>Tue, 21 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[객체를 지향한다는 것은 객체의 역할, 책임, 협력에 집중한다는 것이다. 결국 객체지향이란 상호작용하는 자율적인 객체들의 공동체를 통해 시스템을 분할하는 방법이다.]]></description>
             <content:encoded><![CDATA[객체를 지향한다는 것은 객체의 역할, 책임, 협력에 집중한다는 것이다. 결국 객체지향이란 상호작용하는 자율적인 객체들의 공동체를 통해 시스템을 분할하는 방법이다.]]></content:encoded>
@@ -61,8 +61,8 @@
         </item>
         <item>
             <title><![CDATA[[python]백준_1456 : 거의 소수]]></title>
-            <link>https://chocoham.dev/posts/4</link>
-            <guid>https://chocoham.dev/posts/4</guid>
+            <link>http://localhost:3000/posts/4</link>
+            <guid>http://localhost:3000/posts/4</guid>
             <pubDate>Tue, 11 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[[python] 백준 1456 : 거의 소수. 해당 문제는 에라토스테네스의 채를 이용해 소수를 판별, 시간복잡도를 줄여 문제를 해결할 수 있다.]]></description>
             <content:encoded><![CDATA[[python] 백준 1456 : 거의 소수. 해당 문제는 에라토스테네스의 채를 이용해 소수를 판별, 시간복잡도를 줄여 문제를 해결할 수 있다.]]></content:encoded>
@@ -76,8 +76,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.0] 옹알이(1) | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/5</link>
-            <guid>https://chocoham.dev/posts/5</guid>
+            <link>http://localhost:3000/posts/5</link>
+            <guid>http://localhost:3000/posts/5</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.0 옹알이(1) 풀이 with javascript : 정규표현식을 활용하여 특정 패턴(옹알이)를 검사하는 로직을 작성하면 되겠다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.0 옹알이(1) 풀이 with javascript : 정규표현식을 활용하여 특정 패턴(옹알이)를 검사하는 로직을 작성하면 되겠다.]]></content:encoded>
@@ -92,8 +92,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.0] 다음에 올 숫자 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/6</link>
-            <guid>https://chocoham.dev/posts/6</guid>
+            <link>http://localhost:3000/posts/6</link>
+            <guid>http://localhost:3000/posts/6</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.0 다음에 올 숫자 풀이 with javascript. 예외처리를 신경 쓸 필요 없이 등차수열인가 등비수열인가만 판단하여 문제를 해결할 수 있다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.0 다음에 올 숫자 풀이 with javascript. 예외처리를 신경 쓸 필요 없이 등차수열인가 등비수열인가만 판단하여 문제를 해결할 수 있다.]]></content:encoded>
@@ -108,8 +108,8 @@
         </item>
         <item>
             <title><![CDATA[[자료구조] 스택(Stack) | javascript]]></title>
-            <link>https://chocoham.dev/posts/7</link>
-            <guid>https://chocoham.dev/posts/7</guid>
+            <link>http://localhost:3000/posts/7</link>
+            <guid>http://localhost:3000/posts/7</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[javascript로 이해하는 자료구조 [스택(stack)] : 스택(stack)은 데이터를 입력할 수 있는 선형 자료형으로 선입후출의 구조를 가지며 ctrl+z와 같은 기능에서 요구되는 자료형이다. javascript에서는 배열을 이용해 손쉽게 구현할 수 있다.]]></description>
             <content:encoded><![CDATA[javascript로 이해하는 자료구조 [스택(stack)] : 스택(stack)은 데이터를 입력할 수 있는 선형 자료형으로 선입후출의 구조를 가지며 ctrl+z와 같은 기능에서 요구되는 자료형이다. javascript에서는 배열을 이용해 손쉽게 구현할 수 있다.]]></content:encoded>
@@ -123,8 +123,8 @@
         </item>
         <item>
             <title><![CDATA[[자료구조] 큐(Queue) | javascript]]></title>
-            <link>https://chocoham.dev/posts/8</link>
-            <guid>https://chocoham.dev/posts/8</guid>
+            <link>http://localhost:3000/posts/8</link>
+            <guid>http://localhost:3000/posts/8</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[javascript로 이해하는 자료구조 [큐(queue)] : 큐(queue)는 데이터를 입력할 수 있는 선형 자료형으로 선입선출의 구조를 가진다. 버퍼링과 같은 기능에서 요구되는 자료형이다. javascript에서는 배열을 이용해 손쉽게 구현할 수 있다.]]></description>
             <content:encoded><![CDATA[javascript로 이해하는 자료구조 [큐(queue)] : 큐(queue)는 데이터를 입력할 수 있는 선형 자료형으로 선입선출의 구조를 가진다. 버퍼링과 같은 기능에서 요구되는 자료형이다. javascript에서는 배열을 이용해 손쉽게 구현할 수 있다.]]></content:encoded>
@@ -138,8 +138,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.0] 평행 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/9</link>
-            <guid>https://chocoham.dev/posts/9</guid>
+            <link>http://localhost:3000/posts/9</link>
+            <guid>http://localhost:3000/posts/9</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.0 평행 풀이 with javascript. 주어진 좌표중 두 쌍의 기울기가 일치할 경우 평행하다고 볼 수 있다. 이때 결과값이 중복될 수 있으므로 이를 유의해야 한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.0 평행 풀이 with javascript. 주어진 좌표중 두 쌍의 기울기가 일치할 경우 평행하다고 볼 수 있다. 이때 결과값이 중복될 수 있으므로 이를 유의해야 한다.]]></content:encoded>
@@ -154,8 +154,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.0] 겹치는 선분의 길이 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/10</link>
-            <guid>https://chocoham.dev/posts/10</guid>
+            <link>http://localhost:3000/posts/10</link>
+            <guid>http://localhost:3000/posts/10</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.0 겹치는 선분의 길이 풀이 with javascript. 각 선분이 포함된 숫자가 겹칠 경우 해당 부분이 겹쳐졌다 볼 수 있다. 각 좌표의 a 부터 b 까지의 숫자를 쪼개서 저장한 후 다음 좌표의 a 부터 b까지의 숫자와 얼마나 일치하는지 비교해야 한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.0 겹치는 선분의 길이 풀이 with javascript. 각 선분이 포함된 숫자가 겹칠 경우 해당 부분이 겹쳐졌다 볼 수 있다. 각 좌표의 a 부터 b 까지의 숫자를 쪼개서 저장한 후 다음 좌표의 a 부터 b까지의 숫자와 얼마나 일치하는지 비교해야 한다.]]></content:encoded>
@@ -169,8 +169,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.0] OX 퀴즈 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/11</link>
-            <guid>https://chocoham.dev/posts/11</guid>
+            <link>http://localhost:3000/posts/11</link>
+            <guid>http://localhost:3000/posts/11</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.0 OX 퀴즈 풀이 with javascript. 연산 기호와 숫자 사이에는 항상 공백이 존재하므로 javascript의 .split() 메소드를 이용해 분리하여 새로운 배열로 초기화, 계산을 진행한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.0 OX 퀴즈 풀이 with javascript. 연산 기호와 숫자 사이에는 항상 공백이 존재하므로 javascript의 .split() 메소드를 이용해 분리하여 새로운 배열로 초기화, 계산을 진행한다.]]></content:encoded>
@@ -184,8 +184,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 나머지가 1이 되는 수 찾기 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/12</link>
-            <guid>https://chocoham.dev/posts/12</guid>
+            <link>http://localhost:3000/posts/12</link>
+            <guid>http://localhost:3000/posts/12</guid>
             <pubDate>Thu, 20 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 나머지가 1이 되는 수 찾기 풀이 with javascript. 주어진 n이 홀수인지 짝수인지에 따라 로직을 분리하여 작성한다. n이 홀수일 경우 x는 무조건 2이며 짝수인 경우 x는 반드시 홀수인 점을 이용한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 나머지가 1이 되는 수 찾기 풀이 with javascript. 주어진 n이 홀수인지 짝수인지에 따라 로직을 분리하여 작성한다. n이 홀수일 경우 x는 무조건 2이며 짝수인 경우 x는 반드시 홀수인 점을 이용한다.]]></content:encoded>
@@ -199,8 +199,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 삼총사 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/13</link>
-            <guid>https://chocoham.dev/posts/13</guid>
+            <link>http://localhost:3000/posts/13</link>
+            <guid>http://localhost:3000/posts/13</guid>
             <pubDate>Fri, 21 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 삼총사 풀이 with javascript. 중복 제거를 위해 Set자료형에 number의 원소들을 초기화한 후 브루트포스 계산법으로 count를 구해주면 되겠다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 삼총사 풀이 with javascript. 중복 제거를 위해 Set자료형에 number의 원소들을 초기화한 후 브루트포스 계산법으로 count를 구해주면 되겠다.]]></content:encoded>
@@ -215,8 +215,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 크기가 작은 부분 문자열 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/14</link>
-            <guid>https://chocoham.dev/posts/14</guid>
+            <link>http://localhost:3000/posts/14</link>
+            <guid>http://localhost:3000/posts/14</guid>
             <pubDate>Fri, 21 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 삼총사 풀이 with javascript. 중복 제거를 위해 javascript의 Set 자료형을 이용, 완전탐색(브루트포스)로 count를 계산하여 문제를 해결한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 삼총사 풀이 with javascript. 중복 제거를 위해 javascript의 Set 자료형을 이용, 완전탐색(브루트포스)로 count를 계산하여 문제를 해결한다.]]></content:encoded>
@@ -231,8 +231,8 @@
         </item>
         <item>
             <title><![CDATA[[자료구조] 덱(Deque) | javascript]]></title>
-            <link>https://chocoham.dev/posts/15</link>
-            <guid>https://chocoham.dev/posts/15</guid>
+            <link>http://localhost:3000/posts/15</link>
+            <guid>http://localhost:3000/posts/15</guid>
             <pubDate>Fri, 21 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[javascript로 이해하는 자료구조 [덱(deque)] : 덱(deque)은 스택(stack)과 큐(queue)를 합친 자료구조로 head, tail 구분 없이 양방향에서 자료를 입출력 할 수 있는 자료형이다. javascript에서는 배열을 이용해 손쉽게 구현할 수 있다.]]></description>
             <content:encoded><![CDATA[javascript로 이해하는 자료구조 [덱(deque)] : 덱(deque)은 스택(stack)과 큐(queue)를 합친 자료구조로 head, tail 구분 없이 양방향에서 자료를 입출력 할 수 있는 자료형이다. javascript에서는 배열을 이용해 손쉽게 구현할 수 있다.]]></content:encoded>
@@ -246,8 +246,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 기사단원의 무기 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/16</link>
-            <guid>https://chocoham.dev/posts/16</guid>
+            <link>http://localhost:3000/posts/16</link>
+            <guid>http://localhost:3000/posts/16</guid>
             <pubDate>Tue, 25 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 기사단원의 무기 풀이 with javascript. 약수의 개수를 주어진 number만큼. 즉 최대 10,000번 구해야 하기 때문에 제곱근을 이용해 약수의 개수를 구하는 알고리즘을 이용, 시간복잡도를 줄인다. javascript에서는 Math.sqrt() 메소드를 이용해 제곱근을 구할 수 있다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 기사단원의 무기 풀이 with javascript. 약수의 개수를 주어진 number만큼. 즉 최대 10,000번 구해야 하기 때문에 제곱근을 이용해 약수의 개수를 구하는 알고리즘을 이용, 시간복잡도를 줄인다. javascript에서는 Math.sqrt() 메소드를 이용해 제곱근을 구할 수 있다.]]></content:encoded>
@@ -262,8 +262,8 @@
         </item>
         <item>
             <title><![CDATA[[자료구조] 연결리스트(linked_list) | javascript]]></title>
-            <link>https://chocoham.dev/posts/17</link>
-            <guid>https://chocoham.dev/posts/17</guid>
+            <link>http://localhost:3000/posts/17</link>
+            <guid>http://localhost:3000/posts/17</guid>
             <pubDate>Tue, 25 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[javascript로 이해하는 자료구조 [연결리스트(linked-list)] : 연결리스트(linked-list)는 리스트의 일종으로 노드(node)와 데이터가 포인터(pointer)를 가지고 한 줄로 이어져있는 형태를 띈다. 자료의 추가 및 삭제 시간복잡도가 O(1)이나 다른 자료형보다 저장공간을 많이 차지하는 단점이 있다.]]></description>
             <content:encoded><![CDATA[javascript로 이해하는 자료구조 [연결리스트(linked-list)] : 연결리스트(linked-list)는 리스트의 일종으로 노드(node)와 데이터가 포인터(pointer)를 가지고 한 줄로 이어져있는 형태를 띈다. 자료의 추가 및 삭제 시간복잡도가 O(1)이나 다른 자료형보다 저장공간을 많이 차지하는 단점이 있다.]]></content:encoded>
@@ -277,8 +277,8 @@
         </item>
         <item>
             <title><![CDATA[[수학] 에라토스테네스의 체를 이용한 소수 구하기]]></title>
-            <link>https://chocoham.dev/posts/18</link>
-            <guid>https://chocoham.dev/posts/18</guid>
+            <link>http://localhost:3000/posts/18</link>
+            <guid>http://localhost:3000/posts/18</guid>
             <pubDate>Thu, 27 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[에라토스테네스의 체는 소수를 효과적으로 판별하는 방법 중 하나로 가장 잘 알려진 방법이기도 하다. 가장 작은 소수인 2부터 소수의 배수를 소거해 나가며 소수를 구할 수 있다.]]></description>
             <content:encoded><![CDATA[에라토스테네스의 체는 소수를 효과적으로 판별하는 방법 중 하나로 가장 잘 알려진 방법이기도 하다. 가장 작은 소수인 2부터 소수의 배수를 소거해 나가며 소수를 구할 수 있다.]]></content:encoded>
@@ -293,8 +293,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.2] 올바른 괄호 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/19</link>
-            <guid>https://chocoham.dev/posts/19</guid>
+            <link>http://localhost:3000/posts/19</link>
+            <guid>http://localhost:3000/posts/19</guid>
             <pubDate>Thu, 04 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.2 올바른 괄호 풀이 with javascript. 스택 자료형을 이용해 문제를 해결한다. 괄호의 시작에 해당하는 문자일 경우 stack에 push하고 괄호의 끝을 해당하는 문자일 경우 stack의 top(마지막 원소)와 비교하여 올바를 경우 pop을 진행, 그렇지 않으면 무시한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.2 올바른 괄호 풀이 with javascript. 스택 자료형을 이용해 문제를 해결한다. 괄호의 시작에 해당하는 문자일 경우 stack에 push하고 괄호의 끝을 해당하는 문자일 경우 stack의 top(마지막 원소)와 비교하여 올바를 경우 pop을 진행, 그렇지 않으면 무시한다.]]></content:encoded>
@@ -309,8 +309,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 덧칠하기 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/20</link>
-            <guid>https://chocoham.dev/posts/20</guid>
+            <link>http://localhost:3000/posts/20</link>
+            <guid>http://localhost:3000/posts/20</guid>
             <pubDate>Sat, 06 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 덧칠하기 풀이 with javascript. 덧칠 해야할 영역이 true, 그렇지 않은 영역이 false인 길이 n인 배열을 선언한 후 해당 배열을 순회하며 롤러의 길이 m만큼 덧칠을 수행한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 덧칠하기 풀이 with javascript. 덧칠 해야할 영역이 true, 그렇지 않은 영역이 false인 길이 n인 배열을 선언한 후 해당 배열을 순회하며 롤러의 길이 m만큼 덧칠을 수행한다.]]></content:encoded>
@@ -324,8 +324,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 과일장수 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/21</link>
-            <guid>https://chocoham.dev/posts/21</guid>
+            <link>http://localhost:3000/posts/21</link>
+            <guid>http://localhost:3000/posts/21</guid>
             <pubDate>Tue, 09 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 과일장수 풀이 with javascript. 그리디 알고리즘을 활용하는 문제이다. 점수가 높은 사과끼리 묶어서 담는 것이 가장 이득이므로 score를 내림차순 정렬하여 m만큼 자르고 분리된 배열의 원소 중 최소값을 구해 가격을 계산한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 과일장수 풀이 with javascript. 그리디 알고리즘을 활용하는 문제이다. 점수가 높은 사과끼리 묶어서 담는 것이 가장 이득이므로 score를 내림차순 정렬하여 m만큼 자르고 분리된 배열의 원소 중 최소값을 구해 가격을 계산한다.]]></content:encoded>
@@ -339,8 +339,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 푸드 파이트 대회 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/22</link>
-            <guid>https://chocoham.dev/posts/22</guid>
+            <link>http://localhost:3000/posts/22</link>
+            <guid>http://localhost:3000/posts/22</guid>
             <pubDate>Wed, 10 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 푸드 파이트 대회 풀이 with javascript. 덱(dedque) 자료형을 활용하는 문제이다. 음식을 덱의 head와 tail에 조건에 맞게 삽입하여 문제를 해결한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 푸드 파이트 대회 풀이 with javascript. 덱(dedque) 자료형을 활용하는 문제이다. 음식을 덱의 head와 tail에 조건에 맞게 삽입하여 문제를 해결한다.]]></content:encoded>
@@ -356,8 +356,8 @@
         </item>
         <item>
             <title><![CDATA[[문제해결] frequency Counter 패턴]]></title>
-            <link>https://chocoham.dev/posts/23</link>
-            <guid>https://chocoham.dev/posts/23</guid>
+            <link>http://localhost:3000/posts/23</link>
+            <guid>http://localhost:3000/posts/23</guid>
             <pubDate>Thu, 11 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[frequency counter 패턴은 hash를 활용하는 패턴으로 빈도수를 측정하고 비교하는데 사용된다. javascript에서는 객체 혹은 Map 자료형을 이용해 구현할 수 있다. 단순 배열을 이용하는것 보다 시간복잡도를 눈에띄게 줄일 수 있다.]]></description>
             <content:encoded><![CDATA[frequency counter 패턴은 hash를 활용하는 패턴으로 빈도수를 측정하고 비교하는데 사용된다. javascript에서는 객체 혹은 Map 자료형을 이용해 구현할 수 있다. 단순 배열을 이용하는것 보다 시간복잡도를 눈에띄게 줄일 수 있다.]]></content:encoded>
@@ -372,8 +372,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 대충 만든 자판 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/24</link>
-            <guid>https://chocoham.dev/posts/24</guid>
+            <link>http://localhost:3000/posts/24</link>
+            <guid>http://localhost:3000/posts/24</guid>
             <pubDate>Sun, 28 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 대충 만든 자판 풀이 with javascript. javascript 객체를 이용해 keymap에 존재하는 알파벳의 index를 기록하되 가장 최단거리에 해당하는 키캡의 index를 기록하여 통합된 자판을 생성하여 문제를 해결한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 대충 만든 자판 풀이 with javascript. javascript 객체를 이용해 keymap에 존재하는 알파벳의 index를 기록하되 가장 최단거리에 해당하는 키캡의 index를 기록하여 통합된 자판을 생성하여 문제를 해결한다.]]></content:encoded>
@@ -388,8 +388,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 개인정보 수집 유효기간]]></title>
-            <link>https://chocoham.dev/posts/25</link>
-            <guid>https://chocoham.dev/posts/25</guid>
+            <link>http://localhost:3000/posts/25</link>
+            <guid>http://localhost:3000/posts/25</guid>
             <pubDate>Tue, 30 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 개인정보 수집 유효기간 풀이 with javascript. 해당 문제에서 한달은 28일로 고정이다. 따라서 today와 privacies 각 원소(개인정보)의 날짜를 년, 월, 일에 각 단위에 해당하는 수 * 28을 수행하여 일 단위로 변환한 후 terms에 해당하는 수를 더해 문제를 해결한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 개인정보 수집 유효기간 풀이 with javascript. 해당 문제에서 한달은 28일로 고정이다. 따라서 today와 privacies 각 원소(개인정보)의 날짜를 년, 월, 일에 각 단위에 해당하는 수 * 28을 수행하여 일 단위로 변환한 후 terms에 해당하는 수를 더해 문제를 해결한다.]]></content:encoded>
@@ -405,8 +405,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.1] 성격 유형 검사하기 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/26</link>
-            <guid>https://chocoham.dev/posts/26</guid>
+            <link>http://localhost:3000/posts/26</link>
+            <guid>http://localhost:3000/posts/26</guid>
             <pubDate>Thu, 01 Jun 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.1 성격 유형 검사하기 풀이 with javascript. javascript의 객체를 이용해 성격 유형(이하 MBTI)별 획득 점수를 기록하고 MBTI의 value를 비교해 문제를 해결한다.]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.1 성격 유형 검사하기 풀이 with javascript. javascript의 객체를 이용해 성격 유형(이하 MBTI)별 획득 점수를 기록하고 MBTI의 value를 비교해 문제를 해결한다.]]></content:encoded>
@@ -421,8 +421,8 @@
         </item>
         <item>
             <title><![CDATA[[lv.2] 주차 요금 계산 | 프로그래머스]]></title>
-            <link>https://chocoham.dev/posts/27</link>
-            <guid>https://chocoham.dev/posts/27</guid>
+            <link>http://localhost:3000/posts/27</link>
+            <guid>http://localhost:3000/posts/27</guid>
             <pubDate>Sat, 03 Jun 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[프로그래머스 lv.2 주차 요금 계산 풀이 with javascript. javascript의 객체를 이용해 차량의 입/출차 시간을 기록, 해당 객체를 순회하며 주차시간을 주어진 요금표에 맞게 정산하는 것으로 문제를 해결한다. ]]></description>
             <content:encoded><![CDATA[프로그래머스 lv.2 주차 요금 계산 풀이 with javascript. javascript의 객체를 이용해 차량의 입/출차 시간을 기록, 해당 객체를 순회하며 주차시간을 주어진 요금표에 맞게 정산하는 것으로 문제를 해결한다. ]]></content:encoded>
@@ -437,8 +437,8 @@
         </item>
         <item>
             <title><![CDATA[[next.js] CDN 서버를 활용한 Markdown 이미지 첨부(1)]]></title>
-            <link>https://chocoham.dev/posts/28</link>
-            <guid>https://chocoham.dev/posts/28</guid>
+            <link>http://localhost:3000/posts/28</link>
+            <guid>http://localhost:3000/posts/28</guid>
             <pubDate>Sat, 11 Nov 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[마크다운에서 이미지를 첨부하기 위해선 img태그의 src에 url을 전달하듯 url 형식의 문자열을 전달해야 합니다. 때문에 README를 작성하거나 저처럼 블로그 등지에서 마크다운을 활용하는 경우 첨부하고자 하는 이미지의 전처리 과정이 요구됩니다. 이미지 파일을 base64 형식으로 인코딩하여 안전한 문자열로 사용할 수 있습니다. HTTP 통신에서 JSON 형태의 통신을 위해 base64 형태로 인코딩할 필요가 있습니다. blob 객체 또한 이용 가능합니다. js의 내부 메소드로 간단하게 blob 객체로 인코딩, 브라우저에서 가상 url을 생성할 수 있습니다.]]></description>
             <content:encoded><![CDATA[마크다운에서 이미지를 첨부하기 위해선 img태그의 src에 url을 전달하듯 url 형식의 문자열을 전달해야 합니다. 때문에 README를 작성하거나 저처럼 블로그 등지에서 마크다운을 활용하는 경우 첨부하고자 하는 이미지의 전처리 과정이 요구됩니다. 이미지 파일을 base64 형식으로 인코딩하여 안전한 문자열로 사용할 수 있습니다. HTTP 통신에서 JSON 형태의 통신을 위해 base64 형태로 인코딩할 필요가 있습니다. blob 객체 또한 이용 가능합니다. js의 내부 메소드로 간단하게 blob 객체로 인코딩, 브라우저에서 가상 url을 생성할 수 있습니다.]]></content:encoded>
@@ -457,8 +457,8 @@
         </item>
         <item>
             <title><![CDATA[[next.js] 네이버 CDN 서버를 활용한 Markdown 이미지 첨부(2)]]></title>
-            <link>https://chocoham.dev/posts/29</link>
-            <guid>https://chocoham.dev/posts/29</guid>
+            <link>http://localhost:3000/posts/29</link>
+            <guid>http://localhost:3000/posts/29</guid>
             <pubDate>Mon, 13 Nov 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[안전한 HTTP 통신을 위해 이미지 파일을 base64 형태로 인코딩, next.js 서버단에서 CDN 서버에 업로드 하는것이 이상적입니다. github issue에 이미지를 등록하는것은 CDN 서버를 구성할 필요 없이 간편하게 이미지를 업로드 할 수 있지만 궁극적인 해결방안은 아닙니다. 네이버 클라우드 플랫폼의 CDN+와 Object Storage, AWS S3 bucket를 이용해 CDN 서버를 구성합니다. 네이버 클라우드 플랫폼의 API 인증키를 발급받고 서비스 사용 신청을 합니다.]]></description>
             <content:encoded><![CDATA[안전한 HTTP 통신을 위해 이미지 파일을 base64 형태로 인코딩, next.js 서버단에서 CDN 서버에 업로드 하는것이 이상적입니다. github issue에 이미지를 등록하는것은 CDN 서버를 구성할 필요 없이 간편하게 이미지를 업로드 할 수 있지만 궁극적인 해결방안은 아닙니다. 네이버 클라우드 플랫폼의 CDN+와 Object Storage, AWS S3 bucket를 이용해 CDN 서버를 구성합니다. 네이버 클라우드 플랫폼의 API 인증키를 발급받고 서비스 사용 신청을 합니다.]]></content:encoded>
@@ -476,8 +476,8 @@
         </item>
         <item>
             <title><![CDATA[네이버 CDN 서버를 활용한 Markdown 이미지 첨부(3)]]></title>
-            <link>https://chocoham.dev/posts/30</link>
-            <guid>https://chocoham.dev/posts/30</guid>
+            <link>http://localhost:3000/posts/30</link>
+            <guid>http://localhost:3000/posts/30</guid>
             <pubDate>Sat, 16 Dec 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[AWS S3에서 제공하는 javascript SDK를 이용해 node.js 환경에서 파일(이미지)를 api 요청을 통해 전송해보겠습니다. @aws-sdk/client-s3 모듈을 설치 후 next.js의 원하는 api 엔드포인트에서 route.ts를 작성합니다. S3 클라이언트에 연결하기 위한 객체를 선언하고 접근권한(ACL), 경로 등을 설정하고 Buffer 객체에 이미지를 담아 S3에 전송합니다. 바이너리 데이터로 이미지를 변환해 api의 요청사항을 만족시킵니다. 이미지를 별도의 DB에 분산저장(백업) 하여 데이터의 무결성을 유지합니다.]]></description>
             <content:encoded><![CDATA[AWS S3에서 제공하는 javascript SDK를 이용해 node.js 환경에서 파일(이미지)를 api 요청을 통해 전송해보겠습니다. @aws-sdk/client-s3 모듈을 설치 후 next.js의 원하는 api 엔드포인트에서 route.ts를 작성합니다. S3 클라이언트에 연결하기 위한 객체를 선언하고 접근권한(ACL), 경로 등을 설정하고 Buffer 객체에 이미지를 담아 S3에 전송합니다. 바이너리 데이터로 이미지를 변환해 api의 요청사항을 만족시킵니다. 이미지를 별도의 DB에 분산저장(백업) 하여 데이터의 무결성을 유지합니다.]]></content:encoded>
@@ -494,8 +494,8 @@
         </item>
         <item>
             <title><![CDATA[Next.js 13+에서 무한 대댓글 구현 (with mongoDB)]]></title>
-            <link>https://chocoham.dev/posts/31</link>
-            <guid>https://chocoham.dev/posts/31</guid>
+            <link>http://localhost:3000/posts/31</link>
+            <guid>http://localhost:3000/posts/31</guid>
             <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[next.js 13 이상의 버전에서 mongoDB와 계층형 트리구조를 활용한 무한 대댓글을 구현하였습니다. 댓글가 대댓글의 그룹으로 묶어 관리하는 REF, 댓글의 순서를 결정하는 RE_STEP, 댓글의 들여쓰기 레벨을 의미하는 RE_LEVEL, 부모 댓글의 고유 식별자를 의미하는 RE_PARENT 총 4개의 속성을 이용해 자동으로 대댓글의 위치를 조정하도록 하였습니다. 클라이언트에서는 React의 hooks를 활용해 interactive한 사용자 경험을 제공하고 next.js의 serverless function을 활용해 대댓글 작성 api를 손쉽게 구현하였습니다.]]></description>
             <content:encoded><![CDATA[next.js 13 이상의 버전에서 mongoDB와 계층형 트리구조를 활용한 무한 대댓글을 구현하였습니다. 댓글가 대댓글의 그룹으로 묶어 관리하는 REF, 댓글의 순서를 결정하는 RE_STEP, 댓글의 들여쓰기 레벨을 의미하는 RE_LEVEL, 부모 댓글의 고유 식별자를 의미하는 RE_PARENT 총 4개의 속성을 이용해 자동으로 대댓글의 위치를 조정하도록 하였습니다. 클라이언트에서는 React의 hooks를 활용해 interactive한 사용자 경험을 제공하고 next.js의 serverless function을 활용해 대댓글 작성 api를 손쉽게 구현하였습니다.]]></content:encoded>
