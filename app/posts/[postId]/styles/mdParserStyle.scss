@@ -106,3 +106,7 @@ code:not([class*="language-"]) {
   border-radius: 10px;
   transition: 0.5s;
 }
+
+blockquote {
+  border-left: 4px solid $color_middle;
+}
