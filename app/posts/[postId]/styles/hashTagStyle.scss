@@ -1,16 +1,18 @@
 .hashTag {
+  font-size: 0.9rem;
   display: flex;
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 4rem;
   padding-top: 1rem;
-  gap: 1rem 3rem;
-  border-top: 2px solid var(--color-card);
+  gap: 1rem 2.5rem;
+  border-top: 2px solid var(--color-low);
 
   &__box {
     background-color: var(--color-low);
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.8rem;
     box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    border-radius: 1rem;
   }
 }

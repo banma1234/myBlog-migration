@@ -7,15 +7,18 @@
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
 
+  article {
+    padding: 1.4rem;
+  }
+
   @media all and (max-width: $tablet) {
     grid-template-columns: 1fr 3fr 1fr;
   }
 
   @media all and (max-width: $mobile) {
     display: flex;
+    padding-top: 5rem;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
-    width: 90%;
   }
 }

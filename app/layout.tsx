@@ -33,6 +33,10 @@ export default function RootLayout({
           name="google-site-verification"
           content="A1qLguIf9gLBQEkoscbYdxPvOgBxPrI3NF0v3FaFDKU"
         />
+        <meta
+          name="naver-site-verification"
+          content="cfe40540bf996f7e1a2494dde5497f1616b415e7"
+        />
       </head>
       <body className={myFont.className}>
         <script

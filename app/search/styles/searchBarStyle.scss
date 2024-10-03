@@ -14,11 +14,11 @@
   &__true {
     margin-left: 1rem;
     padding-left: 0.8rem;
-    @include animation("input_true 0.4s");
+    @include animation("input_true 0.4s ease");
   }
 
   &__false {
-    @include animation("input_false 0.4s");
+    @include animation("input_false 0.4s ease");
   }
 
   &__tooltip {

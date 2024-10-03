@@ -31,7 +31,7 @@ export default function ScrollFadeIn(props: { children: any }) {
           target.style.opacity = "1";
           target.style.transform = "translate3d(0, 0, 0)";
           target.style.transitionProperty = "all";
-          target.style.transitionDuration = "1.5s";
+          target.style.transitionDuration = "1s";
           target.style.transitionTimingFunction = "cubic-bezier(0, 0, 0.2, 1)";
         }
       });

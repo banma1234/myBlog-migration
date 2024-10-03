@@ -18,22 +18,22 @@ code[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
   overflow: auto;
+  @media all and (max-width: $tablet) {
+    font-size: 0.8rem;
+  }
 }
 code:not([class*="language-"]) {
   background-color: var(--color-low);
   font-size: 0.8rem;
   display: inline-block;
-  padding: 0.15rem 0.25rem;
+  padding: 0.3rem 0.45rem;
   margin: 0px 0.2rem;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 .codeblock {
   position: relative;
   margin-top: 2rem;
-
-  @media all and (max-width: $mobile) {
-    width: 100%;
-  }
 
   .top {
     position: absolute;
@@ -78,9 +78,9 @@ code:not([class*="language-"]) {
     }
 
     & td:nth-child(1) {
-      color: $color_middle;
+      font-style: italic;
+      color: $color_gray_high;
       padding-right: 0.6rem;
-      border-right: 1px solid var(--color-codeblock);
       text-align: right;
       user-select: none;
       -moz-user-select: none;
@@ -106,4 +106,11 @@ code:not([class*="language-"]) {
   box-shadow: none;
   border-radius: 10px;
   transition: 0.5s;
+}
+
+blockquote {
+  border-left: 5px solid $color_middle;
+  background-color: var(--color-card);
+  padding: 0.5rem 1rem;
+  margin: 2rem;
 }

@@ -86,19 +86,19 @@ export default async function addPost(req: NextRequest) {
         console.log(e);
         return NextResponse.json(
           { error: "target not found : ADD" },
-          { status: 404, headers: { "Content-Type": "application/json" } },
+          { status: 404, headers: { "Content-Type": "application/json" } }
         );
       });
 
     return NextResponse.json(
       { message: `comment added successfully at ${++postId}` },
-      { status: 200, headers: { "Content-Type": "application/json" } },
+      { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json(
       { error: "internal Server Error" },
-      { status: 500, headers: { "Content-Type": "application/json" } },
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }
