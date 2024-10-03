@@ -10,9 +10,9 @@ export default async function Home() {
   return (
     <section>
       <Banner />
-      <h2>🆕 최신 포스트</h2>
+      <h2 className="section__header">🆕 최신 포스트</h2>
       <CardLayout posts={newest} fadeIn={true} />
-      <h2>👍 추천 포스트</h2>
+      <h2 className="section__header">👍 추천 포스트</h2>
       <CardLayout posts={recommend} fadeIn={true} />
     </section>
   );

@@ -17,6 +17,7 @@
 
   @media all and (max-width: $mobile) {
     display: flex;
+    padding-top: 5rem;
     flex-direction: column;
     justify-content: center;
   }
