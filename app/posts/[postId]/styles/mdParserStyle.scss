@@ -109,5 +109,8 @@ code:not([class*="language-"]) {
 }
 
 blockquote {
-  border-left: 4px solid $color_middle;
+  border-left: 5px solid $color_middle;
+  background-color: var(--color-card);
+  padding: 0.5rem 1rem;
+  margin: 2rem;
 }
