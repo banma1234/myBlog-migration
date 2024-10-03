@@ -36,20 +36,20 @@ export default async function addReply(req: NextRequest) {
         REF: newBody.REF,
         RE_STEP: { $gte: targetStep },
       },
-      { $inc: { RE_STEP: 1 } },
+      { $inc: { RE_STEP: 1 } }
     );
 
     await db.collection("comments").insertOne(newBody);
 
     return NextResponse.json(
       { message: `comment added successfully at ${newBody.postId} : REPLY` },
-      { status: 200, headers: { "Content-Type": "application/json" } },
+      { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json(
       { error: "internal Server Error" },
-      { status: 500, headers: { "Content-Type": "application/json" } },
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }

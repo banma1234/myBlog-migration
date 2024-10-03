@@ -47,7 +47,8 @@ input {
 }
 
 ::-webkit-scrollbar {
-  width: 0.3rem;
+  width: 0.4rem;
+  height: 0.4rem;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-text);
@@ -58,4 +59,11 @@ input {
 }
 ::-webkit-scrollbar-button {
   display: none;
+}
+
+.section__header {
+  @media all and (max-width: $mobile) {
+    display: flex;
+    justify-content: center;
+  }
 }

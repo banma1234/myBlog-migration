@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     default:
       return NextResponse.json(
         { error: "unexpected viewType" },
-        { status: 404, headers: { "Content-Type": "application/json" } },
+        { status: 404, headers: { "Content-Type": "application/json" } }
       );
   }
 }

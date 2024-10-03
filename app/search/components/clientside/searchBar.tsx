@@ -43,7 +43,7 @@ export default function SearchBar(props: { filter: (input: string) => void }) {
         />
       )}
       <div className="searchBar__icon" onClick={() => setIsClick(!isClick)}>
-        <div className="searchBar__tooltip">click here! </div>
+        <div className="searchBar__tooltip">click! </div>
         {iconHandler("search", "28")}
       </div>
     </div>

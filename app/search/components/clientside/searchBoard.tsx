@@ -28,7 +28,10 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
 
   const searchEngine = (input: string) => {
     let target = data.filter((item: CardType) => item.title.includes(input));
-    setPrevData(target);
+
+    if (target.length) {
+      setPrevData(target);
+    }
   };
 
   const currentPageHandler = (i: number) => {
@@ -48,7 +51,7 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
         </div>
         <SearchBar filter={searchEngine} />
       </label>
-      <CardLayout posts={currentData} />
+      <CardLayout posts={currentData} fadeIn={false} />
 
       <div className="container">
         <div className="pagination">

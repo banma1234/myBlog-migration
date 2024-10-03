@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
   if (!token || verifyJwt(token.value)) {
     return NextResponse.json(
       { message: `Authentication failed` },
-      { status: 401, headers: { "Content-Type": "application/json" } },
+      { status: 401, headers: { "Content-Type": "application/json" } }
     );
   }
 
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     await client
       .send(new PutObjectCommand(params))
       .then(() => console.log("success"))
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
 

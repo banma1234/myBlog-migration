@@ -56,7 +56,7 @@ export default async function Posts({
       </article>
       <section className={styles.recent}>
         <h2>👨‍💻 관련 포스트</h2>
-        <CardLayout posts={recentPosts} />
+        <CardLayout posts={recentPosts} fadeIn={true} />
       </section>
     </>
   );

@@ -3,7 +3,7 @@ import { connectToDatabase } from "util/mongodb";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { postid: string } },
+  { params }: { params: { postid: string } }
 ) {
   try {
     let postId = params.postid[0];
@@ -44,7 +44,7 @@ export async function GET(
     if (!post.length) {
       return NextResponse.json(
         { error: "post not found" },
-        { status: 404, headers: { "Content-Type": "application/json" } },
+        { status: 404, headers: { "Content-Type": "application/json" } }
       );
     }
 
@@ -64,7 +64,7 @@ export async function GET(
       .collection("posts")
       .find(
         { postId: { $in: [Number(postId) + 1, Number(postId) - 1] } },
-        options3,
+        options3
       )
       .toArray();
 
@@ -82,13 +82,13 @@ export async function GET(
         recent: recentPosts,
         bothSidePosts: both,
       },
-      { status: 200, headers: { "Content-Type": "application/json" } },
+      { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (e: unknown) {
     console.log(e);
     return NextResponse.json(
       { error: "internal Server Error" },
-      { status: 500, headers: { "Content-Type": "application/json" } },
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }
