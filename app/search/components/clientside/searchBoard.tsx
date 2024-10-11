@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { CardType } from "app/components/componentType";
 import { CardLayout } from "app/components/card";
 import "../../styles/paginationStyle.scss";
+import iconHandler from "util/iconHandler";
 import SearchBar from "./searchBar";
 
 export default function SearchBoard(props: { data: Array<CardType> }) {
@@ -47,7 +48,9 @@ export default function SearchBoard(props: { data: Array<CardType> }) {
     <article>
       <label className="options">
         <div className="options__button" onClick={sortData}>
-          정렬 : {sortOption ? "오름차순" : "내림차순"}
+          {sortOption
+            ? iconHandler("arrowUp", "20")
+            : iconHandler("arrowDown", "20")}
         </div>
         <SearchBar filter={searchEngine} />
       </label>
