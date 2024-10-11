@@ -59,6 +59,12 @@
       top: 2px;
       align-items: center;
     }
+
+    &__title {
+      @media all and (max-width: $mobile) {
+        display: none;
+      }
+    }
   }
 }
 

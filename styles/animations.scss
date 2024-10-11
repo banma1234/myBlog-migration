@@ -20,13 +20,13 @@
     width: 0;
   }
   100% {
-    width: 12rem;
+    width: 11rem;
   }
 }
 
 @include keyframes(input_false) {
   0% {
-    width: 12rem;
+    width: 11rem;
   }
   100% {
     width: 0;
