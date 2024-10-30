@@ -23,7 +23,7 @@ export default async function Header() {
           </li>
           <li>
             <Tooltip title={"프로젝트"}>
-              <Link href="https://github.com/banma1234">
+              <Link href="https://banma1234.github.io/portfolio/">
                 {iconHandler("launch", "20")}
               </Link>
             </Tooltip>
