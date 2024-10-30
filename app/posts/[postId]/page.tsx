@@ -17,7 +17,7 @@ export default async function Posts({
   params: { postId: string };
 }) {
   const { postId } = params;
-  const resData = await getPost(postId).then((res) => {
+  const resData = await getPost(postId).then(res => {
     return res ? res : notFound();
   });
 
@@ -63,10 +63,10 @@ export default async function Posts({
 }
 
 export async function generateStaticParams() {
-  const URL = process.env.DEV_URL as string;
+  const BASE_URL = process.env.DEV_URL as string;
 
   try {
-    const res = await fetch(`${URL}/api/seo/static-params`, {
+    const res = await fetch(`${BASE_URL}/api/seo/static-params`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -100,9 +100,14 @@ export async function generateMetadata({
 }: {
   params: { postId: string };
 }): Promise<Metadata> {
-  const URL = process.env.DEV_URL as string;
+  const BASE_URL = process.env.DEV_URL as string;
+
+  console.log("\n");
+  console.log(`${BASE_URL}`);
+  console.log("\n");
+
   const { postId } = params;
-  const resData = await getPost(postId).then((res) => {
+  const resData = await getPost(postId).then(res => {
     return res ? res : notFound();
   });
 
@@ -111,16 +116,18 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description || `${post.title} | ChochHam`,
-    keywords: post.hashtag,
-    bookmarks: `${URL}/posts/${postId}`,
+    keywords: post.hashtag.split(" "),
+    bookmarks: `${BASE_URL}/posts/${postId}`,
     openGraph: {
-      title: post.title,
+      title: {
+        absolute: post.title,
+      },
       description: post.description,
-      url: `${URL}/posts/${postId}`,
+      url: `${BASE_URL}/posts/${postId}`,
       siteName: "ChocoHam 개발 블로그",
       images: [
         {
-          url: post.thumbnail || `${URL}/default_thumbnail.svg`,
+          url: post.thumbnail || `${BASE_URL}/default_thumbnail.svg`,
           width: 380,
           height: 250,
         },
@@ -132,7 +139,10 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       creator: "초코햄",
-      images: post.thumbnail || `${URL}/default_thumbnail.svg`,
+      images: post.thumbnail || `${BASE_URL}/default_thumbnail.svg`,
+    },
+    alternates: {
+      canonical: `/posts/${postId}`,
     },
   };
 }

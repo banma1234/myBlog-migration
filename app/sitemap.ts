@@ -11,13 +11,13 @@ export default async function sitemap() {
       url: `${URL}`,
       author: "ChocoHam(@banma1234)",
       lastModified: new Date(),
-      priority: 0.8,
+      priority: 1,
     },
     ...staticData.map((postId: number, i: number) => ({
       url: `${URL}/posts/${postId}`,
       author: "ChocoHam(@banma1234)",
       lastModified: new Date(date[i].uploadDate),
-      priority: 1,
+      priority: 0.8,
     })),
   ];
 }

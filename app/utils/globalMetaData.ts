@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const URL = process.env.DEV_URL as string;
+const BASE_URL = process.env.DEV_URL as string;
 
 const globalMetaData: Metadata = {
   creator: "ChocoHam(@banma1234)",
@@ -11,6 +11,10 @@ const globalMetaData: Metadata = {
     template: "%s | ChocoHam",
     default: "ChocoHam 개발 블로그",
   },
+  metadataBase: new URL(`${BASE_URL}`),
+  alternates: {
+    canonical: "./",
+  },
   formatDetection: { email: true },
   openGraph: {
     title: "ChocoHam 개발 블로그",
@@ -18,7 +22,7 @@ const globalMetaData: Metadata = {
     locale: "ko",
     description:
       "프론트앤드 개발자 ChocoHam(@banma1234)의 개발 & 디자인 블로그입니다. 주로 웹개발 관련 포스트가 올라오며 가끔 디자인/일러스트 관련 포스트 또한 올라옵니다.",
-    url: `${URL}`,
+    url: `${BASE_URL}`,
     siteName: "ChocoHam 개발 블로그",
     images: [
       {
@@ -28,8 +32,8 @@ const globalMetaData: Metadata = {
       },
     ],
   },
-  manifest: `${URL}/manifest.json`,
-  robots: `${URL}/robots.txt`,
+  manifest: `${BASE_URL}/manifest.json`,
+  robots: `${BASE_URL}/robots.txt`,
 };
 
 export default globalMetaData;
