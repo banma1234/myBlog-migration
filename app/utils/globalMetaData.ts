@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 const BASE_URL = process.env.DEV_URL as string;
+const ENV_TYPE = process.env.NEXT_PUBLIC_NODE_ENV as string;
 
 const globalMetaData: Metadata = {
   creator: "ChocoHam(@banma1234)",
@@ -11,7 +12,10 @@ const globalMetaData: Metadata = {
     template: "%s | ChocoHam",
     default: "ChocoHam 개발 블로그",
   },
-  metadataBase: new URL(`${BASE_URL}`),
+  // 임시방편.. 문제 해결 후 수정예정
+  metadataBase: new URL(
+    ENV_TYPE === "develop" ? "http://localhost:3000" : "https://chocoham.dev",
+  ),
   alternates: {
     canonical: "./",
   },
