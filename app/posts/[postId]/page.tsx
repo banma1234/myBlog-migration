@@ -2,7 +2,7 @@ import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import generateRssFeed from "app/generateRSS";
 import Script from "next/script";
 import { notFound } from "next/navigation";
@@ -26,40 +26,38 @@ export default async function Posts({
     .filter((post: any) => post.postId != postId)
     .slice(-3);
 
-  return (
-    <>
-      <Script
-        id="copyCode"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: COPY_CODE,
-        }}
-      ></Script>
-      <header className={styles.header}>
-        <Image src={post.thumbnail} alt="thumbnail" layout="fill" />
-        <div className={styles.overlap}>
-          <h2 className={styles.title}>{post.title}</h2>
-        </div>
-      </header>
-      <h1 className={styles.subTitle}>{post.title}</h1>
-      <SeriesBoard data={recent} postId={Number(postId)} />
-      <div
-        className={styles.post}
-        dangerouslySetInnerHTML={mdParser(post.content)}
-      />
-      <HashTag hashTag={post.hashtag} />
-      <nav className={styles.navigate}>
-        <PostNavigate both={bothSidePosts} />
-      </nav>
-      <article className={styles.comment}>
-        <CommentBox postId={Number(postId)} />
-      </article>
-      <section className={styles.recent}>
-        <h2>👨‍💻 관련 포스트</h2>
-        <CardLayout posts={recentPosts} fadeIn={true} />
-      </section>
-    </>
-  );
+  return (<>
+    <Script
+      id="copyCode"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: COPY_CODE,
+      }}
+    ></Script>
+    <header className={styles.header}>
+      <Image src={post.thumbnail} alt="thumbnail" fill sizes="100vw" />
+      <div className={styles.overlap}>
+        <h2 className={styles.title}>{post.title}</h2>
+      </div>
+    </header>
+    <h1 className={styles.subTitle}>{post.title}</h1>
+    <SeriesBoard data={recent} postId={Number(postId)} />
+    <div
+      className={styles.post}
+      dangerouslySetInnerHTML={mdParser(post.content)}
+    />
+    <HashTag hashTag={post.hashtag} />
+    <nav className={styles.navigate}>
+      <PostNavigate both={bothSidePosts} />
+    </nav>
+    <article className={styles.comment}>
+      <CommentBox postId={Number(postId)} />
+    </article>
+    <section className={styles.recent}>
+      <h2>👨‍💻 관련 포스트</h2>
+      <CardLayout posts={recentPosts} fadeIn={true} />
+    </section>
+  </>);
 }
 
 export async function generateStaticParams() {

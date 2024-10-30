@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import iconHandler from "util/iconHandler";
 import { useSession } from "next-auth/react";
@@ -48,14 +48,17 @@ const Logout = (props: { session: Session }) => {
   const session = props.session;
 
   return (
-    <div>
+    (<div>
       <Image
         className="user__profile"
         src={session.user?.image as string}
         alt="user profile"
         width={30}
         height={30}
-      />
-    </div>
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
+    </div>)
   );
 };

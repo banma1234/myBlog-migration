@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getRecommendPost } from "./utils";
@@ -22,15 +22,19 @@ export default function NotFound() {
   }, []);
 
   return (
-    <section className="error__container">
+    (<section className="error__container">
       <Image
         className="error__image"
         src="/404.svg"
         alt="404 banner"
         width={600}
         height={560}
-        style={{ maxWidth: "100%", minWidth: "28rem" }}
-      />
+        style={{
+          maxWidth: "100%",
+          minWidth: "28rem",
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <div className="error__nav">
         <Link href="/">
           <button>메인화면 바로가기</button>
@@ -47,20 +51,28 @@ export default function NotFound() {
           <CardLayout posts={recommend} fadeIn={true} />
         )}
       </div>
-    </section>
+    </section>)
   );
 }
 
 export function LoadingUi() {
   return (
-    <div className="loading">
+    (<div className="loading">
       {new Array(3).fill(true).map((item: boolean, i: number) => {
         return (
-          <div className="loading__image" key={i}>
-            <Image src="/loading.svg" alt="loading" width={100} height={100} />;
-          </div>
+          (<div className="loading__image" key={i}>
+            <Image
+              src="/loading.svg"
+              alt="loading"
+              width={100}
+              height={100}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />;
+                      </div>)
         );
       })}
-    </div>
+    </div>)
   );
 }

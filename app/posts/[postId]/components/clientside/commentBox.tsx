@@ -1,7 +1,7 @@
 "use client";
 
 import iconHandler from "util/iconHandler";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import "../../styles/commentStyle/commentBoxStyle.scss";
 import { CommentMenu, UserCommentForm } from ".";
 import { commentHandler } from "../../utils";
@@ -41,84 +41,85 @@ export default function CommentBox(props: { postId: number }) {
     }
   };
 
-  return (
-    <>
-      {comments &&
-        comments.map((item: CommentType, i: number) => {
-          return (
-            <div className="comment" key={i}>
-              <div
-                className="comment__id"
-                style={{ width: `${100 - item.RE_LEVEL * 6}%` }}
-                key={i}
-              >
-                <Image
-                  className="comment__profile"
-                  src={item.isAdmin ? (item.profile as string) : "/profile.jpg"}
-                  alt="profile"
-                  width={70}
-                  height={70}
-                />
-                <div className="content">
-                  <div className="content__info">
-                    <span className="content__info__writter">
-                      {item.writter}
-                    </span>
-                    {item.isAdmin && (
-                      <span className="content__info__admin">Admin</span>
-                    )}
-                    <span className="content__info__date">{item.date}</span>
-                  </div>
-                  {item.content}
-                </div>
-                <div>
-                  <div
-                    className="content__icon"
-                    onClick={() => {
-                      setTarget(item._id, "MENU");
-                    }}
-                  >
-                    {iconHandler("cancel", "18")}
-                  </div>
-                  {menuClick && commentId === item._id && (
-                    <CommentMenu
-                      data={item}
-                      postId={props.postId}
-                      setComments={setComments}
-                    />
+  return (<>
+    {comments &&
+      comments.map((item: CommentType, i: number) => {
+        return (
+          (<div className="comment" key={i}>
+            <div
+              className="comment__id"
+              style={{ width: `${100 - item.RE_LEVEL * 6}%` }}
+              key={i}
+            >
+              <Image
+                className="comment__profile"
+                src={item.isAdmin ? (item.profile as string) : "/profile.jpg"}
+                alt="profile"
+                width={70}
+                height={70}
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
+              <div className="content">
+                <div className="content__info">
+                  <span className="content__info__writter">
+                    {item.writter}
+                  </span>
+                  {item.isAdmin && (
+                    <span className="content__info__admin">Admin</span>
                   )}
+                  <span className="content__info__date">{item.date}</span>
                 </div>
+                {item.content}
+              </div>
+              <div>
                 <div
-                  className="content__menu"
+                  className="content__icon"
                   onClick={() => {
-                    setTarget(item._id, "REPLY");
+                    setTarget(item._id, "MENU");
                   }}
                 >
-                  <div>
-                    {replyClick && commentId === item._id ? "cancel" : "reply"}
-                  </div>
+                  {iconHandler("cancel", "18")}
                 </div>
-                {replyClick && commentId === item._id && (
-                  <UserCommentForm
+                {menuClick && commentId === item._id && (
+                  <CommentMenu
                     data={item}
                     postId={props.postId}
-                    type="REPLY"
                     setComments={setComments}
-                    setClose={setReplyClick}
-                    session={session}
                   />
                 )}
               </div>
+              <div
+                className="content__menu"
+                onClick={() => {
+                  setTarget(item._id, "REPLY");
+                }}
+              >
+                <div>
+                  {replyClick && commentId === item._id ? "cancel" : "reply"}
+                </div>
+              </div>
+              {replyClick && commentId === item._id && (
+                <UserCommentForm
+                  data={item}
+                  postId={props.postId}
+                  type="REPLY"
+                  setComments={setComments}
+                  setClose={setReplyClick}
+                  session={session}
+                />
+              )}
             </div>
-          );
-        })}
-      <UserCommentForm
-        data={comments ? comments.slice(-1)[0] : undefined}
-        postId={props.postId}
-        type="DEFAULT"
-        setComments={setComments}
-        session={session}
-      />
-    </>
-  );
+          </div>)
+        );
+      })}
+    <UserCommentForm
+      data={comments ? comments.slice(-1)[0] : undefined}
+      postId={props.postId}
+      type="DEFAULT"
+      setComments={setComments}
+      session={session}
+    />
+  </>);
 }

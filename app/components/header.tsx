@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import iconHandler from "util/iconHandler";
 import UserProfile from "./clientside/userProfile";
 import { Tooltip } from ".";
@@ -7,11 +7,19 @@ import "../styles/headerStyle.scss";
 
 export default async function Header() {
   return (
-    <header className="header">
+    (<header className="header">
       <div className="header__container">
         <Link className="header__logo" href="/">
           <div className="header__logo__img">
-            <Image src="/favicon.ico" alt="logo Img" width={22} height={22} />
+            <Image
+              src="/favicon.ico"
+              alt="logo Img"
+              width={22}
+              height={22}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <span className="header__logo__title">초코햄의 개발 블로그</span>
         </Link>
@@ -33,6 +41,6 @@ export default async function Header() {
           </li>
         </ul>
       </div>
-    </header>
+    </header>)
   );
 }

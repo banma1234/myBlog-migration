@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import imgUrl from "public/profile_2.png";
 import { Tooltip } from ".";
@@ -7,8 +7,15 @@ import iconHandler from "util/iconHandler";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer">
-      <Image className="footer__profile" src={imgUrl} alt="profile" />
+    (<footer className="footer">
+      <Image
+        className="footer__profile"
+        src={imgUrl}
+        alt="profile"
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <h2>Choco Ham</h2>
       <p>프론트앤드 디발자, 웹 개자이너 초코햄입니다.</p>
       <div className="footer__layout">
@@ -46,7 +53,7 @@ const Footer: React.FC = () => {
         {iconHandler("copyright", "12")}&nbsp;&nbsp;Copyright. all rights
         reserved.
       </p>
-    </footer>
+    </footer>)
   );
 };
 
