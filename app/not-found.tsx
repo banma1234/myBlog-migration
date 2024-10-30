@@ -13,7 +13,7 @@ export default function NotFound() {
 
   useEffect(() => {
     const fetchRecommendData = async () => {
-      await getRecommendPost().then((res) => {
+      await getRecommendPost().then(res => {
         setRecommend(res);
       });
     };
@@ -29,7 +29,11 @@ export default function NotFound() {
         alt="404 banner"
         width={600}
         height={560}
-        style={{ maxWidth: "100%", minWidth: "28rem" }}
+        style={{
+          maxWidth: "100%",
+          minWidth: "28rem",
+          height: "auto",
+        }}
       />
       <div className="error__nav">
         <Link href="/">
@@ -57,7 +61,17 @@ export function LoadingUi() {
       {new Array(3).fill(true).map((item: boolean, i: number) => {
         return (
           <div className="loading__image" key={i}>
-            <Image src="/loading.svg" alt="loading" width={100} height={100} />;
+            <Image
+              src="/loading.svg"
+              alt="loading"
+              width={100}
+              height={100}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
+            />
+            ;
           </div>
         );
       })}

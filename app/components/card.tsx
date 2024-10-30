@@ -54,6 +54,7 @@ export function CardLayout(props: { posts: Array<CardType>; fadeIn: boolean }) {
                       style={{
                         maxWidth: "100%",
                         height: "10rem",
+                        // height: "auto"
                       }}
                     />
                     <div className="overlap">
@@ -84,7 +85,8 @@ export function Banner() {
           <Image
             src="https://choco-image-server.cdn.ntruss.com/build/banner.png"
             alt="Banner Img"
-            layout="fill"
+            fill
+            sizes="100vw"
           />
         </div>
         <div className="banner__info">
