@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import iconHandler from "util/iconHandler";
 import UserProfile from "./clientside/userProfile";
 import { Tooltip } from ".";

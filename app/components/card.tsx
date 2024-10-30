@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import iconHandler from "util/iconHandler";
 import HashTag from "app/posts/[postId]/components/hashTag";

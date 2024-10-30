@@ -2,7 +2,7 @@ import PostNavigate from "./components/postNavigate";
 import HashTag from "./components/hashTag";
 import SeriesBoard from "app/components/clientside/seriesBoard";
 import styles from "./styles/page.module.scss";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import generateRssFeed from "app/generateRSS";
 import Script from "next/script";
 import { notFound } from "next/navigation";
