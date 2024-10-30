@@ -13,7 +13,7 @@ export default function NotFound() {
 
   useEffect(() => {
     const fetchRecommendData = async () => {
-      await getRecommendPost().then((res) => {
+      await getRecommendPost().then(res => {
         setRecommend(res);
       });
     };
@@ -22,7 +22,7 @@ export default function NotFound() {
   }, []);
 
   return (
-    (<section className="error__container">
+    <section className="error__container">
       <Image
         className="error__image"
         src="/404.svg"
@@ -32,9 +32,9 @@ export default function NotFound() {
         style={{
           maxWidth: "100%",
           minWidth: "28rem",
-          maxWidth: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
       <div className="error__nav">
         <Link href="/">
           <button>메인화면 바로가기</button>
@@ -51,16 +51,16 @@ export default function NotFound() {
           <CardLayout posts={recommend} fadeIn={true} />
         )}
       </div>
-    </section>)
+    </section>
   );
 }
 
 export function LoadingUi() {
   return (
-    (<div className="loading">
+    <div className="loading">
       {new Array(3).fill(true).map((item: boolean, i: number) => {
         return (
-          (<div className="loading__image" key={i}>
+          <div className="loading__image" key={i}>
             <Image
               src="/loading.svg"
               alt="loading"
@@ -68,11 +68,13 @@ export function LoadingUi() {
               height={100}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />;
-                      </div>)
+                height: "auto",
+              }}
+            />
+            ;
+          </div>
         );
       })}
-    </div>)
+    </div>
   );
 }

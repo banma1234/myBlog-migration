@@ -31,7 +31,7 @@ export function CardLayout(props: { posts: Array<CardType>; fadeIn: boolean }) {
   const isFadeIn = props.fadeIn;
 
   return (
-    (<ScrollFadeIn>
+    <ScrollFadeIn>
       <div className="card__layout">
         {posts &&
           posts.map((item: CardType, i: number) => {
@@ -39,7 +39,7 @@ export function CardLayout(props: { posts: Array<CardType>; fadeIn: boolean }) {
             const imgUrl = item.thumbnail as string;
 
             return (
-              (<Link
+              <Link
                 href={url}
                 key={i}
                 className={isFadeIn ? "card__container" : ""}
@@ -54,9 +54,9 @@ export function CardLayout(props: { posts: Array<CardType>; fadeIn: boolean }) {
                       style={{
                         maxWidth: "100%",
                         height: "10rem",
-                        maxWidth: "100%",
-                        height: "auto"
-                      }} />
+                        // height: "auto"
+                      }}
+                    />
                     <div className="overlap">
                       <h3>{item.title}</h3>
                     </div>
@@ -69,29 +69,32 @@ export function CardLayout(props: { posts: Array<CardType>; fadeIn: boolean }) {
                     {iconHandler("calendar", "12")} &nbsp; {item.uploadDate}
                   </p>
                 </div>
-              </Link>)
+              </Link>
             );
           })}
       </div>
-    </ScrollFadeIn>)
+    </ScrollFadeIn>
   );
 }
 
 export function Banner() {
-  return (<>
-    <div className="banner">
-      <div className="banner__thumbnail">
-        <Image
-          src="https://choco-image-server.cdn.ntruss.com/build/banner.png"
-          alt="Banner Img"
-          fill
-          sizes="100vw" />
+  return (
+    <>
+      <div className="banner">
+        <div className="banner__thumbnail">
+          <Image
+            src="https://choco-image-server.cdn.ntruss.com/build/banner.png"
+            alt="Banner Img"
+            fill
+            sizes="100vw"
+          />
+        </div>
+        <div className="banner__info">
+          <h1 className={myFont.className}>ChocoHam 개발 블로그</h1>
+          <p>{MY_INTRO}</p>
+        </div>
+        <HashTag hashTag={MY_TAG} />
       </div>
-      <div className="banner__info">
-        <h1 className={myFont.className}>ChocoHam 개발 블로그</h1>
-        <p>{MY_INTRO}</p>
-      </div>
-      <HashTag hashTag={MY_TAG} />
-    </div>
-  </>);
+    </>
+  );
 }
