@@ -48,7 +48,7 @@ const Logout = (props: { session: Session }) => {
   const session = props.session;
 
   return (
-    (<div>
+    <div>
       <Image
         className="user__profile"
         src={session.user?.image as string}
@@ -57,8 +57,9 @@ const Logout = (props: { session: Session }) => {
         height={30}
         style={{
           maxWidth: "100%",
-          height: "auto"
-        }} />
-    </div>)
+          height: "auto",
+        }}
+      />
+    </div>
   );
 };

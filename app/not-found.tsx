@@ -13,7 +13,7 @@ export default function NotFound() {
 
   useEffect(() => {
     const fetchRecommendData = async () => {
-      await getRecommendPost().then(res => {
+      await getRecommendPost().then((res) => {
         setRecommend(res);
       });
     };
