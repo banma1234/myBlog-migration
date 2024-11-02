@@ -1,6 +1,6 @@
 # 👨‍💻 초코햄의 개발 블로그
 
-> deployed url : https://chocoham.dev
+> ### deployed url : https://chocoham.dev
 
 <br/>
 
