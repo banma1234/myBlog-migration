@@ -7,7 +7,7 @@ import "../styles/headerStyle.scss";
 
 export default async function Header() {
   return (
-    (<header className="header">
+    <header className="header">
       <div className="header__container">
         <Link className="header__logo" href="/">
           <div className="header__logo__img">
@@ -18,8 +18,9 @@ export default async function Header() {
               height={22}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <span className="header__logo__title">초코햄의 개발 블로그</span>
         </Link>
@@ -41,6 +42,6 @@ export default async function Header() {
           </li>
         </ul>
       </div>
-    </header>)
+    </header>
   );
 }
