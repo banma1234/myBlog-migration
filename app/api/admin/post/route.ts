@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyJwt } from "app/auth/handleJWT";
-import { cookies } from "next/headers";
+import { cookies, type UnsafeUnwrappedCookies } from "next/headers";
 import addPost from "./POST/addPost";
 import deletePosts from "./DELETE/deletePosts";
 import rewritePost from "./PUT/rewritePost";
@@ -21,7 +21,7 @@ export async function PUT(req: NextRequest) {
 }
 
 function authentication(req: NextRequest) {
-  const cookieStore = cookies();
+  const cookieStore = (cookies() as unknown as UnsafeUnwrappedCookies);
   const token = cookieStore.get("next-auth.session-token");
 
   if (!token || verifyJwt(token.value)) {
