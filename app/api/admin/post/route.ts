@@ -21,7 +21,7 @@ export async function PUT(req: NextRequest) {
 }
 
 function authentication(req: NextRequest) {
-  const cookieStore = (cookies() as unknown as UnsafeUnwrappedCookies);
+  const cookieStore = ((cookies() as unknown as UnsafeUnwrappedCookies) as unknown as UnsafeUnwrappedCookies);
   const token = cookieStore.get("next-auth.session-token");
 
   if (!token || verifyJwt(token.value)) {
