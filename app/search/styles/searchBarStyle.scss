@@ -1,5 +1,5 @@
-@import "styles/utils.scss";
-@import "styles/animations.scss";
+@use "../../../styles/utils.scss";
+@use "../../../styles/animations.scss";
 
 .searchBar {
   display: flex;
@@ -14,11 +14,11 @@
   &__true {
     margin-left: 1rem;
     padding-left: 0.8rem;
-    @include animation("input_true 0.4s ease");
+    @include animations.animation("input_true 0.4s ease");
   }
 
   &__false {
-    @include animation("input_false 0.4s ease");
+    @include animations.animation("input_false 0.4s ease");
   }
 
   &__tooltip {
@@ -31,7 +31,7 @@
     border-radius: 5rem;
     height: 1rem;
     background-color: var(--color-low);
-    color: $color_gray_high;
+    color: utils.$color_gray_high;
   }
 }
 
@@ -40,6 +40,6 @@
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 99999px;
   box-shadow: 0 6px 8px rgb(0 0 0 / 30%);
-  color: $color_gray;
-  background-color: $color_high;
+  color: utils.$color_gray;
+  background-color: utils.$color_high;
 }

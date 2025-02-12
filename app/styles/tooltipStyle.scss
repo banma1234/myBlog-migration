@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../styles/utils.scss";
 
 .tooltip {
   display: block;
@@ -7,8 +7,8 @@
   &__text {
     white-space: nowrap;
     visibility: hidden;
-    background-color: $color_middle;
-    color: $color_gray;
+    background-color: utils.$color_middle;
+    color: utils.$color_gray;
     padding: 0.2rem 0.5rem 0.2rem 0.5rem;
     border-radius: 5rem;
     font-size: 0.8rem;

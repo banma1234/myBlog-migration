@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../../../../styles/utils.scss";
 
 .comment {
   display: flex;
@@ -40,15 +40,15 @@
 
     &__date {
       font-size: 0.75rem;
-      color: $color-base;
+      color: utils.$color-base;
     }
 
     &__admin {
       font-size: 0.65rem;
       padding: 0.2rem 0.5rem 0.2rem 0.5rem;
       margin-right: 1rem;
-      color: $color-high;
-      border: 1px solid $color-high;
+      color: utils.$color-high;
+      border: 1px solid utils.$color-high;
       border-radius: 3rem;
     }
   }
@@ -57,7 +57,7 @@
     padding-left: 1rem;
     min-width: 20px;
     justify-content: right;
-    color: $color-high;
+    color: utils.$color-high;
     cursor: pointer;
   }
 

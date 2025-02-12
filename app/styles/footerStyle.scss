@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../styles/utils.scss";
 
 .footer {
   width: 100%;
@@ -7,11 +7,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $color_black;
+  background-color: utils.$color_black;
   padding: 1rem 0;
-  color: $color_gray;
+  color: utils.$color_gray;
 
-  @media all and (max-width: $mobile) {
+  @media all and (max-width: utils.$mobile) {
     padding: 1rem 0;
   }
 
@@ -32,11 +32,11 @@
       list-style: none;
       padding: 0.6rem 0.6rem 0.3rem 0.6rem;
       border-radius: 100%;
-      border: 2px solid $color_gray;
+      border: 2px solid utils.$color_gray;
 
       &:hover {
         transition: all 0.3s;
-        background-color: $color_black_low;
+        background-color: utils.$color_black_low;
       }
 
       &::after {
