@@ -1,5 +1,5 @@
-@import "styles/utils.scss";
-@import "styles/animations.scss";
+@use "../../styles/utils.scss";
+@use "../../styles/animations.scss";
 
 .seriesBoard {
   position: relative;
@@ -20,7 +20,7 @@
     padding: 1rem 3rem 1rem 3rem;
   }
 
-  @media all and (max-width: $mobile) {
+  @media all and (max-width: utils.$mobile) {
     h2 {
       font-size: 1.2rem;
     }
@@ -31,11 +31,11 @@
   position: relative;
   padding: 2rem;
   &__true {
-    @include animation("dropDown_true 0.4s ease");
+    @include animations.animation("dropDown_true 0.4s ease");
   }
 
   &__false {
-    @include animation("dropDown_false 0.4s ease");
+    @include animations.animation("dropDown_false 0.4s ease");
   }
 }
 
@@ -47,7 +47,7 @@
   max-height: 16rem;
   overflow: auto;
   padding: 0 3rem 0 3rem;
-  color: $color_gray_high;
+  color: utils.$color_gray_high;
 
   li {
     margin-left: 2rem;
@@ -55,7 +55,7 @@
     list-style: decimal;
 
     &::marker {
-      color: $color_middle;
+      color: utils.$color_middle;
     }
 
     &:hover {
@@ -65,6 +65,6 @@
 }
 
 .current {
-  color: $color_high;
+  color: utils.$color_high;
   font-weight: 700;
 }

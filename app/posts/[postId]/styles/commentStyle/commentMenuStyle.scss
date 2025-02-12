@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../../../../styles/utils.scss";
 
 .dropdown {
   position: absolute;
@@ -12,7 +12,7 @@
   background-color: var(--color-low);
   z-index: 999999;
 
-  @media all and (max-width: $tablet) {
+  @media all and (max-width: utils.$tablet) {
     right: 5%;
   }
 

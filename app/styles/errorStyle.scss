@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../styles/utils.scss";
 
 .error__image {
   border-radius: 10%;
@@ -21,16 +21,16 @@
 
   button {
     padding: 0.5rem 1rem 0.5rem 1rem;
-    border: 1px solid $color_high;
+    border: 1px solid utils.$color_high;
     background-color: inherit;
-    color: $color_high;
+    color: utils.$color_high;
     box-shadow: none;
     width: auto;
 
     &:hover {
       transition: all 0.5s;
-      background-color: $color_high;
-      color: $color_gray;
+      background-color: utils.$color_high;
+      color: utils.$color_gray;
     }
   }
 }

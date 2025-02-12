@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "util/mongodb";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { postid: string } }
-) {
+export async function GET(req: NextRequest, props: { params: Promise<{ postid: string }> }) {
+  const params = await props.params;
   try {
     let postId = params.postid[0];
     let { db } = await connectToDatabase();

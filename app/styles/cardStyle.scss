@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../styles/utils.scss";
 
 .card__container {
   // fadeIn 애니메이션용
@@ -30,7 +30,7 @@
   &__info {
     p {
       font-size: 0.8rem;
-      color: $color_gray_high;
+      color: utils.$color_gray_high;
       overflow: hidden;
       white-space: normal;
       text-overflow: ellipsis;
@@ -66,7 +66,7 @@
     font-size: 0.75rem;
     align-items: center;
     padding-right: 1rem;
-    color: $color_middle;
+    color: utils.$color_middle;
   }
 }
 
@@ -87,7 +87,7 @@
   h3 {
     font-weight: bold;
     padding: 1rem;
-    color: $color_gray;
+    color: utils.$color_gray;
   }
 }
 
@@ -112,11 +112,11 @@
   padding-top: 2rem;
   margin: 0 0 6rem 0;
 
-  @media all and (max-width: $tablet) {
+  @media all and (max-width: utils.$tablet) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media all and (max-width: $mobile) {
+  @media all and (max-width: utils.$mobile) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -130,7 +130,7 @@
   row-gap: 1rem;
   margin: 8rem 0 12rem 0;
 
-  @media all and (max-width: $mobile) {
+  @media all and (max-width: utils.$mobile) {
     display: none;
   }
 
