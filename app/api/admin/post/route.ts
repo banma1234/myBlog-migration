@@ -20,14 +20,14 @@ export async function PUT(req: NextRequest) {
   return rewritePost(req);
 }
 
-function authentication(req: NextRequest) {
+async function authentication(req: NextRequest) {
   const cookieStore = cookies();
-  const token = cookieStore.get("next-auth.session-token");
+  const token = (await cookieStore).get("next-auth.session-token");
 
   if (!token || verifyJwt(token.value)) {
     return NextResponse.json(
       { message: `Authentication failed` },
-      { status: 401, headers: { "Content-Type": "application/json" } }
+      { status: 401, headers: { "Content-Type": "application/json" } },
     );
   }
 }

@@ -11,11 +11,12 @@ import { getPost, mdParser, COPY_CODE } from "./utils";
 import { CardLayout } from "app/components/card";
 import { Metadata } from "next/types";
 
-export default async function Posts({
-  params,
-}: {
-  params: { postId: string };
-}) {
+export default async function Posts(
+  props: {
+    params: Promise<{ postId: string }>;
+  }
+) {
+  const params = await props.params;
   const { postId } = params;
   const resData = await getPost(postId).then(res => {
     return res ? res : notFound();
@@ -95,11 +96,12 @@ export async function generateStaticParams() {
   }
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { postId: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ postId: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const BASE_URL = process.env.DEV_URL as string;
   const { postId } = params;
   const resData = await getPost(postId).then(res => {

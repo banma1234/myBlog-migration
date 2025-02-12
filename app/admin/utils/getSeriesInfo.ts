@@ -5,7 +5,6 @@ export default async function getSeriesInfo() {
     const res = await fetch(`${URL}/api/dashboard?viewtype=series`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      cache: "no-store",
     });
 
     if (!res.ok) {

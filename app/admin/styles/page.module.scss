@@ -1,4 +1,4 @@
-@import "styles/utils.scss";
+@use "../../../styles/utils.scss";
 
 .table {
   border: 1px solid var(--color-text);
@@ -12,6 +12,6 @@
 
   a {
     text-decoration: underline;
-    color: $color_high;
+    color: utils.$color_high;
   }
 }

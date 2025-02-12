@@ -9,7 +9,7 @@ import {
 import { verifyJwt } from "app/auth/handleJWT";
 
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = cookieStore.get("next-auth.session-token");
 
   if (!token || verifyJwt(token.value)) {

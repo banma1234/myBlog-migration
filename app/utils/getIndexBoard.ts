@@ -1,7 +1,7 @@
 import { CardType } from "app/components/componentType";
 
 export default async function getIndexBoard() {
-  const URL = process.env.DEV_URL;
+  const URL = process.env.DEV_URL as string;
 
   try {
     const res = await fetch(`${URL}/api/dashboard?viewtype=index`, {
