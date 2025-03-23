@@ -41,19 +41,19 @@ export interface UserCommentType {
 export interface TreeHandlerType {
   REF: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => number;
   RE_STEP: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => number;
   RE_LEVEL: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => number;
   RE_PARENT: (
     data: UserCommentFormType["data"],
-    type: UserCommentFormType["type"]
+    type: UserCommentFormType["type"],
   ) => string | undefined;
 }
 
@@ -61,6 +61,7 @@ export interface DropdownType {
   data: CommentType;
   setComments: UserCommentFormType["setComments"];
   postId: number;
+  isAdmin: boolean;
 }
 
 export interface TargetType extends CommentType {
