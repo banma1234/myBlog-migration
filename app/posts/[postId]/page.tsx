@@ -11,33 +11,63 @@ import { getPost, mdParser, COPY_CODE } from "./utils";
 import { CardLayout } from "app/components/card";
 import { Metadata } from "next/types";
 
-export default async function Posts(
-  props: {
-    params: Promise<{ postId: string }>;
-  }
-) {
+const BASE_URL = process.env.DEV_URL as string;
+
+export default async function Posts(props: {
+  params: Promise<{ postId: string }>;
+}) {
   const params = await props.params;
   const { postId } = params;
-  const resData = await getPost(postId).then(res => {
-    return res ? res : notFound();
-  });
+  const resData = await getPost(postId).then(res => res || notFound());
 
   const { post, recent, bothSidePosts } = resData;
   const recentPosts = recent
     .filter((post: any) => post.postId != postId)
     .slice(-3);
 
+  const JSON_LD = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    image: [post.thumbnail],
+    author: {
+      "@type": "Person",
+      name: "ChocoHam(@banma1234)",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ChocoHam 개발 블로그",
+      logo: {
+        "@type": "ImageObject",
+        url: post.thumbnail,
+      },
+    },
+    url: `${BASE_URL}/posts/${postId}`,
+    datePublished: post.publishedDate,
+    description: post.description,
+  };
+
   return (
     <>
       <Script
         id="copyCode"
         strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: COPY_CODE,
-        }}
-      ></Script>
+        dangerouslySetInnerHTML={{ __html: COPY_CODE }}
+      />
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <header className={styles.header}>
-        <Image src={post.thumbnail} alt="thumbnail" fill sizes="100vw" />
+        <Image
+          src={post.thumbnail}
+          alt="thumbnail"
+          fill
+          sizes="100vw"
+          loading="lazy"
+          placeholder="blur"
+        />
         <div className={styles.overlap}>
           <h2 className={styles.title}>{post.title}</h2>
         </div>
@@ -64,8 +94,6 @@ export default async function Posts(
 }
 
 export async function generateStaticParams() {
-  const BASE_URL = process.env.DEV_URL as string;
-
   try {
     const res = await fetch(`${BASE_URL}/api/seo/static-params`, {
       method: "GET",
@@ -73,41 +101,29 @@ export async function generateStaticParams() {
     });
 
     if (!res.ok) {
-      const failed = await res.json();
-      throw new Error(failed.error as string);
+      throw new Error((await res.json()).error as string);
     }
     const { count }: { count: number } = await res.json();
-
-    const staticData: Array<{ postId: string }> = new Array();
-    for (let i = 1; i < count + 1; i++) {
-      let target = { postId: i.toString() };
-      staticData.push(target);
-    }
+    const staticData = Array.from({ length: count }, (_, i) => ({
+      postId: (i + 1).toString(),
+    }));
 
     await generateRssFeed();
-
     return staticData;
-  } catch (e: unknown) {
-    if (e instanceof Error) {
-      throw new Error(e.message);
-    } else {
-      throw new Error("Unknown error");
-    }
+  } catch (e) {
+    throw e instanceof Error
+      ? new Error(e.message)
+      : new Error("Unknown error");
   }
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ postId: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ postId: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const BASE_URL = process.env.DEV_URL as string;
   const { postId } = params;
-  const resData = await getPost(postId).then(res => {
-    return res ? res : notFound();
-  });
-
+  const resData = await getPost(postId).then(res => res || notFound());
   const { post } = resData;
 
   return {
@@ -116,9 +132,7 @@ export async function generateMetadata(
     keywords: post.hashtag.split(" "),
     bookmarks: `${BASE_URL}/posts/${postId}`,
     openGraph: {
-      title: {
-        absolute: post.title,
-      },
+      title: post.title,
       description: post.description,
       url: `${BASE_URL}/posts/${postId}`,
       siteName: "ChocoHam 개발 블로그",
@@ -141,5 +155,6 @@ export async function generateMetadata(
     alternates: {
       canonical: `/posts/${postId}`,
     },
+    metadataBase: new URL(`${BASE_URL}/posts/${postId}`),
   };
 }
